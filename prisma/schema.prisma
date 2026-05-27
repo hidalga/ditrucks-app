@@ -1,0 +1,444 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── ENUMS ─────────────────────────────────────────────────────────────
+
+enum UserRole {
+  admin
+  technician
+  calibrator
+  sales
+  fleet_customer_future
+}
+
+enum CompanyType {
+  flotilla
+  taller
+  transporte
+  agricola
+  construccion
+  particular
+  otro
+}
+
+enum UnitType {
+  tractocamion
+  pickup
+  van
+  maquinaria
+  agricola
+  construccion
+  autobus
+  otro
+}
+
+enum FuelType {
+  diesel
+  gasolina
+  gas_natural
+  hibrido
+  otro
+}
+
+enum OrderStatus {
+  borrador
+  recepcion
+  diagnostico_inicial
+  leyendo_ecu
+  archivo_original_subido
+  en_analisis
+  archivo_modificado_listo
+  instalando_archivo
+  prueba_posterior
+  cerrada
+  cancelada
+}
+
+enum ServiceType {
+  diagnostico
+  dpf
+  egr
+  scr_adblue
+  dtc
+  stage1_potencia
+  limite_velocidad
+  revision_archivo
+  otro
+}
+
+enum EcuFileType {
+  original
+  modified
+  backup
+  log
+  other
+}
+
+enum StorageType {
+  local
+  mega_path
+  s3_future
+}
+
+enum ReadMethod {
+  obd
+  bench
+  boot
+  service_mode
+  other
+}
+
+enum ChecksumStatus {
+  unknown
+  pending
+  ok
+  failed
+  corrected
+}
+
+enum EcuTool {
+  kess
+  trasdata
+  autotuner
+  flex
+  dfox
+  cmd
+  bitbox
+  otro
+}
+
+enum EvidenceCategory {
+  recepcion
+  dano_fisico
+  tablero_testigos
+  escaner
+  herramienta_conectada
+  lectura_ecu
+  escritura_ecu
+  prueba_final
+  marketing
+  otro
+}
+
+enum UsageType {
+  ciudad
+  carretera
+  mixto
+  ralenti_alto
+  carga_pesada
+  agricola
+  construccion
+  reparto_urbano
+}
+
+enum RiskLevel {
+  excelente
+  bueno
+  medio
+  alto
+  critico
+}
+
+enum CommercialOpportunity {
+  sin_oportunidad
+  seguimiento
+  cotizar
+  agendar
+  vendido
+  perdido
+}
+
+// ─── MODELS ────────────────────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  passwordHash  String    @map("password_hash")
+  role          UserRole  @default(technician)
+  active        Boolean   @default(true)
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  ordersAsTechnician  ServiceOrder[] @relation("TechnicianOrders")
+  ordersAsCalibrator  ServiceOrder[] @relation("CalibratorOrders")
+  ordersCreatedBy     ServiceOrder[] @relation("CreatedByOrders")
+  ecuFiles            EcuFile[]
+  evidence            Evidence[]
+  diagnostics         Diagnostic[]
+  auditLogs           AuditLog[]
+
+  @@map("users")
+}
+
+model Company {
+  id              String      @id @default(cuid())
+  name            String
+  legalName       String?     @map("legal_name")
+  rfc             String?
+  phone           String?
+  email           String?
+  address         String?
+  primaryContact  String?     @map("primary_contact")
+  companyType     CompanyType @default(particular) @map("company_type")
+  notes           String?
+  deleted         Boolean     @default(false)
+  createdAt       DateTime    @default(now()) @map("created_at")
+  updatedAt       DateTime    @updatedAt @map("updated_at")
+
+  customers       Customer[]
+  vehicles        Vehicle[]
+  serviceOrders   ServiceOrder[]
+
+  @@map("companies")
+}
+
+model Customer {
+  id          String    @id @default(cuid())
+  companyId   String?   @map("company_id")
+  name        String
+  phone       String?
+  email       String?
+  position    String?
+  notes       String?
+  deleted     Boolean   @default(false)
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  company     Company?  @relation(fields: [companyId], references: [id])
+  vehicles    Vehicle[]
+  serviceOrders ServiceOrder[]
+
+  @@map("customers")
+}
+
+model Vehicle {
+  id              String    @id @default(cuid())
+  companyId       String?   @map("company_id")
+  customerId      String?   @map("customer_id")
+  economicNumber  String?   @map("economic_number")
+  vin             String?
+  plates          String?
+  brand           String
+  model           String
+  year            Int?
+  engine          String?
+  fuelType        FuelType  @default(diesel) @map("fuel_type")
+  mileage         Int?
+  hourMeter       Int?      @map("hour_meter")
+  unitType        UnitType  @default(otro) @map("unit_type")
+  knownEcu        String?   @map("known_ecu")
+  notes           String?
+  deleted         Boolean   @default(false)
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  company         Company?  @relation(fields: [companyId], references: [id])
+  customer        Customer? @relation(fields: [customerId], references: [id])
+  serviceOrders   ServiceOrder[]
+  ecuFiles        EcuFile[]
+  evidence        Evidence[]
+  diagnostics     Diagnostic[]
+
+  @@map("vehicles")
+}
+
+model ServiceOrder {
+  id                      String       @id @default(cuid())
+  folio                   String       @unique
+  companyId               String?      @map("company_id")
+  customerId              String?      @map("customer_id")
+  vehicleId               String       @map("vehicle_id")
+  technicianId            String?      @map("technician_id")
+  assignedCalibratorId    String?      @map("assigned_calibrator_id")
+  status                  OrderStatus  @default(borrador)
+  serviceTypes            ServiceType[]@default([])
+  receivedAt              DateTime?    @map("received_at")
+  deliveredAt             DateTime?    @map("delivered_at")
+  mileageAtReception      Int?         @map("mileage_at_reception")
+  engineHoursAtReception  Int?         @map("engine_hours_at_reception")
+  fuelLevel               String?      @map("fuel_level")
+  activeWarningLights     String?      @map("active_warning_lights")
+  activeFaults            String?      @map("active_faults")
+  customerReportedFaults  String?      @map("customer_reported_faults")
+  physicalDamageNotes     String?      @map("physical_damage_notes")
+  generalObservations     String?      @map("general_observations")
+  requestedServiceType    String?      @map("requested_service_type")
+  workSummary             String?      @map("work_summary")
+  internalNotes           String?      @map("internal_notes")
+  customerAuthorization   String?      @map("customer_authorization")
+  deleted                 Boolean      @default(false)
+  createdById             String?      @map("created_by_id")
+  createdAt               DateTime     @default(now()) @map("created_at")
+  updatedAt               DateTime     @updatedAt @map("updated_at")
+
+  company                 Company?     @relation(fields: [companyId], references: [id])
+  customer                Customer?    @relation(fields: [customerId], references: [id])
+  vehicle                 Vehicle      @relation(fields: [vehicleId], references: [id])
+  technician              User?        @relation("TechnicianOrders", fields: [technicianId], references: [id])
+  assignedCalibrator      User?        @relation("CalibratorOrders", fields: [assignedCalibratorId], references: [id])
+  createdBy               User?        @relation("CreatedByOrders", fields: [createdById], references: [id])
+  ecuFiles                EcuFile[]
+  evidence                Evidence[]
+  diagnostics             Diagnostic[]
+
+  @@map("service_orders")
+}
+
+model EcuFile {
+  id              String          @id @default(cuid())
+  serviceOrderId  String          @map("service_order_id")
+  vehicleId       String          @map("vehicle_id")
+  uploadedById    String          @map("uploaded_by_id")
+  fileType        EcuFileType     @default(original) @map("file_type")
+  fileName        String          @map("file_name")
+  fileExtension   String?         @map("file_extension")
+  fileSize        Int?            @map("file_size")
+  storageType     StorageType     @default(local) @map("storage_type")
+  storagePath     String?         @map("storage_path")
+  megaFolderPath  String?         @map("mega_folder_path")
+  ecuBrand        String?         @map("ecu_brand")
+  ecuModel        String?         @map("ecu_model")
+  ecuFamily       String?         @map("ecu_family")
+  hardwareId      String?         @map("hardware_id")
+  softwareId      String?         @map("software_id")
+  calibrationId   String?         @map("calibration_id")
+  toolUsed        EcuTool?        @map("tool_used")
+  readMethod      ReadMethod?     @map("read_method")
+  checksumStatus  ChecksumStatus  @default(unknown) @map("checksum_status")
+  versionNumber   Int             @default(1) @map("version_number")
+  notes           String?
+  deleted         Boolean         @default(false)
+  createdAt       DateTime        @default(now()) @map("created_at")
+  updatedAt       DateTime        @updatedAt @map("updated_at")
+
+  serviceOrder    ServiceOrder    @relation(fields: [serviceOrderId], references: [id])
+  vehicle         Vehicle         @relation(fields: [vehicleId], references: [id])
+  uploadedBy      User            @relation(fields: [uploadedById], references: [id])
+
+  @@map("ecu_files")
+}
+
+model Evidence {
+  id              String            @id @default(cuid())
+  serviceOrderId  String            @map("service_order_id")
+  vehicleId       String            @map("vehicle_id")
+  uploadedById    String            @map("uploaded_by_id")
+  category        EvidenceCategory  @default(otro)
+  filePath        String            @map("file_path")
+  description     String?
+  marketingUsable Boolean           @default(false) @map("marketing_usable")
+  customerVisible Boolean           @default(false) @map("customer_visible")
+  deleted         Boolean           @default(false)
+  createdAt       DateTime          @default(now()) @map("created_at")
+
+  serviceOrder    ServiceOrder      @relation(fields: [serviceOrderId], references: [id])
+  vehicle         Vehicle           @relation(fields: [vehicleId], references: [id])
+  uploadedBy      User              @relation(fields: [uploadedById], references: [id])
+
+  @@map("evidence")
+}
+
+model Diagnostic {
+  id                      String    @id @default(cuid())
+  serviceOrderId          String    @map("service_order_id")
+  vehicleId               String    @map("vehicle_id")
+  technicianId            String    @map("technician_id")
+  scannerTool             String?   @map("scanner_tool")
+  diagnosticDate          DateTime  @default(now()) @map("diagnostic_date")
+  dtcActive               String?   @map("dtc_active")
+  dtcPending              String?   @map("dtc_pending")
+  dtcHistory              String?   @map("dtc_history")
+  freezeFrameNotes        String?   @map("freeze_frame_notes")
+  generalSymptoms         String?   @map("general_symptoms")
+  operatingConditions     String?   @map("operating_conditions")
+  usageType               UsageType @default(mixto) @map("usage_type")
+  maintenanceHistoryNotes String?   @map("maintenance_history_notes")
+
+  // DPF
+  dpfPresent                    Boolean  @default(false) @map("dpf_present")
+  dpfDtcActive                  Boolean  @default(false) @map("dpf_dtc_active")
+  sootLoadPercent               Float?   @map("soot_load_percent")
+  ashLoadPercent                 Float?   @map("ash_load_percent")
+  differentialPressureIdle       Float?   @map("differential_pressure_idle")
+  differentialPressureHighRpm    Float?   @map("differential_pressure_high_rpm")
+  lastRegenerationDistance       Float?   @map("last_regeneration_distance")
+  failedRegenerationsCount       Int?     @map("failed_regenerations_count")
+  regenerationFrequencyNotes     String?  @map("regeneration_frequency_notes")
+  dpfTemperatureNotes            String?  @map("dpf_temperature_notes")
+  dpfNotes                       String?  @map("dpf_notes")
+  dpfScore                       Int?     @map("dpf_score")
+
+  // SCR
+  scrPresent          Boolean  @default(false) @map("scr_present")
+  scrDtcActive        Boolean  @default(false) @map("scr_dtc_active")
+  defLevel            Float?   @map("def_level")
+  defQuality          Float?   @map("def_quality")
+  defPumpPressure     Float?   @map("def_pump_pressure")
+  noxUpstream         Float?   @map("nox_upstream")
+  noxDownstream       Float?   @map("nox_downstream")
+  scrEfficiency       Float?   @map("scr_efficiency")
+  defInjectorStatus   String?  @map("def_injector_status")
+  scrDerateActive     Boolean  @default(false) @map("scr_derate_active")
+  scrNotes            String?  @map("scr_notes")
+  scrScore            Int?     @map("scr_score")
+
+  // EGR
+  egrPresent              Boolean  @default(false) @map("egr_present")
+  egrDtcActive            Boolean  @default(false) @map("egr_dtc_active")
+  egrCommandedPosition    Float?   @map("egr_commanded_position")
+  egrActualPosition       Float?   @map("egr_actual_position")
+  egrDeviation            Float?   @map("egr_deviation")
+  egrFlowNotes            String?  @map("egr_flow_notes")
+  egrTemperatureNotes     String?  @map("egr_temperature_notes")
+  egrNotes                String?  @map("egr_notes")
+  egrScore                Int?     @map("egr_score")
+
+  // Results
+  generalHealthScore          Int?                  @map("general_health_score")
+  riskLevel                   RiskLevel             @default(medio) @map("risk_level")
+  recommendation              String?
+  nextCheckDate               DateTime?             @map("next_check_date")
+  commercialOpportunityStatus CommercialOpportunity @default(sin_oportunidad) @map("commercial_opportunity_status")
+  scorePenalties              String?               @map("score_penalties") // JSON string of penalties
+
+  deleted     Boolean   @default(false)
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  serviceOrder ServiceOrder @relation(fields: [serviceOrderId], references: [id])
+  vehicle      Vehicle      @relation(fields: [vehicleId], references: [id])
+  technician   User         @relation(fields: [technicianId], references: [id])
+
+  @@map("diagnostics")
+}
+
+model AuditLog {
+  id          String    @id @default(cuid())
+  userId      String?   @map("user_id")
+  entityType  String    @map("entity_type")
+  entityId    String    @map("entity_id")
+  action      String
+  oldValue    String?   @map("old_value")
+  newValue    String?   @map("new_value")
+  ipAddress   String?   @map("ip_address")
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  user        User?     @relation(fields: [userId], references: [id])
+
+  @@map("audit_logs")
+}
+
+model FolioCounter {
+  id      String @id @default("folio_counter")
+  year    Int
+  counter Int    @default(0)
+
+  @@map("folio_counter")
+}
