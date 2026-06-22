@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Plus, Search, ClipboardList, Filter } from "lucide-react";
 import { Button, Card, Badge, PageHeader, Loading, EmptyState, Select } from "@/components/ui";
-import { ORDER_STATUS_LABELS, ORDER_STATUS_COLORS, RISK_LEVEL_LABELS, RISK_LEVEL_COLORS, RISK_LEVEL_DOT } from "@/lib/constants";
+import { ORDER_STATUS_LABELS, ORDER_STATUS_COLORS, SIGNATURE_STATUS_LABELS, SIGNATURE_STATUS_COLORS, RISK_LEVEL_LABELS, RISK_LEVEL_COLORS, RISK_LEVEL_DOT } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 
 export default function OrdersPage() {
@@ -65,9 +65,11 @@ export default function OrdersPage() {
                   <th className="text-left px-4 py-2.5 font-medium text-xs">Cliente / Empresa</th>
                   <th className="text-left px-4 py-2.5 font-medium text-xs">Vehículo</th>
                   <th className="text-left px-4 py-2.5 font-medium text-xs">Estado</th>
+                  <th className="text-left px-4 py-2.5 font-medium text-xs hidden lg:table-cell">Progreso</th>
+                  <th className="text-left px-4 py-2.5 font-medium text-xs hidden lg:table-cell">Recepción</th>
+                  <th className="text-left px-4 py-2.5 font-medium text-xs hidden lg:table-cell">Entrega</th>
                   <th className="text-left px-4 py-2.5 font-medium text-xs hidden md:table-cell">Técnico</th>
                   <th className="text-left px-4 py-2.5 font-medium text-xs hidden md:table-cell">Fecha</th>
-                  <th className="text-left px-4 py-2.5 font-medium text-xs hidden lg:table-cell">Archivos</th>
                 </tr>
               </thead>
               <tbody>
@@ -84,11 +86,22 @@ export default function OrdersPage() {
                     <td className="px-4 py-2.5">
                       <Badge className={ORDER_STATUS_COLORS[o.status]}>{ORDER_STATUS_LABELS[o.status]}</Badge>
                     </td>
+                    <td className="px-4 py-2.5 hidden lg:table-cell">
+                      <div className="flex items-center gap-2">
+                        <div className="w-16 h-1.5 bg-brand-surface2 rounded-full overflow-hidden">
+                          <div className="h-full bg-brand-accent rounded-full transition-all" style={{ width: `${o.progressPercent || 5}%` }} />
+                        </div>
+                        <span className="text-xs text-brand-text-dim">{o.progressPercent || 5}%</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-2.5 hidden lg:table-cell">
+                      <Badge className={SIGNATURE_STATUS_COLORS[o.receptionSignatureStatus || "none"]}>{SIGNATURE_STATUS_LABELS[o.receptionSignatureStatus || "none"]}</Badge>
+                    </td>
+                    <td className="px-4 py-2.5 hidden lg:table-cell">
+                      <Badge className={SIGNATURE_STATUS_COLORS[o.deliverySignatureStatus || "none"]}>{SIGNATURE_STATUS_LABELS[o.deliverySignatureStatus || "none"]}</Badge>
+                    </td>
                     <td className="px-4 py-2.5 text-brand-text-muted hidden md:table-cell">{o.technician?.name || "—"}</td>
                     <td className="px-4 py-2.5 text-brand-text-dim text-xs hidden md:table-cell">{formatDate(o.createdAt)}</td>
-                    <td className="px-4 py-2.5 text-brand-text-dim text-xs hidden lg:table-cell">
-                      {o._count?.ecuFiles || 0} ECU · {o._count?.evidence || 0} Foto
-                    </td>
                   </tr>
                 ))}
               </tbody>

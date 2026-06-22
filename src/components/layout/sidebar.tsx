@@ -15,6 +15,7 @@ import {
   Camera,
   FileText,
   UserCog,
+  Calculator,
   Menu,
   X,
   LogOut,
@@ -35,6 +36,7 @@ const navItems: NavItem[] = [
   { label: "Clientes", href: "/customers", icon: <Users size={18} /> },
   { label: "Vehículos", href: "/vehicles", icon: <Truck size={18} /> },
   { label: "Diagnósticos", href: "/diagnostics", icon: <Stethoscope size={18} /> },
+  { label: "Cotizador", href: "/quoter", icon: <Calculator size={18} />, roles: ["admin", "sales"] },
   { label: "Archivos ECU", href: "/orders", icon: <HardDrive size={18} /> },
   { label: "Evidencia", href: "/orders", icon: <Camera size={18} /> },
   { label: "Reportes", href: "/orders", icon: <FileText size={18} /> },
@@ -65,16 +67,12 @@ export function Sidebar({ userName, userRole }: SidebarProps) {
       {/* Logo */}
       <div className="p-4 border-b border-brand-border flex items-center justify-between">
         <Link href="/dashboard" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 bg-brand-accent rounded-lg flex items-center justify-center">
-            <span className="text-brand-dark font-bold text-sm">DT</span>
-          </div>
-          {!collapsed && (
-            <div>
-              <span className="font-bold text-base tracking-tight">Ditrucks</span>
-              <span className="text-[10px] text-brand-accent block -mt-0.5 font-medium uppercase tracking-wider">
-                Sistema
-              </span>
+          {collapsed ? (
+            <div className="w-8 h-8 bg-brand-accent rounded-lg flex items-center justify-center flex-shrink-0">
+              <span className="text-brand-dark font-bold text-sm">DT</span>
             </div>
+          ) : (
+            <img src="/logo-white.svg" alt="Ditrucks" className="h-7" />
           )}
         </Link>
         <button
@@ -166,7 +164,7 @@ export function Sidebar({ userName, userRole }: SidebarProps) {
       {/* Desktop sidebar */}
       <aside
         className={cn(
-          "hidden lg:flex flex-col bg-brand-dark border-r border-brand-border transition-all duration-300",
+          "hidden lg:flex flex-col h-screen sticky top-0 bg-brand-dark border-r border-brand-border transition-all duration-300",
           collapsed ? "w-16" : "w-60"
         )}
       >

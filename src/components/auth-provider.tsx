@@ -8,6 +8,7 @@ interface AuthUser {
   name: string;
   email: string;
   role: UserRole;
+  quoterEnabled?: boolean;
 }
 
 interface AuthContextType {

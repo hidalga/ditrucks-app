@@ -52,8 +52,9 @@ export async function POST(req: NextRequest) {
       passwordHash,
       role: parsed.data.role,
       active: parsed.data.active,
+      companyId: parsed.data.companyId || null,
     },
-    select: { id: true, name: true, email: true, role: true, active: true, createdAt: true },
+    select: { id: true, name: true, email: true, role: true, active: true, companyId: true, createdAt: true },
   });
 
   return NextResponse.json(newUser, { status: 201 });

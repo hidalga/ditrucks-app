@@ -3,19 +3,52 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { Truck, ClipboardList, Stethoscope, HardDrive } from "lucide-react";
-import { Card, Badge, PageHeader, Loading, StatCard } from "@/components/ui";
+import { Truck, ClipboardList, Stethoscope, HardDrive, Calculator } from "lucide-react";
+import { Card, Badge, Button, PageHeader, Loading, StatCard } from "@/components/ui";
 import { UNIT_TYPE_LABELS, FUEL_TYPE_LABELS, ORDER_STATUS_LABELS, ORDER_STATUS_COLORS, RISK_LEVEL_LABELS, RISK_LEVEL_COLORS, RISK_LEVEL_DOT } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
+import { useAuth } from "@/components/auth-provider";
+import { QuoterApplicationPicker, type QuoterApplicationOption } from "@/components/quoter-application-picker";
 
 export default function VehicleDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const { user } = useAuth();
   const [vehicle, setVehicle] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [applications, setApplications] = useState<QuoterApplicationOption[]>([]);
+  const [pickerValue, setPickerValue] = useState("");
+  const [savingApp, setSavingApp] = useState(false);
+
+  const canManageQuoter = user?.role === "admin" || user?.role === "sales";
 
   useEffect(() => {
-    fetch(`/api/vehicles/${id}`).then(r => r.json()).then(setVehicle).finally(() => setLoading(false));
+    fetch(`/api/vehicles/${id}`).then(r => r.json()).then((v) => {
+      setVehicle(v);
+      setPickerValue(v.quoterApplicationId || "");
+    }).finally(() => setLoading(false));
   }, [id]);
+
+  useEffect(() => {
+    if (!canManageQuoter) return;
+    fetch("/api/quoter/applications").then(r => r.ok ? r.json() : []).then(setApplications).catch(() => {});
+  }, [canManageQuoter]);
+
+  const saveQuoterApplication = async () => {
+    if (!vehicle) return;
+    setSavingApp(true);
+    try {
+      await fetch(`/api/vehicles/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...vehicle, quoterApplicationId: pickerValue || null }),
+      });
+      const fresh = await fetch(`/api/vehicles/${id}`).then((r) => r.json());
+      setVehicle(fresh);
+      setPickerValue(fresh.quoterApplicationId || "");
+    } finally {
+      setSavingApp(false);
+    }
+  };
 
   if (loading) return <Loading />;
   if (!vehicle) return <p className="text-red-400">Vehículo no encontrado</p>;
@@ -82,6 +115,27 @@ export default function VehicleDetailPage() {
           )}
         </Card>
       </div>
+
+      {canManageQuoter && (
+        <Card className="p-4 mt-6">
+          <div className="flex items-center gap-2 mb-3">
+            <Calculator size={16} className="text-brand-text-dim" />
+            <h3 className="font-semibold text-sm text-brand-text-muted uppercase tracking-wider">Aplicación de Cotizador</h3>
+          </div>
+          <p className="text-xs text-brand-text-dim mb-3">
+            Vincula este vehículo a su aplicación en el catálogo del cotizador para pre-llenar la cotización en el portal del cliente.
+          </p>
+          {vehicle.quoterApplication && (
+            <div className="bg-brand-surface2 rounded-lg px-3 py-2 mb-3 text-sm">
+              Actual: <span className="font-medium">{vehicle.quoterApplication.brand} — {vehicle.quoterApplication.model}</span>
+            </div>
+          )}
+          <QuoterApplicationPicker applications={applications} value={pickerValue} onChange={setPickerValue} />
+          <div className="mt-3">
+            <Button size="sm" onClick={saveQuoterApplication} loading={savingApp}>Guardar vínculo</Button>
+          </div>
+        </Card>
+      )}
 
       {/* Orders history */}
       {vehicle.serviceOrders?.length > 0 && (

@@ -460,6 +460,32 @@ async function main() {
     },
   });
 
+  // ── V2: Authorization Terms ──
+  await prisma.authorizationTerms.upsert({
+    where: { version: "1.0" },
+    update: {},
+    create: {
+      version: "1.0",
+      title: "Términos de Autorización de Servicio",
+      content: "El cliente declara haber revisado la información de recepción, datos del vehículo, condiciones visibles, fallas reportadas, observaciones y servicio solicitado. Autoriza a Ditrucks a realizar el diagnóstico, revisión técnica y/o trabajo descrito en esta orden de servicio. Cualquier hallazgo adicional será informado para su aprobación cuando corresponda. La firma confirma aceptación de la recepción y autorización inicial del servicio.",
+      active: true,
+    },
+  });
+
+  // ── V2: Customer portal user ──
+  const customerHash = await bcrypt.hash("cliente123", 12);
+  await prisma.user.upsert({
+    where: { email: "cliente@transnorte.com" },
+    update: {},
+    create: {
+      name: "Roberto García (Portal)",
+      email: "cliente@transnorte.com",
+      passwordHash: customerHash,
+      role: "fleet_admin",
+      companyId: company1.id,
+    },
+  });
+
   console.log("✅ Seed complete!");
   console.log("");
   console.log("Demo users:");
@@ -467,6 +493,7 @@ async function main() {
   console.log("  tecnico@ditrucks.com / tech123 (Técnico)");
   console.log("  calibrador@ditrucks.com / calib123 (Calibrador)");
   console.log("  ventas@ditrucks.com / sales123 (Comercial)");
+  console.log("  cliente@transnorte.com / cliente123 (Portal Cliente/Flotilla)");
 }
 
 main()

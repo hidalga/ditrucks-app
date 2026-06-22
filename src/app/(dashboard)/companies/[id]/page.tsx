@@ -3,15 +3,18 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { Building2, Truck, ClipboardList, Users } from "lucide-react";
-import { Card, Badge, PageHeader, Loading, StatCard } from "@/components/ui";
+import { Building2, Truck, ClipboardList, Users, Calculator } from "lucide-react";
+import { Card, Badge, Button, PageHeader, Loading, StatCard } from "@/components/ui";
 import { COMPANY_TYPE_LABELS, ORDER_STATUS_LABELS, ORDER_STATUS_COLORS } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
+import { useAuth } from "@/components/auth-provider";
 
 export default function CompanyDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const { user } = useAuth();
   const [company, setCompany] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [quoterToggling, setQuoterToggling] = useState(false);
 
   useEffect(() => {
     fetch(`/api/companies/${id}`)
@@ -19,6 +22,22 @@ export default function CompanyDetailPage() {
       .then(setCompany)
       .finally(() => setLoading(false));
   }, [id]);
+
+  const toggleQuoter = async () => {
+    if (!company) return;
+    setQuoterToggling(true);
+    try {
+      await fetch(`/api/companies/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...company, quoterEnabled: !company.quoterEnabled }),
+      });
+      const fresh = await fetch(`/api/companies/${id}`).then((r) => r.json());
+      setCompany(fresh);
+    } finally {
+      setQuoterToggling(false);
+    }
+  };
 
   if (loading) return <Loading />;
   if (!company) return <p className="text-red-400">Empresa no encontrada</p>;
@@ -29,6 +48,12 @@ export default function CompanyDetailPage() {
         title={company.name}
         description={`${COMPANY_TYPE_LABELS[company.companyType] || company.companyType} ${company.rfc ? `• ${company.rfc}` : ""}`}
         breadcrumbs={[{ label: "Empresas", href: "/companies" }, { label: company.name }]}
+        actions={
+          <Link href={`/users/new?role=fleet_admin&companyId=${id}&name=${encodeURIComponent(company.primaryContact || "")}&email=${encodeURIComponent(company.email || "")}`}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-accent text-brand-dark text-sm font-medium rounded-lg hover:bg-brand-accent-hover transition-colors">
+            <Users size={14} /> Crear acceso al portal
+          </Link>
+        }
       />
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
@@ -85,6 +110,30 @@ export default function CompanyDetailPage() {
           )}
         </Card>
       </div>
+
+      {user?.role === "admin" && (
+        <Card className="p-4 mt-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Calculator size={16} className="text-brand-text-dim" />
+              <div>
+                <h3 className="font-semibold text-sm">Cotizador en el portal cliente</h3>
+                <p className="text-xs text-brand-text-dim mt-0.5">
+                  Permite que los usuarios del portal de esta empresa vean precios y generen cotizaciones de su flota.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <Badge className={company.quoterEnabled ? "bg-green-500/20 text-green-400 border-green-500/30" : "bg-gray-500/20 text-gray-400 border-gray-500/30"}>
+                {company.quoterEnabled ? "Activado" : "Desactivado"}
+              </Badge>
+              <Button size="sm" variant="secondary" onClick={toggleQuoter} loading={quoterToggling}>
+                {company.quoterEnabled ? "Desactivar" : "Activar"}
+              </Button>
+            </div>
+          </div>
+        </Card>
+      )}
 
       {/* Recent Orders */}
       {company.serviceOrders?.length > 0 && (

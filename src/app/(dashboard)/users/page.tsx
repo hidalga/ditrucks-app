@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Plus, UserCog } from "lucide-react";
-import { Button, Card, Badge, PageHeader, Loading } from "@/components/ui";
+import { Plus } from "lucide-react";
+import { Button, Card, Badge, PageHeader, Loading, ConfirmModal } from "@/components/ui";
 import { ROLE_LABELS } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 import { useAuth } from "@/components/auth-provider";
@@ -12,10 +12,33 @@ export default function UsersPage() {
   const { user: currentUser } = useAuth();
   const [users, setUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [targetUser, setTargetUser] = useState<any>(null);
+  const [actionLoading, setActionLoading] = useState(false);
 
-  useEffect(() => {
+  const fetchUsers = () => {
     fetch("/api/users").then(r => r.json()).then(setUsers).finally(() => setLoading(false));
-  }, []);
+  };
+
+  useEffect(() => { fetchUsers(); }, []);
+
+  const handleToggleActive = async () => {
+    if (!targetUser) return;
+    setActionLoading(true);
+    try {
+      const res = await fetch(`/api/users/${targetUser.id}`, { method: "DELETE" });
+      if (!res.ok) {
+        const err = await res.json();
+        alert(err.error || "Error al cambiar estado");
+      } else {
+        fetchUsers();
+      }
+    } catch {
+      alert("Error de conexión");
+    } finally {
+      setActionLoading(false);
+      setTargetUser(null);
+    }
+  };
 
   if (currentUser?.role !== "admin") {
     return <Card className="p-8 text-center"><p className="text-brand-text-dim">No tienes permisos para esta sección</p></Card>;
@@ -39,28 +62,61 @@ export default function UsersPage() {
                 <th className="text-left px-4 py-2.5 font-medium text-xs">Rol</th>
                 <th className="text-left px-4 py-2.5 font-medium text-xs">Estado</th>
                 <th className="text-left px-4 py-2.5 font-medium text-xs">Creado</th>
+                <th className="text-left px-4 py-2.5 font-medium text-xs">Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {users.map((u: any) => (
-                <tr key={u.id} className="border-b border-brand-border/50 hover:bg-brand-surface2/50">
-                  <td className="px-4 py-2.5 font-medium">{u.name}</td>
-                  <td className="px-4 py-2.5 text-brand-text-muted">{u.email}</td>
-                  <td className="px-4 py-2.5">
-                    <Badge className="bg-brand-surface2 text-brand-text-muted border-brand-border">{ROLE_LABELS[u.role]}</Badge>
-                  </td>
-                  <td className="px-4 py-2.5">
-                    <Badge className={u.active ? "bg-green-500/20 text-green-400 border-green-500/30" : "bg-red-500/20 text-red-400 border-red-500/30"}>
-                      {u.active ? "Activo" : "Inactivo"}
-                    </Badge>
-                  </td>
-                  <td className="px-4 py-2.5 text-brand-text-dim text-xs">{formatDate(u.createdAt)}</td>
-                </tr>
-              ))}
+              {users.map((u: any) => {
+                const isSelf = u.id === currentUser?.id;
+                return (
+                  <tr key={u.id} className="border-b border-brand-border/50 hover:bg-brand-surface2/50">
+                    <td className="px-4 py-2.5 font-medium">
+                      {u.name}
+                      {isSelf && <span className="text-brand-accent text-xs ml-1.5">(tú)</span>}
+                    </td>
+                    <td className="px-4 py-2.5 text-brand-text-muted">{u.email}</td>
+                    <td className="px-4 py-2.5">
+                      <Badge className="bg-brand-surface2 text-brand-text-muted border-brand-border">{ROLE_LABELS[u.role]}</Badge>
+                    </td>
+                    <td className="px-4 py-2.5">
+                      <Badge className={u.active ? "bg-green-500/20 text-green-400 border-green-500/30" : "bg-red-500/20 text-red-400 border-red-500/30"}>
+                        {u.active ? "Activo" : "Inactivo"}
+                      </Badge>
+                    </td>
+                    <td className="px-4 py-2.5 text-brand-text-dim text-xs">{formatDate(u.createdAt)}</td>
+                    <td className="px-4 py-2.5">
+                      {!isSelf && (
+                        <Button
+                          size="sm"
+                          variant={u.active ? "danger" : "secondary"}
+                          onClick={() => setTargetUser(u)}
+                        >
+                          {u.active ? "Desactivar" : "Reactivar"}
+                        </Button>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </Card>
       )}
+
+      <ConfirmModal
+        open={!!targetUser}
+        onClose={() => setTargetUser(null)}
+        onConfirm={handleToggleActive}
+        title={targetUser?.active ? "Desactivar Usuario" : "Reactivar Usuario"}
+        message={
+          targetUser?.active
+            ? `¿Desactivar a ${targetUser?.name}? No podrá iniciar sesión hasta que se reactive.`
+            : `¿Reactivar a ${targetUser?.name}? Podrá iniciar sesión nuevamente.`
+        }
+        confirmText={targetUser?.active ? "Desactivar" : "Reactivar"}
+        danger={targetUser?.active}
+        loading={actionLoading}
+      />
     </>
   );
 }

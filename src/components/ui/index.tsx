@@ -357,9 +357,10 @@ interface ScoreGaugeProps {
   score: number | null;
   label: string;
   size?: "sm" | "md";
+  light?: boolean;
 }
 
-export function ScoreGauge({ score, label, size = "md" }: ScoreGaugeProps) {
+export function ScoreGauge({ score, label, size = "md", light = false }: ScoreGaugeProps) {
   if (score === null) return null;
 
   const getColor = (s: number) => {
@@ -375,46 +376,18 @@ export function ScoreGauge({ score, label, size = "md" }: ScoreGaugeProps) {
   const circumference = 2 * Math.PI * radius;
   const progress = (score / 100) * circumference;
   const dim = (radius + stroke) * 2;
+  const trackColor = light ? "#e2e8f0" : "#2a2a2a";
 
   return (
     <div className="flex flex-col items-center gap-1">
       <svg width={dim} height={dim} className="-rotate-90">
-        <circle
-          cx={radius + stroke}
-          cy={radius + stroke}
-          r={radius}
-          fill="none"
-          stroke="#2a2a2a"
-          strokeWidth={stroke}
-        />
-        <circle
-          cx={radius + stroke}
-          cy={radius + stroke}
-          r={radius}
-          fill="none"
-          stroke={getColor(score)}
-          strokeWidth={stroke}
-          strokeDasharray={circumference}
-          strokeDashoffset={circumference - progress}
-          strokeLinecap="round"
-          className="transition-all duration-700"
-        />
-        <text
-          x={radius + stroke}
-          y={radius + stroke}
-          textAnchor="middle"
-          dominantBaseline="central"
-          className="rotate-90 origin-center"
-          fill={getColor(score)}
-          fontSize={size === "sm" ? 14 : 18}
-          fontWeight="bold"
-        >
-          {score}
-        </text>
+        <circle cx={radius + stroke} cy={radius + stroke} r={radius} fill="none" stroke={trackColor} strokeWidth={stroke} />
+        <circle cx={radius + stroke} cy={radius + stroke} r={radius} fill="none" stroke={getColor(score)} strokeWidth={stroke}
+          strokeDasharray={circumference} strokeDashoffset={circumference - progress} strokeLinecap="round" className="transition-all duration-700" />
+        <text x={radius + stroke} y={radius + stroke} textAnchor="middle" dominantBaseline="central" className="rotate-90 origin-center"
+          fill={getColor(score)} fontSize={size === "sm" ? 14 : 18} fontWeight="bold">{score}</text>
       </svg>
-      <span className={cn("font-medium text-brand-text-muted", size === "sm" ? "text-xs" : "text-sm")}>
-        {label}
-      </span>
+      <span className={cn("font-medium", size === "sm" ? "text-xs" : "text-sm", light ? "text-slate-500" : "text-brand-text-muted")}>{label}</span>
     </div>
   );
 }

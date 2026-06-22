@@ -14,6 +14,8 @@ enum UserRole {
   technician
   calibrator
   sales
+  customer
+  fleet_admin
   fleet_customer_future
 }
 
@@ -49,6 +51,10 @@ enum FuelType {
 enum OrderStatus {
   borrador
   recepcion
+  recepcion_completada
+  firma_pendiente
+  firma_enviada
+  firmada
   diagnostico_inicial
   leyendo_ecu
   archivo_original_subido
@@ -56,6 +62,9 @@ enum OrderStatus {
   archivo_modificado_listo
   instalando_archivo
   prueba_posterior
+  completada_tecnica
+  certificado_generado
+  entregada
   cerrada
   cancelada
 }
@@ -154,6 +163,36 @@ enum CommercialOpportunity {
   perdido
 }
 
+enum SignatureStatus {
+  none
+  pending
+  sent
+  viewed
+  signed
+}
+
+enum SignatureType {
+  in_person
+  remote
+}
+
+enum SignaturePhase {
+  reception
+  delivery
+}
+
+enum CertificateStatus {
+  draft
+  generated
+  published
+  revoked
+}
+
+enum WebhookDirection {
+  inbound
+  outbound
+}
+
 // ─── MODELS ────────────────────────────────────────────────────────────
 
 model User {
@@ -163,9 +202,11 @@ model User {
   passwordHash  String    @map("password_hash")
   role          UserRole  @default(technician)
   active        Boolean   @default(true)
+  companyId     String?   @map("company_id")
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime  @updatedAt @map("updated_at")
 
+  company             Company?  @relation(fields: [companyId], references: [id])
   ordersAsTechnician  ServiceOrder[] @relation("TechnicianOrders")
   ordersAsCalibrator  ServiceOrder[] @relation("CalibratorOrders")
   ordersCreatedBy     ServiceOrder[] @relation("CreatedByOrders")
@@ -173,6 +214,7 @@ model User {
   evidence            Evidence[]
   diagnostics         Diagnostic[]
   auditLogs           AuditLog[]
+  certificates        ServiceCertificate[]
 
   @@map("users")
 }
@@ -188,6 +230,9 @@ model Company {
   primaryContact  String?     @map("primary_contact")
   companyType     CompanyType @default(particular) @map("company_type")
   notes           String?
+  externalCrmId   String?     @map("external_crm_id")
+  crmSource       String?     @map("crm_source")
+  quoterEnabled   Boolean     @default(false) @map("quoter_enabled")
   deleted         Boolean     @default(false)
   createdAt       DateTime    @default(now()) @map("created_at")
   updatedAt       DateTime    @updatedAt @map("updated_at")
@@ -195,25 +240,29 @@ model Company {
   customers       Customer[]
   vehicles        Vehicle[]
   serviceOrders   ServiceOrder[]
+  users           User[]
+  certificates    ServiceCertificate[]
 
   @@map("companies")
 }
 
 model Customer {
-  id          String    @id @default(cuid())
-  companyId   String?   @map("company_id")
-  name        String
-  phone       String?
-  email       String?
-  position    String?
-  notes       String?
-  deleted     Boolean   @default(false)
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
+  id            String    @id @default(cuid())
+  companyId     String?   @map("company_id")
+  name          String
+  phone         String?
+  email         String?
+  position      String?
+  notes         String?
+  externalCrmId String?   @map("external_crm_id")
+  deleted       Boolean   @default(false)
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
 
-  company     Company?  @relation(fields: [companyId], references: [id])
-  vehicles    Vehicle[]
+  company       Company?  @relation(fields: [companyId], references: [id])
+  vehicles      Vehicle[]
   serviceOrders ServiceOrder[]
+  certificates  ServiceCertificate[]
 
   @@map("customers")
 }
@@ -235,58 +284,134 @@ model Vehicle {
   unitType        UnitType  @default(otro) @map("unit_type")
   knownEcu        String?   @map("known_ecu")
   notes           String?
+  externalCrmId   String?   @map("external_crm_id")
+  quoterApplicationId String? @map("quoter_application_id")
   deleted         Boolean   @default(false)
   createdAt       DateTime  @default(now()) @map("created_at")
   updatedAt       DateTime  @updatedAt @map("updated_at")
 
   company         Company?  @relation(fields: [companyId], references: [id])
   customer        Customer? @relation(fields: [customerId], references: [id])
+  quoterApplication QuoterApplication? @relation(fields: [quoterApplicationId], references: [id])
   serviceOrders   ServiceOrder[]
   ecuFiles        EcuFile[]
   evidence        Evidence[]
   diagnostics     Diagnostic[]
+  certificates    ServiceCertificate[]
 
   @@map("vehicles")
 }
 
-model ServiceOrder {
-  id                      String       @id @default(cuid())
-  folio                   String       @unique
-  companyId               String?      @map("company_id")
-  customerId              String?      @map("customer_id")
-  vehicleId               String       @map("vehicle_id")
-  technicianId            String?      @map("technician_id")
-  assignedCalibratorId    String?      @map("assigned_calibrator_id")
-  status                  OrderStatus  @default(borrador)
-  serviceTypes            ServiceType[]@default([])
-  receivedAt              DateTime?    @map("received_at")
-  deliveredAt             DateTime?    @map("delivered_at")
-  mileageAtReception      Int?         @map("mileage_at_reception")
-  engineHoursAtReception  Int?         @map("engine_hours_at_reception")
-  fuelLevel               String?      @map("fuel_level")
-  activeWarningLights     String?      @map("active_warning_lights")
-  activeFaults            String?      @map("active_faults")
-  customerReportedFaults  String?      @map("customer_reported_faults")
-  physicalDamageNotes     String?      @map("physical_damage_notes")
-  generalObservations     String?      @map("general_observations")
-  requestedServiceType    String?      @map("requested_service_type")
-  workSummary             String?      @map("work_summary")
-  internalNotes           String?      @map("internal_notes")
-  customerAuthorization   String?      @map("customer_authorization")
-  deleted                 Boolean      @default(false)
-  createdById             String?      @map("created_by_id")
-  createdAt               DateTime     @default(now()) @map("created_at")
-  updatedAt               DateTime     @updatedAt @map("updated_at")
+// ─── COTIZADOR ─────────────────────────────────────────────────────────
 
-  company                 Company?     @relation(fields: [companyId], references: [id])
-  customer                Customer?    @relation(fields: [customerId], references: [id])
-  vehicle                 Vehicle      @relation(fields: [vehicleId], references: [id])
-  technician              User?        @relation("TechnicianOrders", fields: [technicianId], references: [id])
-  assignedCalibrator      User?        @relation("CalibratorOrders", fields: [assignedCalibratorId], references: [id])
-  createdBy               User?        @relation("CreatedByOrders", fields: [createdById], references: [id])
+model QuoterApplication {
+  id            String   @id @default(cuid())
+  category      String
+  brand         String
+  model         String
+  displayLabel  String   @map("display_label")
+  pricing       Json
+  deleted       Boolean  @default(false)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  vehicles      Vehicle[]
+
+  @@map("quoter_applications")
+}
+
+model QuoterPart {
+  id         String   @id @default(cuid())
+  system     String
+  label      String
+  vanPrice   Float    @map("van_price")
+  truckPrice Float    @map("truck_price")
+  deleted    Boolean  @default(false)
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("quoter_parts")
+}
+
+model ServiceOrder {
+  id                      String           @id @default(cuid())
+  folio                   String           @unique
+  companyId               String?          @map("company_id")
+  customerId              String?          @map("customer_id")
+  vehicleId               String           @map("vehicle_id")
+  technicianId            String?          @map("technician_id")
+  assignedCalibratorId    String?          @map("assigned_calibrator_id")
+  status                  OrderStatus      @default(borrador)
+  serviceTypes            ServiceType[]    @default([])
+  receivedAt              DateTime?        @map("received_at")
+  deliveredAt             DateTime?        @map("delivered_at")
+  mileageAtReception      Int?             @map("mileage_at_reception")
+  engineHoursAtReception  Int?             @map("engine_hours_at_reception")
+  fuelLevel               String?          @map("fuel_level")
+  activeWarningLights     String?          @map("active_warning_lights")
+  activeFaults            String?          @map("active_faults")
+  customerReportedFaults  String?          @map("customer_reported_faults")
+  physicalDamageNotes     String?          @map("physical_damage_notes")
+  generalObservations     String?          @map("general_observations")
+  requestedServiceType    String?          @map("requested_service_type")
+  workSummary             String?          @map("work_summary")
+  internalNotes           String?          @map("internal_notes")
+  customerAuthorization   String?          @map("customer_authorization")
+
+  // ── Reception Signature: autorización + confirmación de datos + diagnóstico (protección legal) ──
+  receptionSignatureStatus      SignatureStatus  @default(none) @map("signature_status")
+  receptionSignatureType        SignatureType?   @map("signature_type")
+  receptionSignatureData        String?          @map("signature_data")
+  receptionSignerName           String?          @map("signature_signed_by_name")
+  receptionSignerRole           String?          @map("signature_signed_by_role")
+  receptionSignedAt             DateTime?        @map("signature_signed_at")
+  receptionSignatureIp          String?          @map("signature_ip")
+  receptionSignatureUserAgent   String?          @map("signature_user_agent")
+  receptionSignatureSnapshot    String?          @map("signed_order_snapshot")
+  receptionTermsVersion         String?          @map("accepted_terms_version")
+
+  // ── Delivery Signature: post-servicio ──
+  deliverySignatureStatus       SignatureStatus  @default(none) @map("delivery_signature_status")
+  deliverySignatureType         SignatureType?   @map("delivery_signature_type")
+  deliverySignatureData         String?          @map("signature_delivery_data")
+  deliverySignerName            String?          @map("signature_delivery_name")
+  deliverySignerRole            String?          @map("delivery_signature_role")
+  deliverySignedAt              DateTime?        @map("signature_delivery_date")
+  deliverySignatureIp           String?          @map("delivery_signature_ip")
+  deliverySignatureUserAgent    String?          @map("delivery_signature_user_agent")
+  deliverySignatureSnapshot     String?          @map("delivery_signature_snapshot")
+  deliveryTermsVersion          String?          @map("delivery_terms_version")
+
+  // ── CRM Integration ──
+  externalCrmDealId       String?          @map("external_crm_deal_id")
+  externalCrmCompanyId    String?          @map("external_crm_company_id")
+  externalCrmContactId    String?          @map("external_crm_contact_id")
+  crmSource               String?          @map("crm_source")
+  salesRepName            String?          @map("sales_rep_name")
+  salesRepEmail           String?          @map("sales_rep_email")
+  commercialNotes         String?          @map("commercial_notes")
+
+  // ── Progress ──
+  progressPercent         Int              @default(5) @map("progress_percent")
+  progressLabel           String?          @map("progress_label")
+
+  deleted                 Boolean          @default(false)
+  createdById             String?          @map("created_by_id")
+  createdAt               DateTime         @default(now()) @map("created_at")
+  updatedAt               DateTime         @updatedAt @map("updated_at")
+
+  company                 Company?         @relation(fields: [companyId], references: [id])
+  customer                Customer?        @relation(fields: [customerId], references: [id])
+  vehicle                 Vehicle          @relation(fields: [vehicleId], references: [id])
+  technician              User?            @relation("TechnicianOrders", fields: [technicianId], references: [id])
+  assignedCalibrator      User?            @relation("CalibratorOrders", fields: [assignedCalibratorId], references: [id])
+  createdBy               User?            @relation("CreatedByOrders", fields: [createdById], references: [id])
   ecuFiles                EcuFile[]
   evidence                Evidence[]
   diagnostics             Diagnostic[]
+  signatureTokens         SignatureToken[]
+  signatureEvents         SignatureEvent[]
+  certificates            ServiceCertificate[]
 
   @@map("service_orders")
 }
@@ -361,7 +486,6 @@ model Diagnostic {
   usageType               UsageType @default(mixto) @map("usage_type")
   maintenanceHistoryNotes String?   @map("maintenance_history_notes")
 
-  // DPF
   dpfPresent                    Boolean  @default(false) @map("dpf_present")
   dpfDtcActive                  Boolean  @default(false) @map("dpf_dtc_active")
   sootLoadPercent               Float?   @map("soot_load_percent")
@@ -375,7 +499,6 @@ model Diagnostic {
   dpfNotes                       String?  @map("dpf_notes")
   dpfScore                       Int?     @map("dpf_score")
 
-  // SCR
   scrPresent          Boolean  @default(false) @map("scr_present")
   scrDtcActive        Boolean  @default(false) @map("scr_dtc_active")
   defLevel            Float?   @map("def_level")
@@ -389,7 +512,6 @@ model Diagnostic {
   scrNotes            String?  @map("scr_notes")
   scrScore            Int?     @map("scr_score")
 
-  // EGR
   egrPresent              Boolean  @default(false) @map("egr_present")
   egrDtcActive            Boolean  @default(false) @map("egr_dtc_active")
   egrCommandedPosition    Float?   @map("egr_commanded_position")
@@ -400,13 +522,13 @@ model Diagnostic {
   egrNotes                String?  @map("egr_notes")
   egrScore                Int?     @map("egr_score")
 
-  // Results
   generalHealthScore          Int?                  @map("general_health_score")
   riskLevel                   RiskLevel             @default(medio) @map("risk_level")
   recommendation              String?
+  visibleRecommendation       String?               @map("visible_recommendation")
   nextCheckDate               DateTime?             @map("next_check_date")
   commercialOpportunityStatus CommercialOpportunity @default(sin_oportunidad) @map("commercial_opportunity_status")
-  scorePenalties              String?               @map("score_penalties") // JSON string of penalties
+  scorePenalties              String?               @map("score_penalties")
 
   deleted     Boolean   @default(false)
   createdAt   DateTime  @default(now()) @map("created_at")
@@ -428,6 +550,7 @@ model AuditLog {
   oldValue    String?   @map("old_value")
   newValue    String?   @map("new_value")
   ipAddress   String?   @map("ip_address")
+  userAgent   String?   @map("user_agent")
   createdAt   DateTime  @default(now()) @map("created_at")
 
   user        User?     @relation(fields: [userId], references: [id])
@@ -441,4 +564,111 @@ model FolioCounter {
   counter Int    @default(0)
 
   @@map("folio_counter")
+}
+
+// ─── V2 MODELS ─────────────────────────────────────────────────────────
+
+model AuthorizationTerms {
+  id        String   @id @default(cuid())
+  version   String   @unique
+  title     String
+  content   String
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("authorization_terms")
+}
+
+model SignatureToken {
+  id              String         @id @default(cuid())
+  serviceOrderId  String         @map("service_order_id")
+  phase           SignaturePhase @default(reception)
+  tokenHash       String         @unique @map("token_hash")
+  expiresAt       DateTime       @map("expires_at")
+  used            Boolean        @default(false)
+  viewedAt        DateTime?      @map("viewed_at")
+  signedAt        DateTime?      @map("signed_at")
+  createdAt       DateTime       @default(now()) @map("created_at")
+
+  serviceOrder    ServiceOrder @relation(fields: [serviceOrderId], references: [id])
+
+  @@map("signature_tokens")
+}
+
+model SignatureEvent {
+  id              String         @id @default(cuid())
+  serviceOrderId  String         @map("service_order_id")
+  phase           SignaturePhase @default(reception)
+  eventType       String         @map("event_type")
+  ipAddress       String?        @map("ip_address")
+  userAgent       String?        @map("user_agent")
+  metadata        String?
+  createdAt       DateTime       @default(now()) @map("created_at")
+
+  serviceOrder    ServiceOrder @relation(fields: [serviceOrderId], references: [id])
+
+  @@map("signature_events")
+}
+
+model ServiceCertificate {
+  id                  String            @id @default(cuid())
+  certificateNumber   String            @unique @map("certificate_number")
+  serviceOrderId      String            @map("service_order_id")
+  vehicleId           String            @map("vehicle_id")
+  companyId           String?           @map("company_id")
+  customerId          String?           @map("customer_id")
+  generatedByUserId   String            @map("generated_by_user_id")
+  status              CertificateStatus @default(draft)
+  workSummary         String?           @map("work_summary")
+  diagnosticSummary   String?           @map("diagnostic_summary")
+  finalResult         String?           @map("final_result")
+  visibleNotes        String?           @map("visible_notes")
+  systemsWorked       String[]          @default([]) @map("systems_worked")
+  pdfPath             String?           @map("pdf_path")
+  publicToken         String?           @unique @map("public_token")
+  publicSlug          String?           @unique @map("public_slug")
+  issuedAt            DateTime?         @map("issued_at")
+  revokedAt           DateTime?         @map("revoked_at")
+  revokedReason       String?           @map("revoked_reason")
+  createdAt           DateTime          @default(now()) @map("created_at")
+  updatedAt           DateTime          @updatedAt @map("updated_at")
+
+  serviceOrder        ServiceOrder      @relation(fields: [serviceOrderId], references: [id])
+  vehicle             Vehicle           @relation(fields: [vehicleId], references: [id])
+  company             Company?          @relation(fields: [companyId], references: [id])
+  customer            Customer?         @relation(fields: [customerId], references: [id])
+  generatedBy         User              @relation(fields: [generatedByUserId], references: [id])
+
+  @@map("service_certificates")
+}
+
+model WebhookLog {
+  id            String           @id @default(cuid())
+  direction     WebhookDirection
+  endpoint      String?
+  eventType     String?          @map("event_type")
+  payload       String?
+  responseCode  Int?             @map("response_code")
+  responseBody  String?          @map("response_body")
+  success       Boolean          @default(false)
+  errorMessage  String?          @map("error_message")
+  entityType    String?          @map("entity_type")
+  entityId      String?          @map("entity_id")
+  createdAt     DateTime         @default(now()) @map("created_at")
+
+  @@map("webhook_logs")
+}
+
+model WebhookOutboundConfig {
+  id          String   @id @default(cuid())
+  name        String
+  url         String
+  secret      String?
+  active      Boolean  @default(true)
+  events      String[] @default([])
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("webhook_outbound_config")
 }

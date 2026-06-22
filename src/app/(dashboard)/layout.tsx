@@ -27,9 +27,9 @@ function DashboardShell({ children }: { children: React.ReactNode }) {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen flex bg-brand-darker">
+    <div className="h-screen flex bg-brand-darker overflow-hidden">
       <Sidebar userName={user.name} userRole={user.role} />
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 overflow-y-auto">
         <div className="p-4 lg:p-6 max-w-[1400px] mx-auto pt-14 lg:pt-6">
           {children}
         </div>

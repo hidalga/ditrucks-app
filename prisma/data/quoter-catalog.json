@@ -1,0 +1,5870 @@
+{
+  "Agrícola - Industrial | CATERPILLAR | 3126B, 3126E | Motor | Hasta 2003 | 7.0L - 175-300hp | Tier 2 | DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | 3406E | Motor | Hasta 2003 | 14.6L - 350-550hp | Tier 2 | DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | C7 OHE | Motor | 2003 - 2009 | 7.2L - 175-330hp | Tier 3 | EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | C9 OHE | Motor | 2003 - 2009 | 8.8L - 250-375hp | Tier 3 | EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | C7 OHE ACERT | Motor | 2004 - 2009 | 7.2L - 175-330hp | Tier 3 | EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | C9 OHE ACERT | Motor | 2004 - 2009 | 8.8L - 250-375hp | Tier 3 | EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | C10 OHE, C12 OHE | Motor | Hasta 2004 | 10.3L / 12.0L | Tier 2 | DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | C11 OHE, C13 OHE | Motor | 2004 - 2009 | 11.1L / 12.5L | Tier 3 | EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | C15 OHE | Motor | Hasta 2009 | 15.2L - 435-625hp | Tier 2/3 | EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | C4.4 ACERT (TH336, TH337, TH406) | Motor | 2008 - 2017 | 4.4L - 100-145hp | Tier 3/3B | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | C7.1 ACERT | Motor | 2011 - 2017 | 7.1L - 190-300hp | Tier 4i | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | C9.3 ACERT | Motor | 2011 - 2017 | 9.3L - 250-375hp | Tier 4i | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | C13 ACERT, C15 ACERT | Motor | 2010 - 2017 | 12.5L / 15.2L | Tier 4i | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | C4.4, C7.1, C9.3 ACERT | Motor | 2018 - 2020 | Varios | Tier 4 Final | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 31493,
+      "corr": 44990
+    },
+    "2": {
+      "prev": 34293,
+      "corr": 48990
+    },
+    "3": {
+      "prev": 37093,
+      "corr": 52990
+    },
+    "4": {
+      "prev": 38493,
+      "corr": 54990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | 311F, 312E, 315D, 319D, 320D, 323D, 324E, 325D, 329E, 336D/E | Excavadora | Hasta 2020 | C4.4 - C9.3 | Tier 3/4i | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | D6N, D6T, D8T, D10T | Tractor Oruga | Hasta 2020 | C9.3 - C15 | Tier 3/4i | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | 928H, 938H, 938K, 966M, 980H | Cargador | Hasta 2020 | C7 - C13 | Tier 3/4i | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | 12H, 140M, 140M2 | Motoconformadora | Hasta 2020 | C9 - C13 | Tier 3/4i | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | 259D, 289D | Retroexcavadora | Hasta 2020 | C3.3 - C4.4 | Tier 3/4i | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | CT660, CT660S | Camión | Hasta 2017 | C13 | Tier 3 | EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | 745C, 627H | Articulado | Hasta 2020 | C13 - C18 | Tier 3/4i | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | CATERPILLAR | TH337C, TH408D, TL943C, TL943D | Telehandler | Hasta 2020 | C4.4 | Tier 3/4i | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | CASE | 580N, 580SN, 590SN | Retroexcavadora | 2010 - 2021 | 4.5L FPT - 97hp | Tier 3/4i | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | CASE | 770FX, 1107EX | Retroexcavadora | 2010 - 2021 | 4.5L FPT | Tier 3/4i | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | CASE | FARMALL 75C - 115C | Tractor | Todas | 3.4L FPT - 75-115hp | Tier 3/4A | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | CASE | MAXXUM 110 - 150 | Tractor | Todas | 4.5L / 6.7L FPT | Tier 3/4A/4B | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | CASE | PUMA 125 - 240 | Tractor | Todas | 6.7L FPT - 125-240hp | Tier 3/4A/4B | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | CASE | MAGNUM 180 - 380 | Tractor | Todas | 6.7L / 8.7L FPT | Tier 3/4A/4B | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | CASE | STEIGER / QUADTRAC 350 - 620 | Tractor | Todas | 8.7L / 12.9L FPT | Tier 3/4A/4B | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | CASE | OPTUM 270, 300 | Tractor | Todas | 6.7L FPT CVX | Tier 4B | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | CASE | AXIAL FLOW Serie 40/50/140/150/250 | Cosechadora | Todas | 8.3L / 8.7L / 12.9L | Tier 3/4A/4B | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | CASE | PATRIOT 3230, 3240, 4420, 4430 | Aspersora | Todas | 6.7L / 8.3L / 8.7L | Tier 3/4A/4B | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | CASE | Serie 521-1221 | Cargador | Todas | FPT Varios | Tier 3/4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | CASE | CX Serie (CX130-CX800) | Excavadora | Todas | FPT Varios | Tier 3/4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 5G / 5GL / 5GF (5075-5100) | Tractor | Todas | 4.5L - 75-100hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 5M (5075M-5115M) | Tractor | Todas | 4.5L - 75-115hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 5R (5080R-5100R) | Tractor | Todas | 4.5L - 80-100hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 6M (6110M-6195M) | Tractor | Todas | 4.5L / 6.8L - 110-195hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 6R (6105R-6215R) | Tractor | Todas | 4.5L / 6.8L - 105-215hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 6MC / 6RC (6090-6115) | Tractor | Todas | 4.5L - 90-115hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 6010 (6410-6910) | Tractor | Todas | 4.5L / 6.8L - 105-150hp | Tier 2/3 | EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 6020 (6020-6920) | Tractor | Todas | 4.5L / 6.8L - 75-150hp | Tier 2/3 | EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 6030 (6130-6930) | Tractor | Todas | 4.5L / 6.8L - 80-155hp | Tier 3 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 7R (7200R-7310R) | Tractor | Todas | 6.8L / 9.0L - 200-310hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 7030 (7430-7930) | Tractor | Todas | 6.8L - 165-215hp | Tier 3 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 8R (8245R-8370R/RT) | Tractor | Todas | 9.0L - 245-370hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 8030 (8130-8530) | Tractor | Todas | 9.0L - 250-355hp | Tier 3 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 9R (9350R-9620R/RT) | Tractor | Todas | 9.0L / 13.5L / 15.0L - 354-620hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 9030 (9230-9630) | Tractor | Todas | 13.5L / 15.0L - 330-537hp | Tier 3 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie S (S660-S790) | Cosechadora | Todas | 9.0L / 13.5L - 400-538hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie T (T550-T670) | Cosechadora | Todas | 6.8L / 9.0L - 297-409hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie W (W550-W650) | Cosechadora | Todas | 6.8L / 9.0L - 297-328hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie C (C670) | Cosechadora | Todas | 9.0L - 376hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | Serie 4000 (4730-4940) | Aspersora | Todas | 6.8L / 9.0L - 227-327hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | 310K, 310SK, 310SX | Retroexcavadora | Todas | 4.5L - 80-100hp | Tier 3/4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | JOHN DEERE | 672GP y similares | Motoconformadora | Todas | 6.8L - 195hp | Tier 3/4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | NEW HOLLAND | Serie T4 (T4.55-T4.115) | Tractor | Todas | 3.4L / 4.5L - 55-115hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | NEW HOLLAND | Serie T5 (T5.100-T5.120) | Tractor | Todas | 3.4L - 100-120hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | NEW HOLLAND | Serie T6 (T6.120-T6.180) | Tractor | Todas | 4.4L / 6.7L - 110-180hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | NEW HOLLAND | Serie T7 (T7.170-T7.315) | Tractor | Todas | 6.7L - 125-315hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | NEW HOLLAND | Serie T8 (T8.275-T8.435) | Tractor | Todas | 8.7L - 194-435hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | NEW HOLLAND | Serie T9 (T9.435-T9.700) | Tractor | Todas | 12.9L - 435-700hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | NEW HOLLAND | Serie TD5 (TD5.65-TD5.115) | Tractor | Todas | 3.4L / 4.5L - 65-115hp | Tier 3 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | NEW HOLLAND | Serie Legacy T6000/T7000/T8000 | Tractor | Todas | FPT Varios | Tier 2/3 | EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Agrícola - Industrial | NEW HOLLAND | Serie CR (CR7.90-CR10.90) | Cosechadora | Todas | 8.7L / 12.9L / 15.9L | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | NEW HOLLAND | Serie TC (TC5.70-TC5.90) | Cosechadora | Todas | 6.7L | Tier 3/4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | NEW HOLLAND | Serie FR (FR480-FR850) | Picadora | Todas | 12.9L / 15.9L / 20.1L | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | NEW HOLLAND | Serie LM (LM5.25-LM9.35) | Cargador | Todas | 3.3L - 4.5L | Tier 3/4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | MASSEY FERGUSON | Serie 3600 (3630-3660) | Tractor | Todas | 3.3L - 76-102hp | Tier 3/4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | MASSEY FERGUSON | Serie 4700 (4707-4709) | Tractor | Todas | 3.3L - 75-95hp | Tier 3/4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | MASSEY FERGUSON | Serie 5400 (5410-5480) | Tractor | Todas | 4.4L - 75-140hp | Tier 3/4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Agrícola - Industrial | MASSEY FERGUSON | Serie 6400 (6445-6499) | Tractor | Todas | 6.6L - 95-190hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | MASSEY FERGUSON | Serie 7400 (7465-7499) | Tractor | Todas | 6.6L - 135-190hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | MASSEY FERGUSON | Serie 8400 (8450-8480) | Tractor | Todas | 8.4L SISU - 215-290hp | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | MASSEY FERGUSON | Serie Activa/Beta/Centora/Delta | Cosechadora | Todas | 7.4L / 8.4L SISU | Tier 3/4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | KUBOTA | Serie M (M5, M6, M7) | Tractor | 2012 - 2020 | 3.3L / 3.8L / 6.1L | Tier 4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Agrícola - Industrial | KUBOTA | Serie KX / U (KX080, U48, U55) | Excavadora | 2012 - 2020 | 2.4L / 3.3L | Tier 4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 30093,
+      "corr": 42990
+    }
+  },
+  "Tractocamiones | CUMMINS/PACCAR | CUMMINS | ISX CM870 2003 - 2007, ISX CM871, ISL CM2150D, ISL CM2250, ISB, ISX CM2250, ISX CM2350, X15, X15 CM2350A, X15 CM2450, ISL CM2150D, ISL CM2250, ISM CM875, ISL CM2350, ISL CM2350A, ISL CM2450, ISC CM2150D, ISC CM2250, ISB CM2150D, ISB CM2250, ISB CM2350, ISB CM2350A, ISB CM2450, ISM CM876, ISF3.8S5154 | Motor | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "2": {
+      "prev": 9443,
+      "corr": 13490
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 10143,
+      "corr": 14490
+    }
+  },
+  "Tractocamiones | CUMMINS/PACCAR | CUMMINS | QSX - INDUSTRIAL, QSL - INDUSTRIAL, QSC - INDUSTRIAL, QSB - INDUSTRIAL | Motor | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 20993,
+      "corr": 29990
+    },
+    "2": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "3": {
+      "prev": 32893,
+      "corr": 46990
+    },
+    "4": {
+      "prev": 35693,
+      "corr": 50990
+    }
+  },
+  "Tractocamiones | CUMMINS/PACCAR | CUMMINS | X15 EURO 6 | Motor | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 27293,
+      "corr": 38990
+    }
+  },
+  "Tractocamiones | FREIGHTLINER / DETROIT DIESEL / MB | FREIGHTLINER | Detroit Diesel | Cascadia Tractocamión | DD13, DD15, DD16 (EPA13, EPA17, EURO5) | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | FREIGHTLINER / DETROIT DIESEL / MB | FREIGHTLINER | Detroit Diesel | Cascadia Tractocamión | X15 CUMMINS, M2 ISB CUMMINS | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "2": {
+      "prev": 9443,
+      "corr": 13490
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Tractocamiones | FREIGHTLINER / DETROIT DIESEL / MB | FREIGHTLINER | Detroit Diesel | Cascadia Tractocamión | DD13, DD15, DD16 GHG21 (EPA10 2021+) | DPF + SCR + DITUNING": {
+    "1": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "4": {
+      "prev": 27293,
+      "corr": 38990
+    }
+  },
+  "Tractocamiones | FREIGHTLINER / DETROIT DIESEL / MB | FREIGHTLINER | Mercedes Benz | M2 Camión | OM 924 2018+ | DPF + SCR + DITUNING": {
+    "1": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "4": {
+      "prev": 27293,
+      "corr": 38990
+    }
+  },
+  "Tractocamiones | FREIGHTLINER / DETROIT DIESEL / MB | FREIGHTLINER | Mercedes Benz | M2 Camión | OM 926 Hasta 2017 | DPF + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | FREIGHTLINER / DETROIT DIESEL / MB | FREIGHTLINER | Mercedes Benz | M2 Camión | OM 926 2018+ | DPF + SCR + DITUNING": {
+    "1": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 27293,
+      "corr": 38990
+    },
+    "4": {
+      "prev": 27293,
+      "corr": 38990
+    }
+  },
+  "Tractocamiones | FREIGHTLINER / DETROIT DIESEL / MB | FREIGHTLINER | Detroit Diesel | M2 Camión | DD8, DD5 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | FREIGHTLINER / DETROIT DIESEL / MB | FREIGHTLINER | Detroit Diesel | M2 Camión | CUMMINS ISL9/ISB6.7 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | FREIGHTLINER / DETROIT DIESEL / MB | FREIGHTLINER | FUSO | FL360 | CUMMINS ISX 450 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | FREIGHTLINER / DETROIT DIESEL / MB | FREIGHTLINER | FUSO | FL360 | MITSUBISHI FUSO | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | VOLVO TRUCKS | VOLVO | Motor | D11F, D16A, D16B | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | VOLVO TRUCKS | VOLVO | Motor | D11H | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | VOLVO TRUCKS | VOLVO | Motor | D11J, D11M, D13J, D13M, D16J, D16M | DPF + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | VOLVO TRUCKS | VOLVO | Motor | D12A, D12C, D12D | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | VOLVO TRUCKS | VOLVO | Motor | D12F | EGR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "4": {
+      "prev": 13293,
+      "corr": 18990
+    }
+  },
+  "Tractocamiones | VOLVO TRUCKS | VOLVO | Motor | D13F | DPF + EGR": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "4": {
+      "prev": 13293,
+      "corr": 18990
+    }
+  },
+  "Tractocamiones | VOLVO TRUCKS | VOLVO | Motor | D13H, D13, D13K, D13A, D13C, D16C, D16E, D16G, D16H, D16K | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | VOLVO TRUCKS | VOLVO MACK RENAULT | 2010-2019 | GENERICO | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | VOLVO TRUCKS | VOLVO MACK RENAULT | 2020-2024 | GENERICO | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | MACK TRUCKS | MACK | Motor | MP7 | DPF + EGR": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "4": {
+      "prev": 13293,
+      "corr": 18990
+    }
+  },
+  "Tractocamiones | MACK TRUCKS | MACK | Motor | MP7, MP8, MP10 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | MACK TRUCKS | MACK | Motor | MP7, MP8, MP10 | DPF + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MACK TRUCKS | MACK | Motor | MP8, MP10 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | KENWORTH/PETERBILT/DAF/PACCAR | KENWORTH / PETERBILT / DAF | CUMMINS T680, T880, W900, T880, W900, T480 | Motor | X15/ISB/ISL9 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Tractocamiones | KENWORTH/PETERBILT/DAF/PACCAR | KENWORTH / PETERBILT / DAF | PACCAR | Motor | PX-6, PX-8 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "4": {
+      "prev": 10493,
+      "corr": 14990
+    }
+  },
+  "Tractocamiones | KENWORTH/PETERBILT/DAF/PACCAR | KENWORTH / PETERBILT / DAF | PACCAR | Motor | PX-6, PX-7, PX-8-PX-9, MX-11 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Tractocamiones | KENWORTH/PETERBILT/DAF/PACCAR | KENWORTH / PETERBILT / DAF | PACCAR | Motor | MX-13 2010 - 2016 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Tractocamiones | KENWORTH/PETERBILT/DAF/PACCAR | KENWORTH / PETERBILT / DAF | PACCAR | Motor | MX-13 EPA17 PREVENTIVO (sin bloqueos potencia/velocidad) | DPF + SCR": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Tractocamiones | KENWORTH/PETERBILT/DAF/PACCAR | KENWORTH / PETERBILT / DAF | PACCAR | Motor | MX-13 EPA17 BLOQUEDA (Envio a Italia 1 mes) | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 28693,
+      "corr": 40990
+    },
+    "2": {
+      "prev": 28693,
+      "corr": 40990
+    },
+    "3": {
+      "prev": 28693,
+      "corr": 40990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Tractocamiones | INTERNATIONAL | NAVISTAR | FE - Bus pasajeros | MWM | SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "4": {
+      "prev": 13293,
+      "corr": 18990
+    }
+  },
+  "Tractocamiones | INTERNATIONAL | CUMMINS | RE - Bus pasajeros | ISL | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | INTERNATIONAL | NAVISTAR | SC - Bus pasajeros | MWM | SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | INTERNATIONAL | LT - Tractocamión | S13 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | INTERNATIONAL | NAVISTAR | A26 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | INTERNATIONAL | CUMMINS | LT - Tractocamión | X15 | SCR + DITUNING": {
+    "1": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "4": {
+      "prev": 9093,
+      "corr": 12990
+    }
+  },
+  "Tractocamiones | INTERNATIONAL | CUMMINS | Camión | ISB/ISL, ISF, ISB | SCR + DITUNING": {
+    "1": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "4": {
+      "prev": 9093,
+      "corr": 12990
+    }
+  },
+  "Tractocamiones | INTERNATIONAL | CUMMINS | Camión | ISB | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Tractocamiones | INTERNATIONAL | CUMMINS | Camión | ISM | SCR + DITUNING": {
+    "1": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 9093,
+      "corr": 12990
+    },
+    "4": {
+      "prev": 9093,
+      "corr": 12990
+    }
+  },
+  "Tractocamiones | INTERNATIONAL | NAVISTAR | Motor | Maxxforce 7, Maxxforce 9, Maxxforce 10, Maxxforce DT466, Maxxforce DT530, Maxxforce 15, Maxxforce 13, Maxxforce 11 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | INTERNATIONAL | NAVISTAR | Motor | Maxxforce N9, Maxxforce N10, Maxxforce N13 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 364 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 457 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 470 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 471 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 476 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 501 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 502 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 612 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 904 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 906 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 924 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 926 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 904 2018+ | DPF + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 924 2018+ | DPF + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 906 2018+ | DPF + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 926 2018+ | DPF + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 934 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | MERCEDES BENZ | Motor | OM 936 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "2": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "3": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | SCANIA | SERIE P, SERIE G, SERIE R | 2005-2010 | DC09, DC11, DCQ3, DC13 V8 | EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | SCANIA | SERIE P, SERIE G, SERIE R | 2010 EN ADELANTE | DC09, DC11, DCQ3, DC13 V8 | EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | SCANIA | SERIE S | 2016--- | DC13 V8 | EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 18893,
+      "corr": 26990
+    }
+  },
+  "Tractocamiones | SCANIA | SERIE L | 2018--- | GENERICO | EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | SCANIA | Motor | DC07 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | SCANIA | Motor | DC09 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | SCANIA | Motor | DC13 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | SCANIA | Motor | DC16 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | SCANIA | MAN | TGA, TGA18, TGA24, TGA26, TGA32, TGA33, TGA35, TGA39, TGA40, TGA41, TGE, TGL, TGS, TGX | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Tractocamiones | SCANIA | MAN | AYATS HORIZON | D26676, D3872 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | DODGE | RAM | CUMMINS CM845 | 2500 HD / 3500 HD | CUMMINS ISB 6.7 | 2004 - 2005 | 5.9L Cummins | EGR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "3": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "4": {
+      "prev": 8393,
+      "corr": 11990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | DODGE | RAM | CUMMINS CM849 | 2500 HD / 3500 HD | CUMMINS ISB 6.7 | 2006 - 2007.5 | 5.9L o 6.7L Cummins | EGR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "3": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "4": {
+      "prev": 8393,
+      "corr": 11990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | DODGE | RAM | CUMMINS CM2100 | 2500 HD / 3500 HD | CUMMINS ISB 6.7 | 2007.5 - 2009 | 6.7 Cummins | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "3": {
+      "prev": 13993,
+      "corr": 19990
+    },
+    "4": {
+      "prev": 13993,
+      "corr": 19990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | DODGE | RAM | CUMMINS CM2200 | 2500 HD / 3500 HD | CUMMINS ISB 6.7 | 2010 - 2012 | 6.7 Cummins | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 27293,
+      "corr": 38990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | DODGE | RAM | CUMMINS CM2350B | 2500 HD / 3500 HD | CUMMINS ISB 6.7 | 2013 - 2018 | 6.7 Cummins | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 27293,
+      "corr": 38990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | DODGE | RAM | CUMMINS CM2450B | 2500 HD / 3500 HD | CUMMINS ISB 6.7 | 2019 - 2021 | 6.7 Cummins | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 27293,
+      "corr": 38990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | DODGE | RAM | CUMMINS CM2450B | 2500 HD / 3500 HD | CUMMINS ISB 6.7 | 2022 - 2024 (Reemplazo a ECU anterior necesario) | 6.7 Cummins | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "2": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "3": {
+      "prev": 30093,
+      "corr": 42990
+    },
+    "4": {
+      "prev": 31493,
+      "corr": 44990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | DODGE | RAM | CUMMINS CM2450B | 2500 HD / 3500 HD | CUMMINS ISB 6.7 | 2022 - 2024 (Solo para transmisión 68RFE) | 6.7 Cummins | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 27293,
+      "corr": 38990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | DODGE | RAM | 1500 EcoDiesel | EcoDiesel CRD | 2009 - 2022 | 2.7 | 3.0 CRD | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 16793,
+      "corr": 23990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | DODGE | Journey | CRD | 2008 -2011 | 2.0 CRD | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | DODGE | Nitro | CRD | 2006 - 2010 | 2.8 R4 CRD | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | DODGE | ProMaster | CRD | 2010 - 2015 | 3.0 TDI | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FIAT | JTDm | 2007 - 2015 | 1.3 JTDm | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FIAT | 595 / 695 | JTDm | 2016 + | 1.3 JTDm | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FIAT | 500 X | JTDm | 2015 - 2018 | 1.3 | 1.4 | 1.6 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FIAT | Bravo | JTDm | 2007 - 2015 | 1.4 | 1.6 | 1.9 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FIAT | DUCATO | MultiJet | 2001 - 2011 | 2.0 | 2.2 | 2.3 | 2.8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FIAT | DUCATO | MultiJet | 2011 - 2016 | 2.0 | 2.3 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FIAT | DUCATO | MultiJet | 2016 - 2019 | 2.0 | 2.3 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FIAT | DUCATO | MultiJet | 2019 - 2021 | 2.3 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FIAT | DUCATO | MultiJet | 2022 - 2025 | 2.3 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FOTON | CUMMINS ISFE | HI VAN HIGHROOF | TDI | Hasta 2023 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | ELAM FAW | MINITRUCKS, LIGEROS | PEDIR FOTO ECU | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | ELAM FAW | MEDIANOS | PEDIR FOTO ECU | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | ELAM FAW | PESADOS, TRACTOCAMIONES, VOCACIONALES | PEDIR FOTO ECU | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | JEEP | GRAND CHEROKEE | EcoDiesel CRD | 2009 - 2022 | 2.7 | 3.0 CRD | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | JEEP | CHEROKEE | CRD | 2000 - 2005 | 2.5 | 2.7 | 2.8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | JEEP | CHEROKEE | CRD | 2008 - 2013 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | JEEP | CHEROKEE | CRD | 2014 + | 2.0 | 2.2 | 2.3 | 2.8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | JEEP | COMMANDER | CRD | 2006 - 2010 | 3.0 CRD | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | JEEP | COMPASS | CRD | 2006 - 2011 | 2.0 CRD | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | JEEP | COMPASS | CRD | 2011 - 2016 | 2.1 | 2.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | JEEP | COMPASS | MultiJet | 2017 - 2020 | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | JEEP | PATRIOT | CRD | 2007 - 2011 | 2.0 | 2.2 | 2.4 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | JEEP | RENEGADE | JTDm | 2014 - 2018 | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | ASX | DID | 2010 - 2016 | 1.8 | 2.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | FUSO | DDI | 2006 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 18893,
+      "corr": 26990
+    },
+    "4": {
+      "prev": 21693,
+      "corr": 30990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | L200 | DID | 2010 - 2015 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "4": {
+      "prev": 10493,
+      "corr": 14990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | L200 | DID | 2015 - 2018 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "4": {
+      "prev": 10493,
+      "corr": 14990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | L200 | DID | 2019 - 2023 | 2.3 | 2.4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | LANCER | DID | 2010 + | 1.8 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | LANCER EVO | DID | 2010 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | MONTERO | DID | 2015 - 2019 | 2.4 | 2.5 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 10493,
+      "corr": 14990
+    },
+    "4": {
+      "prev": 10493,
+      "corr": 14990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | MONTERO | DID | 2019 + | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | OUTLANDER | DID | 2007 - 2012 | 1.8 | 2.0 | 2.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | OUTLANDER | DID | 2013 - 2016 | 2.0 | 2.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | OUTLANDER | DID | 2017 - 2020 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | PAJERO | DID | 2010 + | 2.4 | 2.5 | 3.0 | 3.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MITSUBISHI | SPACESTAR | DID | 2010 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | HINO | TOYOTA | Serie 100 (145, 155, 195) | J05E | 2008 - 2019 | 5.1L | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 13993,
+      "corr": 19990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | HINO | TOYOTA | Serie 200 (258, 268, 338) | J08E | 2008 - 2019 | 7.7L | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 13993,
+      "corr": 19990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | HINO | TOYOTA | Serie 300 (308, 338, 358) | N04C / J08E | 2008 - 2019 | 4.0 / 7.7 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 13993,
+      "corr": 19990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | HINO | TOYOTA | Serie 500 (500, 600, 700) | J05E / A09C / J08E | 2008 - 2024 | 5.1 / 9.0 / 7.7 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 13993,
+      "corr": 19990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | Se han probado Hino 500 hasta 2024 | TOYOTA | Serie 700 | E13C | 2008 - 2019 | 12.9L | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 13993,
+      "corr": 19990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | CADDY | TDI | 2010 - 2019 | 1.2 | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | CADDY | TDI | 2020 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | POLO | TDI | 2012 - 2016 | 1.2 | 1.6 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | POLO | TDI | 2017 - 2020 | 1.2 | 1.6 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | GOLF | TDI | 2012 - 2019 | 1.2 | 1.4 | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | GOLF | TDI | 2020 - 2021 | 1.2 | 1.4 | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | JETTA | TDI | 2005 - 2018 | 1.6 | 1.9 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | BEETLE | TDI | 2011 + | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | PASSAT | TDI | 2019 + | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | T-CROSS | TDI | 2019 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | T-ROC | TDI | 2017 - 2021 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | AMAROK | TDI CR | 2011 - 2016 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | AMAROK | TDI V6 | 2016 - 2022 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | TIGUAN | TDI | 2011 - 2019 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | TIGUAN | TDI | 2020 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | TOUAREG | TDI | 2007 - 2018 | 2.5 | 3.0 | 5.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | TOUAREG | TDI | 2019 + | 2.5 | 3.0 | 5.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | TRANSPORTER | TDI | 2009 - 2015 | 2.0 | 2.5 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | TRANSPORTER | TDI | 2016 - 2021 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | TRANSPORTER | TDI | 2022 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | CRAFTER | TDI | 2002 - 2016 | 2.0 | 2.5 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | CRAFTER | TDI | 2017 + 2024 | 2.0 | 2.5 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | CUMMINS | DELIVERY | CUMMINS ISF 3.8 | 2020 + | SCR + DITUNING": {
+    "1": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "2": {
+      "prev": 16093,
+      "corr": 22990
+    },
+    "3": {
+      "prev": 13293,
+      "corr": 18990
+    },
+    "4": {
+      "prev": 13293,
+      "corr": 18990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | VOLKSWAGEN | VAG | VENTO | TDI | 2010 - 2019 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | SPRINTER | OM 646 | 2000 - 2006 | 2.2 CDI | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | SPRINTER | OM 651 | 2006 - 2014 | 2.2 CDI | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | SPRINTER 316/416/516 | OM 651 | 2014 - 2018 | 2.2 CDI | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | SPRINTER 316/416/516 | OM 651 | 2019 - 2021 | 2.2 CDI | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | SPRINTER 314/414 | OM 654 | 2022 + | 2.0 CDI | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | SPRINTER | OM 642 | 2006 - 2018 | 3.0 V6 CDI | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | VITO | CDI | 2003 - 2010 | 2.2 CDI | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | VITO | CDI | 2010 - 2014 | 2.2 CDI | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | VITO | CDI | 2015 - 2019 | 2.2 CDI | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | VITO | CDI | 2020 + | 2.0 CDI | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | CLASS A | CDI | 2012 - 2018 | 1.5 | 1.8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | CLASS C | CDI | 2007 - 2014 | 2.2 CDI | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | CLASS C | CDI | 2014 - 2020 | 1.6 | 2.0 | 2.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | CLASS E | CDI | 2002 - 2009 | 2.2 | 2.7 | 3.0 | 3.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | CLASS E | CDI | 2009 - 2016 | 2.2 | 2.5 | 3.0 | 3.5 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | CLASS E | CDI | 2016 - 2020 | 2.0 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | ML / GLE | CDI | 2005 - 2015 | 2.5 | 3.0 | 3.5 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | GLE | CDI | 2015 - 2020 | 2.5 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | GLC | CDI | 2015 - 2023 | 2.0 | 2.2 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | MERCEDES BENZ | MB | V-KLASSE / METRIS | CDI | 2014 - 2020 | 2.0 | 2.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | PARTNER | HDi | 2002 - 2008 | 1.6 | 1.9 | 2.0 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | PARTNER | HDi / BlueHDi | 2008 - 2015 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | PARTNER / RIFTER | BlueHDi | 2015 - 2018 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | PARTNER / RIFTER | BlueHDi | 2019 + | 1.5 | 1.6 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | MANAGER / BOXER | HDi | 2006 - 2011 | 2.2 | 2.3 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | MANAGER / BOXER | HDi / BlueHDi | 2011 - 2016 | 2.0 | 2.3 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | MANAGER / BOXER | BlueHDi | 2016 - 2019 | 2.0 | 2.3 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | MANAGER / BOXER | BlueHDi | 2019 - 2021 | 2.3 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | MANAGER / BOXER | BlueHDi | 2022 + | 2.3 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | EXPERT | HDi | 2007 - 2016 | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | EXPERT | BlueHDi | 2016 + | 1.5 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | HDi / BlueHDi | 2007 - 2013 | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | BlueHDi | 2014 - 2021 | 1.5 | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | 3008 | HDi / BlueHDi | 2009 - 2016 | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | 3008 | BlueHDi | 2017 + | 1.5 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | PEUGEOT | PSA | 5008 | BlueHDi | 2017 + | 1.5 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | F-250 / F-350 / F-450 / F-550 | Powerstroke | 2003 - 2007 | 6.0 V8 | EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "4": {
+      "prev": 6993,
+      "corr": 9990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | F-250 / F-350 / F-450 / F-550 | Powerstroke | 2008 - 2010 | 6.4 V8 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | F-250 / F-350 / F-450 / F-550 | Powerstroke | 2011 - 2016 | 6.7 V8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | F-250 / F-350 / F-450 / F-550 | Powerstroke | 2017 - 2019 | 6.7 V8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | F-250 / F-350 / F-450 / F-550 | Powerstroke | 2019 - 2021 | 6.7 V8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | F-250 / F-350 / F-450 / F-550 | Powerstroke | 2022 | 6.7 V8 | DPF + SCR + DITUNING": {
+    "1": {
+      "prev": 32893,
+      "corr": 46990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 32893,
+      "corr": 46990
+    },
+    "4": {
+      "prev": 32893,
+      "corr": 46990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | F-250 / F-350 / F-450 / F-550 | Powerstroke | 2023 - 2025 | 6.7 V8 | DPF + EGR + SCR": {
+    "1": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "2": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "3": {
+      "prev": 24493,
+      "corr": 34990
+    },
+    "4": {
+      "prev": 24493,
+      "corr": 34990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | RANGER | TDCi | 2011 - 2015 | 2.2 | 3.2 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | RANGER | TDCi | 2016 - 2018 | 2.2 | 3.2 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | RANGER | TDCi / Ecoblue | 2019 - 2020 | 2.0 | 3.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | RANGER | TDCi / Ecoblue | 2021+ | 2.0 | 2.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | TRANSIT | TDCi | 2006 - 2013 | 2.2 | 2.4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | TRANSIT | TDCi | 2013 - 2016 | 2.2 | 2.4 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | TRANSIT | TDCi / Ecoblue | 2017 - 2018 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | TRANSIT | Ecoblue | 2019 - 2020 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | TRANSIT | TDCi / Ecoblue | 2021+ | 2.0 | 2.2 | DPF + EGR + SCR": {
+    "1": {
+      "prev": 11900,
+      "corr": 17000
+    },
+    "2": {
+      "prev": 11900,
+      "corr": 17000
+    },
+    "3": {
+      "prev": 11900,
+      "corr": 17000
+    },
+    "4": {
+      "prev": 11900,
+      "corr": 17000
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | TRANSIT CUSTOM | TDCi | 2013 - 2016 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | TRANSIT CUSTOM | Ecoblue | 2017 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | TRANSIT CONNECT | TDCi | 2002 - 2012 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | TRANSIT CONNECT | TDCi / Ecoblue | 2013 + | 1.5 | 1.6 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | FOCUS | TDCi | 2004 - 2014 | 1.6 | 2.0 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | FOCUS | TDCi / Ecoblue | 2014 + | 1.5 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | FORD | KUGA / ESCAPE | TDCi / Ecoblue | 2008 + | 1.5 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | CHEVROLET / GMC | CHEVROLET | GM DURAMAX | SILVERADO 2500HD / 3500HD | Duramax LBZ/LMM | 2006 - 2010 | 6.6 V8 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | CHEVROLET / GMC | CHEVROLET | GM DURAMAX | SILVERADO 2500HD / 3500HD | Duramax LML | 2011 - 2016 | 6.6 V8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | CHEVROLET / GMC | CHEVROLET | GM DURAMAX | SILVERADO 2500HD / 3500HD | Duramax L5P | 2017 + | 6.6 V8 | DPF + EGR + SCR + DITUNING | REVISAR ECU": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | CHEVROLET / GMC | GMC | GM DURAMAX | SIERRA 2500HD / 3500HD | Duramax LBZ/LMM | 2006 - 2010 | 6.6 V8 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | CHEVROLET / GMC | GMC | GM DURAMAX | SIERRA 2500HD / 3500HD | Duramax LML | 2011 - 2016 | 6.6 V8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | CHEVROLET / GMC | GMC | GM DURAMAX | SIERRA 2500HD / 3500HD | Duramax L5P | 2017 + | 6.6 V8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | CHEVROLET / GMC | CHEVROLET | GM DURAMAX | COLORADO | Duramax | 2016 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | CHEVROLET / GMC | GMC | GM DURAMAX | CANYON | Duramax | 2016 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | CHEVROLET / GMC | CHEVROLET | GM DURAMAX | EXPRESS VAN | Duramax | 2006 + | 6.6 V8 | DPF + EGR + SCR + DITUNING | REVISAR ECU": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | CHEVROLET / GMC | GMC | GM DURAMAX | SAVANA | Duramax | 2006 + | 6.6 V8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | CHEVROLET / GMC | CHEVROLET | CRUZE | VCDI | 2009 - 2017 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | CHEVROLET / GMC | CHEVROLET | EQUINOX | Diesel | 2018 + | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | ISUZU | D-MAX | Denso | 2003 - 2012 | 2.5 TDI | 3.0 TDI | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | ISUZU | D-MAX | Denso / Bosch | 2012 - 2016 | 2.5 Twin Turbo | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | ISUZU | D-MAX | Bosch EDC17 | 2016 - 2019 | 1.9 DDi | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | ISUZU | D-MAX | Bosch EDC17 | 2020 - 2021 | 1.9 DDi | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | ISUZU | MU-X | Denso / Bosch | 2014 - 2021 | 2.5 | 3.0 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | ISUZU | N-SERIES / ELF (NKR, NPR, NQR) | Bosch | 2008 - 2020 | 3.0 | 5.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "2": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "3": {
+      "prev": 11193,
+      "corr": 15990
+    },
+    "4": {
+      "prev": 12593,
+      "corr": 17990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | TOYOTA | HILUX | D-4D | 2005 - 2015 | 2.5 | 3.0 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | TOYOTA | HILUX | D-4D | 2015 - 2020 | 2.4 | 2.8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | TOYOTA | HILUX | D-4D | 2020 + | 2.4 | 2.8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | TOYOTA | LAND CRUISER | D-4D | 2002 - 2010 | 3.0 | 4.5 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | TOYOTA | LAND CRUISER | D-4D | 2010 - 2020 | 2.8 | 3.0 | 4.5 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | TOYOTA | FORTUNER / SW4 | D-4D | 2015 + | 2.4 | 2.8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | TOYOTA | PROACE | D-4D | 2014 + | 1.5 | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | NISSAN | NP300 / NAVARA | DCi | 2005 - 2015 | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | NISSAN | NP300 / NAVARA | DCi | 2016 - 2019 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | NISSAN | NP300 / NAVARA | DCi | 2019 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | NISSAN | NV400 | DCi | 2010 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | NISSAN | NV300 | DCi | 2016 + | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | NISSAN | CABSTAR / NT400 | DCi | 2006 + | 2.5 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | NISSAN | X-TRAIL | DCi | 2007 - 2020 | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | NISSAN | PATHFINDER | DCi | 2005 - 2013 | 2.5 | 3.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | NISSAN | JAC | T6 / T8 | TDI | 2015 + | DPF + EGR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 9793,
+      "corr": 13990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | NISSAN | JAC | SUNRAY / REFINE | TDI | 2015 + | 2.0 | 2.7 |2.8 | SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "4": {
+      "prev": 6993,
+      "corr": 9990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | NISSAN | JAC | X350 | TDI | 2015 + | 2.0 | 2.8 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | HYUNDAI | H100 / H200 / H300 / STAREX | CRDi | 2008 + | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | HYUNDAI | SANTA FE | CRDi | 2006 + | 2.0 | 2.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | HYUNDAI | TUCSON | CRDi | 2015 + | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | HYUNDAI | KIA | SORENTO | CRDi | 2010 + | 2.0 | 2.2 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  },
+  "Furgoneta-Vagoneta Ligeros | HYUNDAI | KIA | SPORTAGE | CRDi | 2010 + | 1.6 | 2.0 | DPF + EGR + SCR + DITUNING": {
+    "1": {
+      "prev": 6993,
+      "corr": 9990
+    },
+    "2": {
+      "prev": 8393,
+      "corr": 11990
+    },
+    "3": {
+      "prev": 9793,
+      "corr": 13990
+    },
+    "4": {
+      "prev": 11193,
+      "corr": 15990
+    }
+  }
+}

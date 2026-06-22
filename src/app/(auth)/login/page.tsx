@@ -29,7 +29,13 @@ export default function LoginPage() {
         return;
       }
 
-      router.push("/dashboard");
+      const data = await res.json();
+      const role = data.user?.role;
+      if (role === "customer" || role === "fleet_admin") {
+        router.push("/client/dashboard");
+      } else {
+        router.push("/dashboard");
+      }
       router.refresh();
     } catch {
       setError("Error de conexión");
@@ -43,10 +49,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-14 h-14 bg-brand-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <span className="text-brand-dark font-extrabold text-xl">DT</span>
-          </div>
-          <h1 className="text-2xl font-bold tracking-tight">Ditrucks</h1>
+          <img src="/logo-white.svg" alt="Ditrucks" className="h-10 mx-auto mb-4" />
           <p className="text-sm text-brand-text-muted mt-1">Sistema de Gestión Técnica</p>
         </div>
 

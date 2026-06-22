@@ -1,0 +1,62 @@
+[
+  {
+    "sys": "DPF",
+    "label": "Filtro DPF",
+    "van": 18000,
+    "truck": 65000
+  },
+  {
+    "sys": "DPF",
+    "label": "Sensor diferencial de presión",
+    "van": 3200,
+    "truck": 5500
+  },
+  {
+    "sys": "DPF",
+    "label": "Sensor de temperatura",
+    "van": 1800,
+    "truck": 2500
+  },
+  {
+    "sys": "DOC",
+    "label": "Catalizador DOC",
+    "van": 12000,
+    "truck": 45000
+  },
+  {
+    "sys": "SCR",
+    "label": "Inyector DEF (dosificador)",
+    "van": 2800,
+    "truck": 4800
+  },
+  {
+    "sys": "SCR",
+    "label": "Bomba DEF",
+    "van": 5200,
+    "truck": 7800
+  },
+  {
+    "sys": "SCR",
+    "label": "Tanque y tapón DEF",
+    "van": 3500,
+    "truck": 9500
+  },
+  {
+    "sys": "SCR",
+    "label": "Sensor nivel tanque DEF",
+    "van": 2400,
+    "truck": 3600
+  },
+  {
+    "sys": "SCR",
+    "label": "Sistema completo SCR",
+    "van": 38000,
+    "truck": 85000
+  },
+  {
+    "sys": "EGR",
+    "label": "Válvula EGR",
+    "van": 6500,
+    "truck": 14000
+  }
+]

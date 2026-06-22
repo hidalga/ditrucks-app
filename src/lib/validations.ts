@@ -20,6 +20,7 @@ export const companySchema = z.object({
     "construccion", "particular", "otro",
   ]).default("particular"),
   notes: z.string().optional().nullable(),
+  quoterEnabled: z.boolean().optional(),
 });
 
 // ─── CUSTOMER ──────────────────────────────────────────
@@ -52,6 +53,47 @@ export const vehicleSchema = z.object({
   ]).default("otro"),
   knownEcu: z.string().optional().nullable(),
   notes: z.string().optional().nullable(),
+  quoterApplicationId: z.string().optional().nullable(),
+});
+
+// ─── QUOTER ───────────────────────────────────────────
+export const quoterPricingModeSchema = z.object({
+  prev: z.coerce.number().min(0),
+  corr: z.coerce.number().min(0),
+});
+
+export const quoterApplicationSchema = z.object({
+  category: z.string().min(1, "Categoría requerida"),
+  brand: z.string().min(1, "Marca requerida"),
+  model: z.string().min(1, "Descripción requerida"),
+  pricing: z.record(z.string(), quoterPricingModeSchema),
+});
+
+export const quoterPartSchema = z.object({
+  system: z.enum(["DPF", "EGR", "SCR", "DOC", "DITUNING"]),
+  label: z.string().min(1, "Nombre requerido"),
+  vanPrice: z.coerce.number().min(0),
+  truckPrice: z.coerce.number().min(0),
+});
+
+export const quoterCalculationSchema = z.object({
+  applicationId: z.string().min(1, "Aplicación requerida"),
+  mode: z.coerce.number().int().min(1).max(4),
+  vans: z.coerce.number().int().min(0),
+  trucks: z.coerce.number().int().min(0),
+  selectedSystems: z.array(z.string()).default([]),
+  parts: z.array(z.object({
+    partId: z.string(),
+    selected: z.boolean(),
+    units: z.coerce.number().int().min(0),
+  })).default([]),
+  ureaIncluded: z.boolean().default(true),
+  ureaVanLitersPerMonth: z.coerce.number().min(0).default(70),
+  ureaTruckLitersPerMonth: z.coerce.number().min(0).default(137),
+  ureaPricePerLiter: z.coerce.number().min(0).default(17),
+  downtimeIncluded: z.boolean().default(true),
+  downtimeHours: z.coerce.number().min(0).default(16),
+  downtimeRatePerHour: z.coerce.number().min(0).default(1200),
 });
 
 // ─── SERVICE ORDER ────────────────────────────────────
@@ -81,9 +123,13 @@ export const serviceOrderSchema = z.object({
 
 export const orderStatusSchema = z.object({
   status: z.enum([
-    "borrador", "recepcion", "diagnostico_inicial", "leyendo_ecu",
+    "borrador", "recepcion", "recepcion_completada",
+    "firma_pendiente", "firma_enviada", "firmada",
+    "diagnostico_inicial", "leyendo_ecu",
     "archivo_original_subido", "en_analisis", "archivo_modificado_listo",
-    "instalando_archivo", "prueba_posterior", "cerrada", "cancelada",
+    "instalando_archivo", "prueba_posterior",
+    "completada_tecnica", "certificado_generado", "entregada",
+    "cerrada", "cancelada",
   ]),
 });
 
@@ -113,8 +159,9 @@ export const userSchema = z.object({
   name: z.string().min(1, "Nombre requerido"),
   email: z.string().email("Correo inválido"),
   password: z.string().min(6, "Mínimo 6 caracteres").optional(),
-  role: z.enum(["admin", "technician", "calibrator", "sales", "fleet_customer_future"]).default("technician"),
+  role: z.enum(["admin", "technician", "calibrator", "sales", "customer", "fleet_admin"]).default("technician"),
   active: z.boolean().default(true),
+  companyId: z.string().optional().nullable(),
 });
 
 // ─── DIAGNOSTIC ───────────────────────────────────────
@@ -179,3 +226,6 @@ export type ServiceOrderInput = z.infer<typeof serviceOrderSchema>;
 export type EcuFileInput = z.infer<typeof ecuFileSchema>;
 export type UserInput = z.infer<typeof userSchema>;
 export type DiagnosticInput = z.infer<typeof diagnosticSchema>;
+export type QuoterApplicationInput = z.infer<typeof quoterApplicationSchema>;
+export type QuoterPartInput = z.infer<typeof quoterPartSchema>;
+export type QuoterCalculationInput = z.infer<typeof quoterCalculationSchema>;
