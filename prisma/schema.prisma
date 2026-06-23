@@ -93,6 +93,7 @@ enum StorageType {
   local
   mega_path
   s3_future
+  r2
 }
 
 enum ReadMethod {
@@ -456,7 +457,12 @@ model Evidence {
   vehicleId       String            @map("vehicle_id")
   uploadedById    String            @map("uploaded_by_id")
   category        EvidenceCategory  @default(otro)
-  filePath        String            @map("file_path")
+  storageType     StorageType       @default(r2) @map("storage_type")
+  storagePath     String            @map("file_path")
+  thumbnailPath   String?           @map("thumbnail_path")
+  fileName        String?           @map("file_name")
+  fileSize        Int?              @map("file_size")
+  mimeType        String?           @map("mime_type")
   description     String?
   marketingUsable Boolean           @default(false) @map("marketing_usable")
   customerVisible Boolean           @default(false) @map("customer_visible")

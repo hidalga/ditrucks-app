@@ -139,7 +139,7 @@ export const ecuFileSchema = z.object({
   fileName: z.string().min(1, "Nombre de archivo requerido"),
   fileExtension: z.string().optional().nullable(),
   fileSize: z.coerce.number().int().optional().nullable(),
-  storageType: z.enum(["local", "mega_path", "s3_future"]).default("local"),
+  storageType: z.enum(["local", "mega_path", "s3_future", "r2"]).default("r2"),
   storagePath: z.string().optional().nullable(),
   megaFolderPath: z.string().optional().nullable(),
   ecuBrand: z.string().optional().nullable(),

@@ -6,10 +6,11 @@ import Link from "next/link";
 import {
   FileText, Camera, HardDrive, Stethoscope, ClipboardList,
   Clock, History, ChevronRight, AlertTriangle, CheckCircle, PenLine, Award, Link2, Copy, ExternalLink,
+  Download, Film,
 } from "lucide-react";
 import {
   Card, Badge, PageHeader, Loading, Tabs, Button, Input, Select, Textarea,
-  ConfirmModal, ScoreGauge,
+  ConfirmModal, ScoreGauge, Modal,
 } from "@/components/ui";
 import { SignaturePad } from "@/components/ui/signature-pad";
 import {
@@ -57,6 +58,7 @@ export default function OrderDetailPage() {
   // Evidence form
   const [showEvidenceForm, setShowEvidenceForm] = useState(false);
   const [evidenceLoading, setEvidenceLoading] = useState(false);
+  const [lightboxEvidence, setLightboxEvidence] = useState<any>(null);
 
   // Signature
   const [showSignatureForm, setShowSignatureForm] = useState<"reception" | "delivery" | null>(null);
@@ -144,24 +146,7 @@ export default function OrderDetailPage() {
     e.preventDefault();
     setFileLoading(true);
     const fd = new FormData(e.currentTarget);
-    const data = {
-      fileName: fd.get("fileName"),
-      fileType: fd.get("fileType"),
-      storageType: fd.get("storageType"),
-      megaFolderPath: fd.get("megaFolderPath") || null,
-      storagePath: fd.get("storagePath") || null,
-      ecuBrand: fd.get("ecuBrand") || null,
-      ecuModel: fd.get("ecuModel") || null,
-      hardwareId: fd.get("hardwareId") || null,
-      softwareId: fd.get("softwareId") || null,
-      toolUsed: fd.get("toolUsed") || null,
-      readMethod: fd.get("readMethod") || null,
-      checksumStatus: fd.get("checksumStatus") || "unknown",
-      notes: fd.get("notes") || null,
-    };
-    await fetch(`/api/orders/${id}/files`, {
-      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data),
-    });
+    await fetch(`/api/orders/${id}/files`, { method: "POST", body: fd });
     setFileLoading(false);
     setShowFileForm(false);
     fetchOrder();
@@ -171,16 +156,7 @@ export default function OrderDetailPage() {
     e.preventDefault();
     setEvidenceLoading(true);
     const fd = new FormData(e.currentTarget);
-    const data = {
-      filePath: fd.get("filePath"),
-      category: fd.get("category"),
-      description: fd.get("description") || null,
-      marketingUsable: fd.get("marketingUsable") === "on",
-      customerVisible: fd.get("customerVisible") === "on",
-    };
-    await fetch(`/api/orders/${id}/evidence`, {
-      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data),
-    });
+    await fetch(`/api/orders/${id}/evidence`, { method: "POST", body: fd });
     setEvidenceLoading(false);
     setShowEvidenceForm(false);
     fetchOrder();
@@ -474,15 +450,29 @@ export default function OrderDetailPage() {
               <Card className="p-5 mb-4">
                 <form onSubmit={handleFileSubmit} className="space-y-4">
                   <h3 className="text-sm font-semibold text-brand-accent uppercase tracking-wider">Registrar Archivo ECU</h3>
+                  <div className="space-y-1">
+                    <label className="block text-xs font-medium text-brand-text-muted uppercase tracking-wide">
+                      Archivo *
+                    </label>
+                    <input
+                      type="file"
+                      name="file"
+                      className="w-full bg-brand-surface border border-brand-border rounded-lg px-3 py-2 text-sm text-brand-text file:mr-3 file:rounded-md file:border-0 file:bg-brand-accent file:text-brand-dark file:px-3 file:py-1.5 file:text-xs file:font-medium file:cursor-pointer cursor-pointer"
+                    />
+                    <p className="text-xs text-brand-text-dim">Se sube directamente a Cloudflare R2, o usa la ruta manual abajo.</p>
+                  </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Input name="fileName" label="Nombre del archivo *" placeholder="archivo_original.bin" required />
+                    <Input name="fileName" label="Nombre del archivo" placeholder="Se toma del archivo si se deja vacío" />
                     <Select name="fileType" label="Tipo" options={Object.entries(FILE_TYPE_LABELS).map(([v,l])=>({value:v,label:l}))} />
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Select name="storageType" label="Almacenamiento" options={[{value:"mega_path",label:"Ruta Mega Sync"},{value:"local",label:"Local"},{value:"s3_future",label:"S3 (futuro)"}]} />
-                    <Input name="megaFolderPath" label="Ruta Mega" placeholder="/Mega/ECU/cliente/..." />
-                  </div>
-                  <Input name="storagePath" label="Ruta local / URL" placeholder="/ruta/al/archivo" />
+                  <details className="text-xs">
+                    <summary className="cursor-pointer text-brand-text-muted uppercase tracking-wide font-medium">Alternativa: ruta manual (Mega Sync)</summary>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+                      <input type="hidden" name="storageType" value="mega_path" />
+                      <Input name="megaFolderPath" label="Ruta Mega" placeholder="/Mega/ECU/cliente/..." />
+                      <Input name="storagePath" label="Ruta / URL" placeholder="/ruta/al/archivo" />
+                    </div>
+                  </details>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <Input name="ecuBrand" label="Marca ECU" placeholder="Bosch, Delphi..." />
                     <Input name="ecuModel" label="Modelo ECU" placeholder="EDC17, CM2350..." />
@@ -514,8 +504,18 @@ export default function OrderDetailPage() {
                         <Badge className={f.fileType === "original" ? "bg-blue-500/20 text-blue-400 border-blue-500/30" : "bg-green-500/20 text-green-400 border-green-500/30"}>
                           {FILE_TYPE_LABELS[f.fileType]} v{f.versionNumber}
                         </Badge>
+                        {f.storageType === "r2" && f.fileSize != null && (
+                          <span className="text-[10px] text-brand-text-dim">{(f.fileSize / 1024 / 1024).toFixed(2)} MB</span>
+                        )}
                       </div>
-                      <span className="text-xs text-brand-text-dim">{formatDateTime(f.createdAt)}</span>
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs text-brand-text-dim">{formatDateTime(f.createdAt)}</span>
+                        {f.storageType === "r2" && (
+                          <a href={`/api/ecu-files/${f.id}/download`} className="text-brand-accent hover:text-brand-accent-hover" title="Descargar">
+                            <Download size={15} />
+                          </a>
+                        )}
+                      </div>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-brand-text-dim">
                       {f.ecuBrand && <span>ECU: {f.ecuBrand} {f.ecuModel}</span>}
@@ -553,16 +553,27 @@ export default function OrderDetailPage() {
               <Card className="p-5 mb-4">
                 <form onSubmit={handleEvidenceSubmit} className="space-y-4">
                   <h3 className="text-sm font-semibold text-brand-accent uppercase tracking-wider">Nueva Evidencia</h3>
-                  <Input name="filePath" label="Ruta / URL de la imagen *" placeholder="/ruta/imagen.jpg o URL" required />
+                  <div className="space-y-1">
+                    <label className="block text-xs font-medium text-brand-text-muted uppercase tracking-wide">
+                      Foto o video *
+                    </label>
+                    <input
+                      type="file"
+                      name="file"
+                      accept="image/*,video/*"
+                      required
+                      className="w-full bg-brand-surface border border-brand-border rounded-lg px-3 py-2 text-sm text-brand-text file:mr-3 file:rounded-md file:border-0 file:bg-brand-accent file:text-brand-dark file:px-3 file:py-1.5 file:text-xs file:font-medium file:cursor-pointer cursor-pointer"
+                    />
+                  </div>
                   <Select name="category" label="Categoría" options={Object.entries(EVIDENCE_CATEGORY_LABELS).map(([v,l])=>({value:v,label:l}))} />
                   <Textarea name="description" label="Descripción" placeholder="Descripción de la evidencia" />
                   <div className="flex gap-6">
                     <label className="flex items-center gap-2 text-sm cursor-pointer">
-                      <input type="checkbox" name="marketingUsable" className="accent-amber-500" />
+                      <input type="checkbox" name="marketingUsable" value="true" className="accent-amber-500" />
                       <span>Utilizable para marketing</span>
                     </label>
                     <label className="flex items-center gap-2 text-sm cursor-pointer">
-                      <input type="checkbox" name="customerVisible" className="accent-amber-500" />
+                      <input type="checkbox" name="customerVisible" value="true" className="accent-amber-500" />
                       <span>Visible para cliente</span>
                     </label>
                   </div>
@@ -575,21 +586,32 @@ export default function OrderDetailPage() {
             )}
 
             {order.evidence?.length > 0 ? (
-              <div className="grid gap-3 sm:grid-cols-2">
-                {order.evidence.map((e: any) => (
-                  <Card key={e.id} className="p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Badge className="bg-brand-surface2 text-brand-text-muted border-brand-border text-[10px]">
-                        {EVIDENCE_CATEGORY_LABELS[e.category]}
-                      </Badge>
-                      {e.marketingUsable && <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30 text-[10px]">MKT</Badge>}
-                      {e.customerVisible && <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 text-[10px]">Cliente</Badge>}
-                    </div>
-                    <p className="text-sm truncate">{e.filePath}</p>
-                    {e.description && <p className="text-xs text-brand-text-muted mt-1">{e.description}</p>}
-                    <p className="text-xs text-brand-text-dim mt-1">{e.uploadedBy?.name} — {formatDateTime(e.createdAt)}</p>
-                  </Card>
-                ))}
+              <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+                {order.evidence.map((e: any) => {
+                  const isVideo = e.mimeType?.startsWith("video/");
+                  return (
+                    <Card key={e.id} className="overflow-hidden cursor-pointer group" onClick={() => setLightboxEvidence(e)}>
+                      <div className="relative aspect-square bg-brand-surface2 flex items-center justify-center">
+                        {isVideo ? (
+                          <Film size={28} className="text-brand-text-dim" />
+                        ) : (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={`/api/evidence/${e.id}/file`} alt={e.description || ""} className="w-full h-full object-cover group-hover:opacity-80 transition-opacity" />
+                        )}
+                        {(e.marketingUsable || e.customerVisible) && (
+                          <div className="absolute top-1.5 right-1.5 flex gap-1">
+                            {e.marketingUsable && <Badge className="bg-purple-500/80 text-white border-0 text-[9px] px-1.5 py-0">MKT</Badge>}
+                            {e.customerVisible && <Badge className="bg-cyan-500/80 text-white border-0 text-[9px] px-1.5 py-0">Cliente</Badge>}
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-2">
+                        <p className="text-[11px] text-brand-text-muted truncate">{EVIDENCE_CATEGORY_LABELS[e.category]}</p>
+                        {e.description && <p className="text-xs truncate">{e.description}</p>}
+                      </div>
+                    </Card>
+                  );
+                })}
               </div>
             ) : !showEvidenceForm && (
               <Card className="p-8 text-center">
@@ -597,6 +619,30 @@ export default function OrderDetailPage() {
                 <p className="text-sm text-brand-text-dim">Sin evidencia registrada</p>
               </Card>
             )}
+
+            <Modal open={!!lightboxEvidence} onClose={() => setLightboxEvidence(null)} title={lightboxEvidence ? EVIDENCE_CATEGORY_LABELS[lightboxEvidence.category] : ""} widthClassName="max-w-3xl">
+              {lightboxEvidence && (
+                <div>
+                  <div className="bg-black rounded-lg overflow-hidden flex items-center justify-center max-h-[60vh]">
+                    {lightboxEvidence.mimeType?.startsWith("video/") ? (
+                      <video controls src={`/api/evidence/${lightboxEvidence.id}/file?mode=original`} className="max-h-[60vh] w-full" />
+                    ) : (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={`/api/evidence/${lightboxEvidence.id}/file?mode=original`} alt="" className="max-h-[60vh] object-contain" />
+                    )}
+                  </div>
+                  <div className="flex items-center justify-between mt-3">
+                    <div>
+                      {lightboxEvidence.description && <p className="text-sm">{lightboxEvidence.description}</p>}
+                      <p className="text-xs text-brand-text-dim mt-1">{lightboxEvidence.uploadedBy?.name} — {formatDateTime(lightboxEvidence.createdAt)}</p>
+                    </div>
+                    <a href={`/api/evidence/${lightboxEvidence.id}/file?mode=download`}>
+                      <Button size="sm" variant="secondary"><Download size={14} /> Descargar original</Button>
+                    </a>
+                  </div>
+                </div>
+              )}
+            </Modal>
           </div>
         )}
 

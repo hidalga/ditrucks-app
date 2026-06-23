@@ -115,7 +115,7 @@ export async function buildOrderSnapshot(orderId: string, phase: SignaturePhase)
       certificates: { where: { status: { in: ["published", "generated"] } }, orderBy: { createdAt: "desc" }, take: 1 },
       evidence: {
         where: { deleted: false, customerVisible: true },
-        select: { id: true, category: true, description: true, filePath: true },
+        select: { id: true, category: true, description: true, storagePath: true },
       },
     },
   });

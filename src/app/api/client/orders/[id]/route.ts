@@ -15,7 +15,7 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
     include: {
       vehicle: true,
       technician: { select: { name: true } },
-      evidence: { where: { deleted: false, customerVisible: true }, select: { id: true, category: true, description: true, filePath: true, createdAt: true } },
+      evidence: { where: { deleted: false, customerVisible: true }, select: { id: true, category: true, description: true, thumbnailPath: true, createdAt: true } },
       diagnostics: {
         where: { deleted: false },
         select: { id: true, diagnosticDate: true, generalHealthScore: true, riskLevel: true, visibleRecommendation: true, dpfScore: true, scrScore: true, egrScore: true, dpfPresent: true, scrPresent: true, egrPresent: true, nextCheckDate: true },
