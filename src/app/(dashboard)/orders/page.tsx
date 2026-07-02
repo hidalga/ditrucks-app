@@ -40,7 +40,7 @@ export default function OrdersPage() {
         <div className="flex gap-3 flex-wrap">
           <div className="relative flex-1 min-w-[200px]">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-text-dim" />
-            <input type="text" placeholder="Buscar por folio, vehículo, empresa..." value={search}
+            <input type="text" placeholder="Buscar por folio, cliente, empresa, VIN, marca, modelo, placas o no. económico..." value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full bg-brand-surface2 border border-brand-border rounded-lg pl-9 pr-4 py-2 text-sm text-brand-text placeholder:text-brand-text-dim focus:outline-none focus:ring-2 focus:ring-brand-accent/40"
             />

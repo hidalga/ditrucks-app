@@ -9,7 +9,8 @@ export interface OrderProgress {
 
 const PROGRESS_MAP: Record<string, OrderProgress> = {
   borrador:              { percent: 5,   label: "Borrador",               crmTag: "draft",                nextAction: "Iniciar recepción" },
-  recepcion:             { percent: 15,  label: "En Recepción",           crmTag: "reception_started",    nextAction: "Completar recepción" },
+  recepcion:             { percent: 15,  label: "En Recepción",           crmTag: "reception_started",    nextAction: "Solicitar firma" },
+  // Legacy: removed from the visible flow; kept so existing orders with this status still resolve
   recepcion_completada:  { percent: 20,  label: "Recepción Completada",   crmTag: "reception_completed",  nextAction: "Solicitar firma" },
   firma_pendiente:       { percent: 25,  label: "Firma Pendiente",        crmTag: "signature_pending",    nextAction: "Esperando firma del cliente" },
   firma_enviada:         { percent: 25,  label: "Enlace de Firma Enviado",crmTag: "signature_sent",       nextAction: "Esperando firma remota" },
@@ -40,11 +41,11 @@ export function getCrmTag(status: OrderStatus | string): string {
   return getOrderProgress(status).crmTag;
 }
 
-// Status flow for the visual progress bar (excludes cancelled)
+// Status flow for the visual progress bar (excludes cancelled and the
+// legacy "recepcion_completada", which can no longer be set)
 export const STATUS_FLOW: string[] = [
   "borrador",
   "recepcion",
-  "recepcion_completada",
   "firma_pendiente",
   "firmada",
   "diagnostico_inicial",

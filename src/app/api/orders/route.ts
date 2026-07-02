@@ -19,9 +19,13 @@ export async function GET(req: NextRequest) {
   if (search) {
     where.OR = [
       { folio: { contains: search, mode: "insensitive" } },
-      { vehicle: { brand: { contains: search, mode: "insensitive" } } },
-      { vehicle: { plates: { contains: search, mode: "insensitive" } } },
+      { customer: { name: { contains: search, mode: "insensitive" } } },
       { company: { name: { contains: search, mode: "insensitive" } } },
+      { vehicle: { brand: { contains: search, mode: "insensitive" } } },
+      { vehicle: { model: { contains: search, mode: "insensitive" } } },
+      { vehicle: { plates: { contains: search, mode: "insensitive" } } },
+      { vehicle: { vin: { contains: search, mode: "insensitive" } } },
+      { vehicle: { economicNumber: { contains: search, mode: "insensitive" } } },
     ];
   }
   if (status) where.status = status;

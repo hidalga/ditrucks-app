@@ -358,6 +358,7 @@ model ServiceOrder {
   workSummary             String?          @map("work_summary")
   internalNotes           String?          @map("internal_notes")
   customerAuthorization   String?          @map("customer_authorization")
+  cancellationReason      String?          @map("cancellation_reason")
 
   // ── Reception Signature: autorización + confirmación de datos + diagnóstico (protección legal) ──
   receptionSignatureStatus      SignatureStatus  @default(none) @map("signature_status")

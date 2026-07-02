@@ -113,7 +113,8 @@ async function fireWebhook(
 export async function onOrderStatusChanged(
   orderId: string,
   oldStatus: string,
-  newStatus: string
+  newStatus: string,
+  extra?: Record<string, unknown>
 ) {
   const eventMap: Record<string, CrmEventType> = {
     recepcion_completada: "service_order.reception_completed",
@@ -132,10 +133,11 @@ export async function onOrderStatusChanged(
   await sendCrmEvent("service_order.status_changed", orderId, {
     old_status: oldStatus,
     new_status: newStatus,
+    ...extra,
   });
 
   // Send specific event if mapped
   if (specificEvent) {
-    await sendCrmEvent(specificEvent, orderId);
+    await sendCrmEvent(specificEvent, orderId, extra);
   }
 }

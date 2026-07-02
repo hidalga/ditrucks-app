@@ -38,7 +38,7 @@ const ORDER_TABS = [
 const SALES_TAB_IDS = ["summary", "reception", "diagnostic", "evidence", "signature", "certificate"];
 
 const STATUS_FLOW = [
-  "borrador", "recepcion", "recepcion_completada",
+  "borrador", "recepcion",
   "firma_pendiente", "firmada",
   "diagnostico_inicial", "leyendo_ecu", "archivo_original_subido",
   "en_analisis", "archivo_modificado_listo", "instalando_archivo",
@@ -57,6 +57,7 @@ export default function OrderDetailPage() {
   const [tab, setTab] = useState("summary");
   const [confirmStatus, setConfirmStatus] = useState<string | null>(null);
   const [statusLoading, setStatusLoading] = useState(false);
+  const [cancelReason, setCancelReason] = useState("");
 
   // ECU file form
   const [showFileForm, setShowFileForm] = useState(false);
@@ -142,9 +143,14 @@ export default function OrderDetailPage() {
     await fetch(`/api/orders/${id}/status`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status: newStatus }),
+      body: JSON.stringify(
+        newStatus === "cancelada"
+          ? { status: newStatus, cancellationReason: cancelReason.trim() }
+          : { status: newStatus }
+      ),
     });
     setConfirmStatus(null);
+    setCancelReason("");
     setStatusLoading(false);
     fetchOrder();
   };
@@ -194,7 +200,9 @@ export default function OrderDetailPage() {
   if (loading) return <Loading />;
   if (!order) return <p className="text-red-400">Orden no encontrada</p>;
 
-  const currentIdx = STATUS_FLOW.indexOf(order.status);
+  // Legacy "recepcion_completada" behaves like "recepcion" so those orders can advance to firma
+  const effectiveStatus = order.status === "recepcion_completada" ? "recepcion" : order.status;
+  const currentIdx = STATUS_FLOW.indexOf(effectiveStatus);
   const nextStatus = currentIdx >= 0 && currentIdx < STATUS_FLOW.length - 1 ? STATUS_FLOW[currentIdx + 1] : null;
   const latestDiag = order.diagnostics?.[0];
 
@@ -221,11 +229,26 @@ export default function OrderDetailPage() {
         }
       />
 
+      {/* Cancellation notice */}
+      {order.status === "cancelada" && (
+        <Card className="p-4 mb-4 bg-red-500/10 border-red-500/30">
+          <div className="flex gap-3 items-start">
+            <AlertTriangle size={16} className="text-red-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="text-sm font-semibold text-red-300">Orden cancelada</p>
+              <p className="text-sm text-brand-text-muted mt-1">
+                <span className="text-brand-text-dim">Motivo:</span> {order.cancellationReason || "No registrado"}
+              </p>
+            </div>
+          </div>
+        </Card>
+      )}
+
       {/* Status progress bar */}
       <Card className="p-3 mb-4 overflow-x-auto">
         <div className="flex items-center gap-1 min-w-[600px]">
           {STATUS_FLOW.map((s, i) => {
-            const isCurrent = s === order.status;
+            const isCurrent = s === effectiveStatus;
             const isPast = i < currentIdx;
             return (
               <div key={s} className="flex items-center flex-1">
@@ -798,21 +821,46 @@ export default function OrderDetailPage() {
         )}
       </div>
 
-      {/* Confirm modal */}
+      {/* Confirm modal (status advance) */}
       <ConfirmModal
-        open={!!confirmStatus}
+        open={!!confirmStatus && confirmStatus !== "cancelada"}
         onClose={() => setConfirmStatus(null)}
         onConfirm={() => confirmStatus && changeStatus(confirmStatus)}
-        title={confirmStatus === "cancelada" ? "Cancelar Orden" : "Cambiar Estado"}
-        message={
-          confirmStatus === "cancelada"
-            ? "¿Estás seguro de cancelar esta orden? Esta acción no se puede deshacer fácilmente."
-            : `¿Cambiar estado a "${ORDER_STATUS_LABELS[confirmStatus || ""]}"?`
-        }
-        confirmText={confirmStatus === "cancelada" ? "Cancelar Orden" : "Confirmar"}
-        danger={confirmStatus === "cancelada"}
+        title="Cambiar Estado"
+        message={`¿Cambiar estado a "${ORDER_STATUS_LABELS[confirmStatus || ""]}"?`}
+        confirmText="Confirmar"
         loading={statusLoading}
       />
+
+      {/* Cancel modal: requires a reason */}
+      <Modal
+        open={confirmStatus === "cancelada"}
+        onClose={() => { setConfirmStatus(null); setCancelReason(""); }}
+        title="Cancelar Orden"
+      >
+        <p className="text-sm text-brand-text-muted mb-4">
+          ¿Estás seguro de cancelar esta orden? Esta acción no se puede deshacer fácilmente.
+        </p>
+        <Textarea
+          label="Motivo de cancelación *"
+          placeholder="Describe por qué se cancela la orden"
+          value={cancelReason}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setCancelReason(e.target.value)}
+        />
+        <div className="flex gap-3 justify-end mt-6">
+          <Button variant="secondary" onClick={() => { setConfirmStatus(null); setCancelReason(""); }}>
+            Volver
+          </Button>
+          <Button
+            variant="danger"
+            onClick={() => changeStatus("cancelada")}
+            loading={statusLoading}
+            disabled={!cancelReason.trim()}
+          >
+            Cancelar Orden
+          </Button>
+        </div>
+      </Modal>
     </>
   );
 }
