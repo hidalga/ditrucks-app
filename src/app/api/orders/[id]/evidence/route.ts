@@ -9,7 +9,7 @@ const MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024; // 20MB
 const ALLOWED_PREFIXES = ["image/", "video/"];
 
 const EVIDENCE_CATEGORIES = [
-  "recepcion", "dano_fisico", "tablero_testigos", "escaner",
+  "recepcion", "identificacion_unidad", "dano_fisico", "tablero_testigos", "escaner",
   "herramienta_conectada", "lectura_ecu", "escritura_ecu",
   "prueba_final", "marketing", "otro",
 ] as const;

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { CLIENT_ROLES } from "@/lib/constants";
+import { getServicedSystems } from "@/services/deterioration-engine";
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const user = await getSession();
@@ -33,5 +34,12 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
   });
 
   if (!vehicle) return NextResponse.json({ error: "Vehículo no encontrado" }, { status: 404 });
-  return NextResponse.json(vehicle);
+
+  // Systems worked after the latest diagnostic (orders here are already completed ones)
+  const latestDiag = vehicle.diagnostics[0];
+  const servicedSystems = latestDiag
+    ? getServicedSystems(vehicle.serviceOrders, latestDiag.diagnosticDate)
+    : [];
+
+  return NextResponse.json({ ...vehicle, servicedSystems });
 }

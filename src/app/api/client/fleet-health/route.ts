@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { CLIENT_ROLES } from "@/lib/constants";
-import { projectVehicle } from "@/services/deterioration-engine";
+import { projectVehicle, getServicedSystems } from "@/services/deterioration-engine";
 
 export async function GET() {
   const user = await getSession();
@@ -27,10 +27,12 @@ export async function GET() {
           diagnosticDate: true, nextCheckDate: true,
         },
       },
+      // Recent orders: the first is the "last order"; the rest let us detect
+      // systems already worked after the latest diagnostic
       serviceOrders: {
         where: { deleted: false },
         orderBy: { createdAt: "desc" },
-        take: 1,
+        take: 25,
         select: { folio: true, status: true, createdAt: true, deliveredAt: true, serviceTypes: true },
       },
       // Get before/after: last 2 diagnostics for comparison
@@ -42,6 +44,11 @@ export async function GET() {
   const fleet = vehicles.map(v => {
     const diag = v.diagnostics[0];
     const lastOrder = v.serviceOrders[0];
+    // Systems worked in orders completed after the latest diagnostic:
+    // their negative state no longer applies
+    const servicedSystems = diag ? getServicedSystems(v.serviceOrders, diag.diagnosticDate) : [];
+    const isServicedBad = (system: string, score: number | null) =>
+      servicedSystems.includes(system) && score !== null && score < 50;
     const projection = diag ? projectVehicle({
       generalHealthScore: diag.generalHealthScore,
       dpfPresent: diag.dpfPresent,
@@ -51,7 +58,7 @@ export async function GET() {
       egrPresent: diag.egrPresent,
       egrScore: diag.egrScore,
       usageType: diag.usageType,
-    }, v.id) : null;
+    }, v.id, servicedSystems) : null;
 
     return {
       id: v.id,
@@ -64,9 +71,11 @@ export async function GET() {
       unitType: v.unitType,
       score: diag?.generalHealthScore ?? null,
       riskLevel: diag?.riskLevel ?? null,
-      dpfScore: diag?.dpfScore ?? null,
-      scrScore: diag?.scrScore ?? null,
-      egrScore: diag?.egrScore ?? null,
+      // Hide outdated bad scores for systems already worked after the diagnostic
+      dpfScore: isServicedBad("dpf", diag?.dpfScore ?? null) ? null : diag?.dpfScore ?? null,
+      scrScore: isServicedBad("scr", diag?.scrScore ?? null) ? null : diag?.scrScore ?? null,
+      egrScore: isServicedBad("egr", diag?.egrScore ?? null) ? null : diag?.egrScore ?? null,
+      servicedSystems,
       lastDiagDate: diag?.diagnosticDate ?? null,
       nextCheckDate: diag?.nextCheckDate ?? null,
       recommendation: diag?.visibleRecommendation || diag?.recommendation || null,

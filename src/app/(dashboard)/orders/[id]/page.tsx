@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   FileText, Camera, HardDrive, Stethoscope, ClipboardList,
   Clock, History, ChevronRight, AlertTriangle, CheckCircle, PenLine, Award, Link2, Copy, ExternalLink,
-  Download, Film,
+  Download, Film, Upload,
 } from "lucide-react";
 import {
   Card, Badge, PageHeader, Loading, Tabs, Button, Input, Select, Textarea,
@@ -67,6 +67,26 @@ export default function OrderDetailPage() {
   const [showEvidenceForm, setShowEvidenceForm] = useState(false);
   const [evidenceLoading, setEvidenceLoading] = useState(false);
   const [lightboxEvidence, setLightboxEvidence] = useState<any>(null);
+
+  // Quick photo capture/upload (order info)
+  const [quickCategory, setQuickCategory] = useState("identificacion_unidad");
+  const [quickUploading, setQuickUploading] = useState(false);
+  const quickCameraRef = useRef<HTMLInputElement>(null);
+  const quickFileRef = useRef<HTMLInputElement>(null);
+
+  const quickUploadPhotos = async (files: FileList | null) => {
+    if (!files || files.length === 0) return;
+    setQuickUploading(true);
+    for (const file of Array.from(files)) {
+      if (!file.type.startsWith("image/")) continue;
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("category", quickCategory);
+      await fetch(`/api/orders/${id}/evidence`, { method: "POST", body: fd }).catch(() => {});
+    }
+    setQuickUploading(false);
+    fetchOrder();
+  };
 
   // Signature
   const [showSignatureForm, setShowSignatureForm] = useState<"reception" | "delivery" | null>(null);
@@ -395,29 +415,81 @@ export default function OrderDetailPage() {
 
         {/* ── RECEPTION TAB ── */}
         {tab === "reception" && (
-          <Card className="p-5 max-w-3xl">
-            <h3 className="text-sm font-semibold text-brand-accent mb-4 uppercase tracking-wider">Datos de Recepción</h3>
-            <dl className="space-y-3 text-sm">
-              {[
-                ["Kilometraje", order.mileageAtReception?.toLocaleString()],
-                ["Horómetro", order.engineHoursAtReception],
-                ["Nivel de combustible", order.fuelLevel],
-                ["Testigos activos", order.activeWarningLights],
-                ["Fallas activas", order.activeFaults],
-                ["Fallas del cliente", order.customerReportedFaults],
-                ["Daños físicos", order.physicalDamageNotes],
-                ["Observaciones", order.generalObservations],
-                ["Trabajo solicitado", order.requestedServiceType],
-                ["Resumen del trabajo", order.workSummary],
-                ["Notas internas", order.internalNotes],
-              ].map(([label, val]) => val ? (
-                <div key={label as string}>
-                  <dt className="text-brand-text-dim text-xs uppercase tracking-wider mb-0.5">{label}</dt>
-                  <dd className="bg-brand-surface2 p-3 rounded-lg whitespace-pre-wrap">{val}</dd>
+          <div className="max-w-3xl space-y-4">
+            <Card className="p-5">
+              <h3 className="text-sm font-semibold text-brand-accent mb-4 uppercase tracking-wider">Datos de Recepción</h3>
+              <dl className="space-y-3 text-sm">
+                {[
+                  ["Kilometraje", order.mileageAtReception?.toLocaleString()],
+                  ["Horómetro", order.engineHoursAtReception],
+                  ["Nivel de combustible", order.fuelLevel],
+                  ["Testigos activos", order.activeWarningLights],
+                  ["Fallas activas", order.activeFaults],
+                  ["Fallas del cliente", order.customerReportedFaults],
+                  ["Daños físicos", order.physicalDamageNotes],
+                  ["Observaciones", order.generalObservations],
+                  ["Trabajo solicitado", order.requestedServiceType],
+                  ["Resumen del trabajo", order.workSummary],
+                  ["Notas internas", order.internalNotes],
+                ].map(([label, val]) => val ? (
+                  <div key={label as string}>
+                    <dt className="text-brand-text-dim text-xs uppercase tracking-wider mb-0.5">{label}</dt>
+                    <dd className="bg-brand-surface2 p-3 rounded-lg whitespace-pre-wrap">{val}</dd>
+                  </div>
+                ) : null)}
+              </dl>
+            </Card>
+
+            {/* Photos of the unit (stored as order evidence) */}
+            <Card className="p-5">
+              <div className="flex items-center justify-between mb-1 flex-wrap gap-2">
+                <h3 className="text-sm font-semibold text-brand-accent uppercase tracking-wider">Fotos de la Unidad</h3>
+                {canWrite && (
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <select
+                      value={quickCategory}
+                      onChange={(e) => setQuickCategory(e.target.value)}
+                      className="bg-brand-surface border border-brand-border rounded-lg px-2 py-1.5 text-xs text-brand-text outline-none"
+                    >
+                      {Object.entries(EVIDENCE_CATEGORY_LABELS).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+                    </select>
+                    <Button size="sm" variant="secondary" onClick={() => quickCameraRef.current?.click()} disabled={quickUploading}>
+                      <Camera size={14} /> Tomar foto
+                    </Button>
+                    <Button size="sm" variant="secondary" onClick={() => quickFileRef.current?.click()} disabled={quickUploading}>
+                      <Upload size={14} /> {quickUploading ? "Subiendo..." : "Subir fotos"}
+                    </Button>
+                  </div>
+                )}
+              </div>
+              <p className="text-xs text-brand-text-dim mb-3">
+                Identificación (VIN, placas, no. económico), tablero con testigos, DTC del escáner, golpes o detalles. También aparecen en la pestaña Evidencia.
+              </p>
+              <input ref={quickCameraRef} type="file" accept="image/*" capture="environment" className="hidden"
+                onChange={(e) => { quickUploadPhotos(e.target.files); e.target.value = ""; }} />
+              <input ref={quickFileRef} type="file" accept="image/*" multiple className="hidden"
+                onChange={(e) => { quickUploadPhotos(e.target.files); e.target.value = ""; }} />
+
+              {order.evidence?.some((e: any) => e.mimeType?.startsWith("image/")) ? (
+                <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+                  {order.evidence.filter((e: any) => e.mimeType?.startsWith("image/")).map((e: any) => (
+                    <Card key={e.id} className="overflow-hidden cursor-pointer group" onClick={() => setLightboxEvidence(e)}>
+                      <div className="relative aspect-square bg-brand-surface2">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={`/api/evidence/${e.id}/file`} alt={e.description || ""} className="w-full h-full object-cover group-hover:opacity-80 transition-opacity" />
+                      </div>
+                      <div className="p-2">
+                        <p className="text-[11px] text-brand-text-muted truncate">{EVIDENCE_CATEGORY_LABELS[e.category]}</p>
+                        {e.description && <p className="text-xs truncate">{e.description}</p>}
+                      </div>
+                    </Card>
+                  ))}
                 </div>
-              ) : null)}
-            </dl>
-          </Card>
+              ) : (
+                <p className="text-sm text-brand-text-dim text-center py-4">Sin fotos registradas</p>
+              )}
+            </Card>
+          </div>
         )}
 
         {/* ── DIAGNOSTIC TAB ── */}
@@ -660,29 +732,6 @@ export default function OrderDetailPage() {
               </Card>
             )}
 
-            <Modal open={!!lightboxEvidence} onClose={() => setLightboxEvidence(null)} title={lightboxEvidence ? EVIDENCE_CATEGORY_LABELS[lightboxEvidence.category] : ""} widthClassName="max-w-3xl">
-              {lightboxEvidence && (
-                <div>
-                  <div className="bg-black rounded-lg overflow-hidden flex items-center justify-center max-h-[60vh]">
-                    {lightboxEvidence.mimeType?.startsWith("video/") ? (
-                      <video controls src={`/api/evidence/${lightboxEvidence.id}/file?mode=original`} className="max-h-[60vh] w-full" />
-                    ) : (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={`/api/evidence/${lightboxEvidence.id}/file?mode=original`} alt="" className="max-h-[60vh] object-contain" />
-                    )}
-                  </div>
-                  <div className="flex items-center justify-between mt-3">
-                    <div>
-                      {lightboxEvidence.description && <p className="text-sm">{lightboxEvidence.description}</p>}
-                      <p className="text-xs text-brand-text-dim mt-1">{lightboxEvidence.uploadedBy?.name} — {formatDateTime(lightboxEvidence.createdAt)}</p>
-                    </div>
-                    <a href={`/api/evidence/${lightboxEvidence.id}/file?mode=download`}>
-                      <Button size="sm" variant="secondary"><Download size={14} /> Descargar original</Button>
-                    </a>
-                  </div>
-                </div>
-              )}
-            </Modal>
           </div>
         )}
 
@@ -820,6 +869,31 @@ export default function OrderDetailPage() {
           </Card>
         )}
       </div>
+
+      {/* Evidence lightbox (shared by Recepción and Evidencia tabs) */}
+      <Modal open={!!lightboxEvidence} onClose={() => setLightboxEvidence(null)} title={lightboxEvidence ? EVIDENCE_CATEGORY_LABELS[lightboxEvidence.category] : ""} widthClassName="max-w-3xl">
+        {lightboxEvidence && (
+          <div>
+            <div className="bg-black rounded-lg overflow-hidden flex items-center justify-center max-h-[60vh]">
+              {lightboxEvidence.mimeType?.startsWith("video/") ? (
+                <video controls src={`/api/evidence/${lightboxEvidence.id}/file?mode=original`} className="max-h-[60vh] w-full" />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={`/api/evidence/${lightboxEvidence.id}/file?mode=original`} alt="" className="max-h-[60vh] object-contain" />
+              )}
+            </div>
+            <div className="flex items-center justify-between mt-3">
+              <div>
+                {lightboxEvidence.description && <p className="text-sm">{lightboxEvidence.description}</p>}
+                <p className="text-xs text-brand-text-dim mt-1">{lightboxEvidence.uploadedBy?.name} — {formatDateTime(lightboxEvidence.createdAt)}</p>
+              </div>
+              <a href={`/api/evidence/${lightboxEvidence.id}/file?mode=download`}>
+                <Button size="sm" variant="secondary"><Download size={14} /> Descargar original</Button>
+              </a>
+            </div>
+          </div>
+        )}
+      </Modal>
 
       {/* Confirm modal (status advance) */}
       <ConfirmModal

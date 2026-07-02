@@ -195,6 +195,7 @@ export const FILE_TYPE_LABELS: Record<string, string> = {
 
 export const EVIDENCE_CATEGORY_LABELS: Record<string, string> = {
   recepcion: "Recepción",
+  identificacion_unidad: "Identificación (VIN/Placas/Eco)",
   dano_fisico: "Daño Físico",
   tablero_testigos: "Tablero / Testigos",
   escaner: "Escáner",

@@ -3,7 +3,7 @@ import { renderToBuffer } from "@react-pdf/renderer";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { CLIENT_ROLES } from "@/lib/constants";
-import { projectVehicle } from "@/services/deterioration-engine";
+import { projectVehicle, getServicedSystems } from "@/services/deterioration-engine";
 import { FleetReportPdf } from "@/lib/pdf/fleet-report-pdf";
 
 export async function GET() {
@@ -28,13 +28,14 @@ export async function GET() {
           generalHealthScore: true, dpfPresent: true, dpfScore: true,
           scrPresent: true, scrScore: true, egrPresent: true, egrScore: true,
           usageType: true, visibleRecommendation: true, recommendation: true,
+          diagnosticDate: true,
         },
       },
       serviceOrders: {
         where: { deleted: false },
         orderBy: { createdAt: "desc" },
-        take: 1,
-        select: { deliveredAt: true, createdAt: true },
+        take: 25,
+        select: { deliveredAt: true, createdAt: true, status: true, serviceTypes: true },
       },
     },
   });
@@ -42,6 +43,9 @@ export async function GET() {
   const fleet = vehicles.map((v) => {
     const diag = v.diagnostics[0];
     const lastOrder = v.serviceOrders[0];
+    const servicedSystems = diag ? getServicedSystems(v.serviceOrders, diag.diagnosticDate) : [];
+    const isServicedBad = (system: string, score: number | null) =>
+      servicedSystems.includes(system) && score !== null && score < 50;
     const projection = diag
       ? projectVehicle(
           {
@@ -54,7 +58,8 @@ export async function GET() {
             egrScore: diag.egrScore,
             usageType: diag.usageType,
           },
-          v.id
+          v.id,
+          servicedSystems
         )
       : null;
 
@@ -67,9 +72,9 @@ export async function GET() {
       economicNumber: v.economicNumber,
       vin: v.vin,
       score: diag?.generalHealthScore ?? null,
-      dpfScore: diag?.dpfScore ?? null,
-      scrScore: diag?.scrScore ?? null,
-      egrScore: diag?.egrScore ?? null,
+      dpfScore: isServicedBad("dpf", diag?.dpfScore ?? null) ? null : diag?.dpfScore ?? null,
+      scrScore: isServicedBad("scr", diag?.scrScore ?? null) ? null : diag?.scrScore ?? null,
+      egrScore: isServicedBad("egr", diag?.egrScore ?? null) ? null : diag?.egrScore ?? null,
       recommendation: diag?.visibleRecommendation || diag?.recommendation || null,
       lastOrderDate: (lastOrder?.deliveredAt || lastOrder?.createdAt)?.toISOString() ?? null,
       projection,

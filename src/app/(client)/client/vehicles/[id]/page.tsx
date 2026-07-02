@@ -31,8 +31,25 @@ export default function ClientVehicleDetail() {
   if (!v) return <p className="text-red-500 text-center py-8">Vehículo no encontrado</p>;
 
   const lastDiag = v.diagnostics?.[0];
-  const rc = lastDiag ? riskColors[lastDiag.riskLevel] || "" : "";
-  const isAtRisk = lastDiag && (lastDiag.riskLevel === "alto" || lastDiag.riskLevel === "critico");
+  // Systems worked in a service order after the diagnostic: their bad state no longer applies
+  const serviced: string[] = v.servicedSystems || [];
+  const isServicedBad = (system: string, score: number | null) =>
+    serviced.includes(system) && score !== null && score < 50;
+  const badSystems = lastDiag
+    ? [
+        ["dpf", lastDiag.dpfScore],
+        ["scr", lastDiag.scrScore],
+        ["egr", lastDiag.egrScore],
+      ].filter(([, s]) => s !== null && (s as number) < 50)
+    : [];
+  const allBadSystemsServiced = badSystems.length > 0 && badSystems.every(([sys]) => serviced.includes(sys as string));
+  const isAtRisk = lastDiag && (lastDiag.riskLevel === "alto" || lastDiag.riskLevel === "critico") && !allBadSystemsServiced;
+  const rc = lastDiag
+    ? allBadSystemsServiced
+      ? "bg-green-50 text-green-700 border-green-200"
+      : riskColors[lastDiag.riskLevel] || ""
+    : "";
+  const riskLabel = lastDiag ? (allBadSystemsServiced ? "Atendido" : RISK_LEVEL_LABELS[lastDiag.riskLevel]) : "";
 
   return (
     <>
@@ -52,11 +69,11 @@ export default function ClientVehicleDetail() {
               <span className={`text-3xl font-bold ${scoreColor(lastDiag.generalHealthScore)}`}>{lastDiag.generalHealthScore}</span>
               <p className="text-xs opacity-70 mt-0.5">General</p>
             </div>
-            {lastDiag.dpfPresent && lastDiag.dpfScore != null && <ScoreBlock label="DPF" score={lastDiag.dpfScore} />}
-            {lastDiag.scrPresent && lastDiag.scrScore != null && <ScoreBlock label="SCR" score={lastDiag.scrScore} />}
-            {lastDiag.egrPresent && lastDiag.egrScore != null && <ScoreBlock label="EGR" score={lastDiag.egrScore} />}
+            {lastDiag.dpfPresent && lastDiag.dpfScore != null && (isServicedBad("dpf", lastDiag.dpfScore) ? <ServicedBlock label="DPF" /> : <ScoreBlock label="DPF" score={lastDiag.dpfScore} />)}
+            {lastDiag.scrPresent && lastDiag.scrScore != null && (isServicedBad("scr", lastDiag.scrScore) ? <ServicedBlock label="SCR" /> : <ScoreBlock label="SCR" score={lastDiag.scrScore} />)}
+            {lastDiag.egrPresent && lastDiag.egrScore != null && (isServicedBad("egr", lastDiag.egrScore) ? <ServicedBlock label="EGR" /> : <ScoreBlock label="EGR" score={lastDiag.egrScore} />)}
             <div className="ml-auto text-right">
-              <span className={`text-sm font-semibold px-3 py-1 rounded-full ${rc}`}>{RISK_LEVEL_LABELS[lastDiag.riskLevel]}</span>
+              <span className={`text-sm font-semibold px-3 py-1 rounded-full ${rc}`}>{riskLabel}</span>
               <p className="text-xs opacity-60 mt-1">{formatDate(lastDiag.diagnosticDate)}</p>
               {lastDiag.nextCheckDate && <p className="text-xs opacity-80 mt-0.5">Próxima revisión: {formatDate(lastDiag.nextCheckDate)}</p>}
             </div>
@@ -64,6 +81,17 @@ export default function ClientVehicleDetail() {
           {(lastDiag.visibleRecommendation || lastDiag.recommendation) && (
             <p className="mt-3 text-sm opacity-90 bg-white/50 p-3 rounded-lg">{lastDiag.visibleRecommendation || lastDiag.recommendation}</p>
           )}
+        </div>
+      )}
+
+      {/* Attended notice: bad systems already worked after the diagnostic */}
+      {!isAtRisk && allBadSystemsServiced && (
+        <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6 flex items-start gap-3">
+          <CalendarCheck size={18} className="text-green-600 mt-0.5 flex-shrink-0" />
+          <div>
+            <p className="font-semibold text-green-800 text-sm">Sistemas atendidos en servicio reciente</p>
+            <p className="text-xs text-green-700 mt-0.5">Los sistemas señalados en el último diagnóstico ya fueron trabajados. Recomendamos un diagnóstico de seguimiento para confirmar el estado.</p>
+          </div>
         </div>
       )}
 
@@ -117,6 +145,15 @@ export default function ClientVehicleDetail() {
         </div>
       </div>
     </>
+  );
+}
+
+function ServicedBlock({ label }: { label: string }) {
+  return (
+    <div className="text-center">
+      <span className="text-sm font-semibold text-green-600 px-2 py-1 bg-green-50 border border-green-200 rounded-full">Atendido</span>
+      <p className="text-xs opacity-70 mt-0.5">{label}</p>
+    </div>
   );
 }
 

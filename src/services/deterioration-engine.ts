@@ -38,6 +38,9 @@ export interface SystemProjection {
   recommendedActionDate: string | null; // ISO date
   urgency: "none" | "monitor" | "schedule" | "urgent" | "critical";
   recommendation: string;
+  // The system was worked in a service order completed after the diagnostic,
+  // so its negative state from that diagnostic no longer applies
+  serviced?: boolean;
 }
 
 export interface VehicleProjection {
@@ -128,6 +131,60 @@ export function projectSystem(
   };
 }
 
+// Service types that repair a specific post-treatment system
+const SERVICE_TYPE_TO_SYSTEM: Record<string, string> = {
+  dpf: "dpf",
+  scr_adblue: "scr",
+  egr: "egr",
+};
+
+// Order statuses where the work was actually performed
+const WORKED_ORDER_STATUSES = ["completada_tecnica", "certificado_generado", "entregada", "cerrada"];
+
+/**
+ * Systems (dpf/scr/egr) worked in a service order completed AFTER the given
+ * diagnostic, meaning the diagnostic's negative state for them is outdated.
+ */
+export function getServicedSystems(
+  orders: Array<{
+    status: string;
+    serviceTypes: string[];
+    createdAt: Date | string;
+    deliveredAt?: Date | string | null;
+  }>,
+  diagnosticDate: Date | string | null | undefined
+): string[] {
+  if (!diagnosticDate) return [];
+  const diagTime = new Date(diagnosticDate).getTime();
+  const systems = new Set<string>();
+  for (const order of orders) {
+    if (!WORKED_ORDER_STATUSES.includes(order.status)) continue;
+    const workTime = new Date(order.deliveredAt || order.createdAt).getTime();
+    if (workTime < diagTime) continue;
+    for (const st of order.serviceTypes) {
+      const system = SERVICE_TYPE_TO_SYSTEM[st];
+      if (system) systems.add(system);
+    }
+  }
+  return [...systems];
+}
+
+// Neutralize the negative state of a system already worked after the diagnostic
+function markServiced(p: SystemProjection): SystemProjection {
+  if (p.urgency === "none") return { ...p, serviced: true };
+  return {
+    ...p,
+    serviced: true,
+    riskLevel: "bueno",
+    urgency: "none",
+    daysToMedium: null,
+    daysToHigh: null,
+    daysToCritical: null,
+    recommendedActionDate: null,
+    recommendation: `${p.systemLabel} fue atendido en una orden de servicio posterior al diagnóstico. Programar diagnóstico de seguimiento para confirmar el estado.`,
+  };
+}
+
 export function projectVehicle(diagnostic: {
   generalHealthScore: number | null;
   dpfPresent: boolean;
@@ -137,20 +194,21 @@ export function projectVehicle(diagnostic: {
   egrPresent: boolean;
   egrScore: number | null;
   usageType: string;
-}, vehicleId: string): VehicleProjection {
+}, vehicleId: string, servicedSystems: string[] = []): VehicleProjection {
   const systems: SystemProjection[] = [];
+  const addSystem = (p: SystemProjection | null) => {
+    if (!p) return;
+    systems.push(servicedSystems.includes(p.system) ? markServiced(p) : p);
+  };
 
   if (diagnostic.dpfPresent) {
-    const p = projectSystem("dpf", "DPF", diagnostic.dpfScore, diagnostic.usageType);
-    if (p) systems.push(p);
+    addSystem(projectSystem("dpf", "DPF", diagnostic.dpfScore, diagnostic.usageType));
   }
   if (diagnostic.scrPresent) {
-    const p = projectSystem("scr", "SCR / UREA", diagnostic.scrScore, diagnostic.usageType);
-    if (p) systems.push(p);
+    addSystem(projectSystem("scr", "SCR / UREA", diagnostic.scrScore, diagnostic.usageType));
   }
   if (diagnostic.egrPresent) {
-    const p = projectSystem("egr", "EGR", diagnostic.egrScore, diagnostic.usageType);
-    if (p) systems.push(p);
+    addSystem(projectSystem("egr", "EGR", diagnostic.egrScore, diagnostic.usageType));
   }
 
   // Overall urgency = worst system
@@ -166,11 +224,14 @@ export function projectVehicle(diagnostic: {
 
   // Summary
   const criticalSystems = systems.filter(s => s.urgency === "critical" || s.urgency === "urgent");
+  const servicedList = systems.filter(s => s.serviced);
   let summary: string;
   if (criticalSystems.length > 0) {
     summary = `${criticalSystems.length} sistema(s) requieren atención: ${criticalSystems.map(s => s.systemLabel).join(", ")}. Intervención preventiva recomendada.`;
   } else if (systems.some(s => s.urgency === "schedule")) {
     summary = "Sistemas en deterioro progresivo. Recomendamos agendar revisión preventiva.";
+  } else if (servicedList.length > 0) {
+    summary = `${servicedList.map(s => s.systemLabel).join(", ")} atendido(s) en servicio reciente. Se recomienda diagnóstico de seguimiento para confirmar el estado.`;
   } else {
     summary = "Sistemas post-tratamiento en buen estado. Continuar monitoreo regular.";
   }
