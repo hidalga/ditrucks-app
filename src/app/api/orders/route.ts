@@ -17,16 +17,23 @@ export async function GET(req: NextRequest) {
 
   const where: Record<string, unknown> = { deleted: false };
   if (search) {
-    where.OR = [
-      { folio: { contains: search, mode: "insensitive" } },
-      { customer: { name: { contains: search, mode: "insensitive" } } },
-      { company: { name: { contains: search, mode: "insensitive" } } },
-      { vehicle: { brand: { contains: search, mode: "insensitive" } } },
-      { vehicle: { model: { contains: search, mode: "insensitive" } } },
-      { vehicle: { plates: { contains: search, mode: "insensitive" } } },
-      { vehicle: { vin: { contains: search, mode: "insensitive" } } },
-      { vehicle: { economicNumber: { contains: search, mode: "insensitive" } } },
-    ];
+    // Multi-word search: each token must match (AND) in ANY searchable field (OR)
+    const tokens = search.split(/\s+/).filter(Boolean);
+    where.AND = tokens.map((token) => {
+      const fields: Record<string, unknown>[] = [
+        { folio: { contains: token, mode: "insensitive" } },
+        { customer: { name: { contains: token, mode: "insensitive" } } },
+        { company: { name: { contains: token, mode: "insensitive" } } },
+        { vehicle: { brand: { contains: token, mode: "insensitive" } } },
+        { vehicle: { model: { contains: token, mode: "insensitive" } } },
+        { vehicle: { plates: { contains: token, mode: "insensitive" } } },
+        { vehicle: { vin: { contains: token, mode: "insensitive" } } },
+        { vehicle: { economicNumber: { contains: token, mode: "insensitive" } } },
+      ];
+      // Year is numeric: match exactly when the token is a number
+      if (/^\d+$/.test(token)) fields.push({ vehicle: { year: Number(token) } });
+      return { OR: fields };
+    });
   }
   if (status) where.status = status;
   if (companyId) where.companyId = companyId;
