@@ -6,8 +6,11 @@ import { Plus, Search, ClipboardList, Filter } from "lucide-react";
 import { Button, Card, Badge, PageHeader, Loading, EmptyState, Select } from "@/components/ui";
 import { ORDER_STATUS_LABELS, ORDER_STATUS_COLORS, SIGNATURE_STATUS_LABELS, SIGNATURE_STATUS_COLORS, RISK_LEVEL_LABELS, RISK_LEVEL_COLORS, RISK_LEVEL_DOT } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
+import { useAuth } from "@/components/auth-provider";
 
 export default function OrdersPage() {
+  const { user } = useAuth();
+  const canCreate = user?.role !== "sales";
   const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -30,7 +33,7 @@ export default function OrdersPage() {
       <PageHeader
         title="Órdenes de Servicio"
         description="Gestión de todas las órdenes de trabajo"
-        actions={<Link href="/orders/new"><Button size="sm"><Plus size={16} /> Nueva Orden</Button></Link>}
+        actions={canCreate ? <Link href="/orders/new"><Button size="sm"><Plus size={16} /> Nueva Orden</Button></Link> : undefined}
       />
 
       <Card className="mb-4 p-3">
@@ -53,7 +56,7 @@ export default function OrdersPage() {
       {loading ? <Loading /> : orders.length === 0 ? (
         <EmptyState icon={<ClipboardList size={40} />} title="Sin órdenes registradas"
           description="Crea tu primera orden de servicio"
-          action={<Link href="/orders/new"><Button size="sm"><Plus size={16} /> Nueva Orden</Button></Link>}
+          action={canCreate ? <Link href="/orders/new"><Button size="sm"><Plus size={16} /> Nueva Orden</Button></Link> : undefined}
         />
       ) : (
         <Card className="overflow-hidden">

@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { uploadToR2 } from "@/lib/storage/r2";
 import { generateThumbnail, isImageMimeType } from "@/lib/storage/thumbnail";
+import { ORDER_WRITE_ROLES } from "@/lib/constants";
 
 const MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024; // 20MB
 const ALLOWED_PREFIXES = ["image/", "video/"];
@@ -16,6 +17,9 @@ const EVIDENCE_CATEGORIES = [
 export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const user = await getSession();
   if (!user) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+  if (!ORDER_WRITE_ROLES.includes(user.role)) {
+    return NextResponse.json({ error: "Sin permisos para agregar evidencia" }, { status: 403 });
+  }
 
   const { id: orderId } = await params;
   const order = await prisma.serviceOrder.findUnique({ where: { id: orderId } });

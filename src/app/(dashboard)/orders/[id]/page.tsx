@@ -21,6 +21,7 @@ import {
   CERTIFICATE_STATUS_LABELS, CERTIFICATE_STATUS_COLORS,
 } from "@/lib/constants";
 import { formatDate, formatDateTime } from "@/lib/utils";
+import { useAuth } from "@/components/auth-provider";
 
 const ORDER_TABS = [
   { id: "summary", label: "Resumen", icon: <FileText size={15} /> },
@@ -32,6 +33,9 @@ const ORDER_TABS = [
   { id: "certificate", label: "Certificado", icon: <Award size={15} /> },
   { id: "audit", label: "Historial", icon: <History size={15} /> },
 ];
+
+// Sales (comercial) is read-only: no ECU files, no audit trail
+const SALES_TAB_IDS = ["summary", "reception", "diagnostic", "evidence", "signature", "certificate"];
 
 const STATUS_FLOW = [
   "borrador", "recepcion", "recepcion_completada",
@@ -45,6 +49,9 @@ const STATUS_FLOW = [
 export default function OrderDetailPage() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
+  const { user } = useAuth();
+  const isSales = user?.role === "sales";
+  const canWrite = !isSales;
   const [order, setOrder] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState("summary");
@@ -200,12 +207,12 @@ export default function OrderDetailPage() {
         actions={
           <div className="flex items-center gap-2 flex-wrap">
             <Badge className={ORDER_STATUS_COLORS[order.status]}>{ORDER_STATUS_LABELS[order.status]}</Badge>
-            {nextStatus && order.status !== "cancelada" && (
+            {canWrite && nextStatus && order.status !== "cancelada" && (
               <Button size="sm" onClick={() => setConfirmStatus(nextStatus)}>
                 Avanzar a: {ORDER_STATUS_LABELS[nextStatus]} <ChevronRight size={14} />
               </Button>
             )}
-            {order.status !== "cerrada" && order.status !== "cancelada" && (
+            {canWrite && order.status !== "cerrada" && order.status !== "cancelada" && (
               <Button size="sm" variant="danger" onClick={() => setConfirmStatus("cancelada")}>
                 Cancelar
               </Button>
@@ -238,7 +245,11 @@ export default function OrderDetailPage() {
       </Card>
 
       {/* Tabs */}
-      <Tabs tabs={ORDER_TABS} activeTab={tab} onChange={setTab} />
+      <Tabs
+        tabs={isSales ? ORDER_TABS.filter((t) => SALES_TAB_IDS.includes(t.id)) : ORDER_TABS}
+        activeTab={tab}
+        onChange={setTab}
+      />
 
       <div className="mt-4">
         {/* ── SUMMARY TAB ── */}
@@ -315,7 +326,8 @@ export default function OrderDetailPage() {
               )}
             </Card>
 
-            {/* Files summary */}
+            {/* Files summary (hidden for sales: no ECU access) */}
+            {!isSales && (
             <Card className="p-4">
               <h3 className="text-xs font-semibold text-brand-text-muted uppercase tracking-wider mb-3">Archivos ECU ({order.ecuFiles?.length || 0})</h3>
               {order.ecuFiles?.length > 0 ? (
@@ -335,6 +347,7 @@ export default function OrderDetailPage() {
                 </div>
               ) : <p className="text-sm text-brand-text-dim text-center py-4">Sin archivos</p>}
             </Card>
+            )}
 
             {/* Evidence summary */}
             <Card className="p-4">
@@ -429,16 +442,18 @@ export default function OrderDetailPage() {
               <Card className="p-8 text-center">
                 <Stethoscope size={32} className="mx-auto text-brand-text-dim mb-2" />
                 <p className="text-sm text-brand-text-dim">Sin diagnósticos registrados</p>
-                <Link href={`/diagnostics/new?orderId=${id}&vehicleId=${order.vehicleId}`}>
-                  <Button size="sm" className="mt-3">Crear Diagnóstico</Button>
-                </Link>
+                {canWrite && (
+                  <Link href={`/diagnostics/new?orderId=${id}&vehicleId=${order.vehicleId}`}>
+                    <Button size="sm" className="mt-3">Crear Diagnóstico</Button>
+                  </Link>
+                )}
               </Card>
             )}
           </div>
         )}
 
-        {/* ── FILES TAB ── */}
-        {tab === "files" && (
+        {/* ── FILES TAB (never rendered for sales) ── */}
+        {tab === "files" && !isSales && (
           <div>
             <div className="flex justify-end mb-3">
               <Button size="sm" onClick={() => setShowFileForm(!showFileForm)}>
@@ -543,11 +558,13 @@ export default function OrderDetailPage() {
         {/* ── EVIDENCE TAB ── */}
         {tab === "evidence" && (
           <div>
-            <div className="flex justify-end mb-3">
-              <Button size="sm" onClick={() => setShowEvidenceForm(!showEvidenceForm)}>
-                <Camera size={14} /> Agregar Evidencia
-              </Button>
-            </div>
+            {canWrite && (
+              <div className="flex justify-end mb-3">
+                <Button size="sm" onClick={() => setShowEvidenceForm(!showEvidenceForm)}>
+                  <Camera size={14} /> Agregar Evidencia
+                </Button>
+              </div>
+            )}
 
             {showEvidenceForm && (
               <Card className="p-5 mb-4">
@@ -653,6 +670,7 @@ export default function OrderDetailPage() {
               phase="reception"
               title="Firma de Recepción"
               description="Autorización del servicio, confirmación de datos del vehículo y diagnóstico al ingreso. Protege legalmente la recepción."
+              canSignInPerson={canWrite}
               order={order}
               showSignatureForm={showSignatureForm}
               setShowSignatureForm={setShowSignatureForm}
@@ -666,6 +684,7 @@ export default function OrderDetailPage() {
               phase="delivery"
               title="Firma de Entrega"
               description="Conformidad del cliente con el trabajo realizado y la entrega del vehículo."
+              canSignInPerson={canWrite}
               order={order}
               showSignatureForm={showSignatureForm}
               setShowSignatureForm={setShowSignatureForm}
@@ -687,7 +706,7 @@ export default function OrderDetailPage() {
                   <h3 className="text-sm font-semibold">Certificados de Trabajo</h3>
                   <p className="text-xs text-brand-text-dim mt-0.5">Genera certificados para el cliente con QR verificable</p>
                 </div>
-                {["completada_tecnica","certificado_generado","entregada","cerrada"].includes(order.status) && (
+                {canWrite && ["completada_tecnica","certificado_generado","entregada","cerrada"].includes(order.status) && (
                   <Button size="sm" onClick={generateCertificate} disabled={certLoading}>
                     <Award size={14} /> {certLoading ? "Generando..." : "Generar Certificado"}
                   </Button>
@@ -802,12 +821,13 @@ type SignaturePhase = "reception" | "delivery";
 type RemoteSignState = Record<SignaturePhase, { url: string; loading: boolean; copied: boolean }>;
 
 function SignatureSection({
-  phase, title, description, order, showSignatureForm, setShowSignatureForm,
+  phase, title, description, canSignInPerson, order, showSignatureForm, setShowSignatureForm,
   signatureLoading, handleSignatureSave, remoteSign, generateRemoteLink, copyRemoteLink,
 }: {
   phase: SignaturePhase;
   title: string;
   description: string;
+  canSignInPerson: boolean;
   order: any;
   showSignatureForm: SignaturePhase | null;
   setShowSignatureForm: (v: SignaturePhase | null) => void;
@@ -872,9 +892,11 @@ function SignatureSection({
             <Button size="sm" onClick={() => generateRemoteLink(phase)} disabled={rs.loading}>
               <Link2 size={14} /> {rs.loading ? "Generando..." : "Generar Enlace Remoto"}
             </Button>
-            <Button size="sm" variant="secondary" onClick={() => setShowSignatureForm(phase)}>
-              <PenLine size={14} /> Firma Presencial
-            </Button>
+            {canSignInPerson && (
+              <Button size="sm" variant="secondary" onClick={() => setShowSignatureForm(phase)}>
+                <PenLine size={14} /> Firma Presencial
+              </Button>
+            )}
           </div>
 
           {rs.url && (

@@ -238,3 +238,12 @@ export const CHECKSUM_STATUS_LABELS: Record<string, string> = {
 // Client-facing roles
 export const CLIENT_ROLES = ["customer", "fleet_admin"];
 export const INTERNAL_ROLES = ["admin", "technician", "calibrator", "sales"];
+
+// Roles that can create/edit orders, change status, and register
+// diagnostics, evidence, signatures and certificates. "sales" is
+// read-only on orders (except generating remote signature links).
+export const ORDER_WRITE_ROLES = ["admin", "technician", "calibrator"];
+
+// Roles with access to ECU files (view, upload, download).
+// "sales" must never see ECU files.
+export const ECU_FILE_ROLES = ["admin", "technician", "calibrator"];

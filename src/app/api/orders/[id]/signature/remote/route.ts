@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSession, createAuditLog } from "@/lib/auth";
+import { INTERNAL_ROLES } from "@/lib/constants";
 import { createRemoteSignatureToken } from "@/services/signature";
 import { sendCrmEvent } from "@/services/crm-webhook";
 import { z } from "zod";
@@ -9,8 +10,12 @@ const remoteSchema = z.object({
 });
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  // Sales is explicitly allowed to generate remote signature links
   const user = await getSession();
   if (!user) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+  if (!INTERNAL_ROLES.includes(user.role)) {
+    return NextResponse.json({ error: "Sin permisos" }, { status: 403 });
+  }
 
   const { id } = await params;
   const body = await req.json().catch(() => ({}));

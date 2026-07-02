@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { getSession, createAuditLog } from "@/lib/auth";
 import { serviceOrderSchema } from "@/lib/validations";
 import { generateFolio } from "@/services/folio";
+import { ORDER_WRITE_ROLES } from "@/lib/constants";
 
 export async function GET(req: NextRequest) {
   const user = await getSession();
@@ -47,6 +48,9 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const user = await getSession();
   if (!user) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+  if (!ORDER_WRITE_ROLES.includes(user.role)) {
+    return NextResponse.json({ error: "Sin permisos para crear órdenes" }, { status: 403 });
+  }
 
   const body = await req.json();
   const parsed = serviceOrderSchema.safeParse(body);

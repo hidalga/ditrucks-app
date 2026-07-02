@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { getSession, createAuditLog } from "@/lib/auth";
 import { diagnosticSchema } from "@/lib/validations";
 import { calculateOverallRating } from "@/services/rating-engine";
+import { ORDER_WRITE_ROLES } from "@/lib/constants";
 
 export async function GET(req: NextRequest) {
   const user = await getSession();
@@ -28,6 +29,9 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const user = await getSession();
   if (!user) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+  if (!ORDER_WRITE_ROLES.includes(user.role)) {
+    return NextResponse.json({ error: "Sin permisos para crear diagnósticos" }, { status: 403 });
+  }
 
   const body = await req.json();
   const parsed = diagnosticSchema.safeParse(body);

@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button, Input, Select, Card, PageHeader } from "@/components/ui";
 import { ROLE_LABELS, CLIENT_ROLES } from "@/lib/constants";
+import { useAuth } from "@/components/auth-provider";
 
 export default function NewUserPage() {
   const router = useRouter();
   const params = useSearchParams();
+  const { user } = useAuth();
+  const isSales = user?.role === "sales";
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [role, setRole] = useState(params.get("role") || "technician");
@@ -17,6 +20,11 @@ export default function NewUserPage() {
   useEffect(() => {
     fetch("/api/companies").then(r => r.json()).then(setCompanies).catch(() => {});
   }, []);
+
+  // Sales can only create client-portal accounts
+  useEffect(() => {
+    if (isSales && !CLIENT_ROLES.includes(role)) setRole("fleet_admin");
+  }, [isSales, role]);
 
   const isClientRole = CLIENT_ROLES.includes(role);
 
@@ -36,13 +44,16 @@ export default function NewUserPage() {
     try {
       const res = await fetch("/api/users", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
       if (!res.ok) { const err = await res.json(); setError(err.error || "Error al crear"); return; }
-      router.push("/users");
+      // Sales has no access to the users list; return to the company
+      if (isSales) router.push(companyId ? `/companies/${companyId}` : "/companies");
+      else router.push("/users");
     } catch { setError("Error de conexión"); }
     finally { setLoading(false); }
   };
 
   const roleOptions = Object.entries(ROLE_LABELS)
     .filter(([v]) => v !== "fleet_customer_future")
+    .filter(([v]) => !isSales || CLIENT_ROLES.includes(v))
     .map(([v, l]) => ({ value: v, label: l }));
 
   return (

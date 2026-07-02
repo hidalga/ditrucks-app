@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession, createAuditLog } from "@/lib/auth";
+import { ORDER_WRITE_ROLES } from "@/lib/constants";
 import { getOrderProgress } from "@/services/order-progress";
 import { onOrderStatusChanged } from "@/services/crm-webhook";
 import { z } from "zod";
@@ -17,6 +18,9 @@ const statusSchema = z.object({
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const user = await getSession();
   if (!user) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+  if (!ORDER_WRITE_ROLES.includes(user.role)) {
+    return NextResponse.json({ error: "Sin permisos para cambiar el estado" }, { status: 403 });
+  }
 
   const { id } = await params;
   const body = await req.json();

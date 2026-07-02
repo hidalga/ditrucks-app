@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSession, createAuditLog } from "@/lib/auth";
+import { ORDER_WRITE_ROLES } from "@/lib/constants";
 import { createCertificate, revokeCertificate } from "@/services/certificate";
 import { sendCrmEvent } from "@/services/crm-webhook";
 import { prisma } from "@/lib/prisma";
@@ -32,6 +33,9 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
 export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const user = await getSession();
   if (!user) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+  if (!ORDER_WRITE_ROLES.includes(user.role)) {
+    return NextResponse.json({ error: "Sin permisos para generar certificados" }, { status: 403 });
+  }
 
   const { id } = await params;
   const body = await req.json();

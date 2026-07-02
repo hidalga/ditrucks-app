@@ -2,11 +2,11 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { getFromR2 } from "@/lib/storage/r2";
-import { INTERNAL_ROLES } from "@/lib/constants";
+import { ECU_FILE_ROLES } from "@/lib/constants";
 
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const user = await getSession();
-  if (!user || !INTERNAL_ROLES.includes(user.role)) {
+  if (!user || !ECU_FILE_ROLES.includes(user.role)) {
     return NextResponse.json({ error: "Acceso denegado" }, { status: 403 });
   }
 

@@ -8,7 +8,7 @@ const COOKIE_NAME = process.env.COOKIE_NAME || "ditrucks_session";
 // Paths that don't require any auth
 const PUBLIC_PATHS = ["/login", "/api/auth/login", "/api/webhooks", "/api/public", "/sign", "/verify"];
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   if (PUBLIC_PATHS.some((p) => pathname.startsWith(p))) return NextResponse.next();
@@ -23,13 +23,24 @@ export async function middleware(req: NextRequest) {
   try {
     const { payload } = await jwtVerify(token, JWT_SECRET);
 
+    const role = payload.role as string;
+    const isClientRole = role === "customer" || role === "fleet_admin";
+
     // Client portal access control
     if (pathname.startsWith("/client") || pathname.startsWith("/api/client")) {
-      const role = payload.role as string;
-      if (!["customer", "fleet_admin", "admin"].includes(role)) {
+      if (!isClientRole && role !== "admin") {
         if (pathname.startsWith("/api/")) return NextResponse.json({ error: "Acceso denegado" }, { status: 403 });
         return NextResponse.redirect(new URL("/dashboard", req.url));
       }
+      return NextResponse.next();
+    }
+
+    // Client-portal roles cannot access internal pages or APIs.
+    // Allowed outside the portal: auth endpoints and evidence files
+    // (the evidence route enforces customerVisible + same company).
+    if (isClientRole && !pathname.startsWith("/api/auth") && !pathname.startsWith("/api/evidence")) {
+      if (pathname.startsWith("/api/")) return NextResponse.json({ error: "Acceso denegado" }, { status: 403 });
+      return NextResponse.redirect(new URL("/client/dashboard", req.url));
     }
 
     return NextResponse.next();

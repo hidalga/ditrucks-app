@@ -2,12 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession, createAuditLog } from "@/lib/auth";
 import { serviceOrderSchema } from "@/lib/validations";
+import { ORDER_WRITE_ROLES, ECU_FILE_ROLES } from "@/lib/constants";
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const user = await getSession();
   if (!user) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
 
   const { id } = await params;
+  const canSeeEcuFiles = ECU_FILE_ROLES.includes(user.role);
   const order = await prisma.serviceOrder.findUnique({
     where: { id },
     include: {
@@ -17,11 +19,13 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
       technician: true,
       assignedCalibrator: true,
       createdBy: true,
-      ecuFiles: {
-        where: { deleted: false },
-        orderBy: { createdAt: "desc" },
-        include: { uploadedBy: true },
-      },
+      ecuFiles: canSeeEcuFiles
+        ? {
+            where: { deleted: false },
+            orderBy: { createdAt: "desc" },
+            include: { uploadedBy: true },
+          }
+        : false,
       evidence: {
         where: { deleted: false },
         orderBy: { createdAt: "desc" },
@@ -45,6 +49,9 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const user = await getSession();
   if (!user) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+  if (!ORDER_WRITE_ROLES.includes(user.role)) {
+    return NextResponse.json({ error: "Sin permisos para editar órdenes" }, { status: 403 });
+  }
 
   const { id } = await params;
   const body = await req.json();

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession, hashPassword } from "@/lib/auth";
 import { userSchema } from "@/lib/validations";
+import { CLIENT_ROLES } from "@/lib/constants";
 
 export async function GET() {
   const user = await getSession();
@@ -23,8 +24,9 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  // Admin creates any user; sales can only create client-portal accounts
   const user = await getSession();
-  if (!user || user.role !== "admin") {
+  if (!user || !["admin", "sales"].includes(user.role)) {
     return NextResponse.json({ error: "Sin permisos" }, { status: 403 });
   }
 
@@ -32,6 +34,15 @@ export async function POST(req: NextRequest) {
   const parsed = userSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json({ error: "Datos inválidos", details: parsed.error.flatten() }, { status: 400 });
+  }
+
+  if (user.role === "sales") {
+    if (!CLIENT_ROLES.includes(parsed.data.role)) {
+      return NextResponse.json({ error: "Comercial solo puede crear cuentas de portal de clientes" }, { status: 403 });
+    }
+    if (!parsed.data.companyId) {
+      return NextResponse.json({ error: "Empresa requerida para cuentas de portal" }, { status: 400 });
+    }
   }
 
   if (!parsed.data.password) {

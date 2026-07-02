@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession, createAuditLog } from "@/lib/auth";
 import { buildOrderSnapshot, getActiveTerms } from "@/services/signature";
+import { ORDER_WRITE_ROLES } from "@/lib/constants";
 import { sendCrmEvent } from "@/services/crm-webhook";
 import { getProgressPercent } from "@/services/order-progress";
 import { z } from "zod";
@@ -17,6 +18,9 @@ const signatureSchema = z.object({
 export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const user = await getSession();
   if (!user) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+  if (!ORDER_WRITE_ROLES.includes(user.role)) {
+    return NextResponse.json({ error: "Sin permisos para capturar firmas" }, { status: 403 });
+  }
 
   const { id } = await params;
   const body = await req.json();

@@ -3,12 +3,16 @@ import { prisma } from "@/lib/prisma";
 import { getSession, createAuditLog } from "@/lib/auth";
 import { ecuFileSchema } from "@/lib/validations";
 import { uploadToR2 } from "@/lib/storage/r2";
+import { ECU_FILE_ROLES } from "@/lib/constants";
 
 const MAX_FILE_SIZE_BYTES = 150 * 1024 * 1024; // 150MB
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const user = await getSession();
   if (!user) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+  if (!ECU_FILE_ROLES.includes(user.role)) {
+    return NextResponse.json({ error: "Sin permisos para archivos ECU" }, { status: 403 });
+  }
 
   const { id: orderId } = await params;
 

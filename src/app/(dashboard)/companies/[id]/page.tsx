@@ -49,10 +49,12 @@ export default function CompanyDetailPage() {
         description={`${COMPANY_TYPE_LABELS[company.companyType] || company.companyType} ${company.rfc ? `• ${company.rfc}` : ""}`}
         breadcrumbs={[{ label: "Empresas", href: "/companies" }, { label: company.name }]}
         actions={
-          <Link href={`/users/new?role=fleet_admin&companyId=${id}&name=${encodeURIComponent(company.primaryContact || "")}&email=${encodeURIComponent(company.email || "")}`}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-accent text-brand-dark text-sm font-medium rounded-lg hover:bg-brand-accent-hover transition-colors">
-            <Users size={14} /> Crear acceso al portal
-          </Link>
+          user?.role === "admin" || user?.role === "sales" ? (
+            <Link href={`/users/new?role=fleet_admin&companyId=${id}&name=${encodeURIComponent(company.primaryContact || "")}&email=${encodeURIComponent(company.email || "")}`}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-accent text-brand-dark text-sm font-medium rounded-lg hover:bg-brand-accent-hover transition-colors">
+              <Users size={14} /> Crear acceso al portal
+            </Link>
+          ) : undefined
         }
       />
 
