@@ -104,12 +104,31 @@ Score base: 100/sistema. Promedio ponderado de sistemas presentes.
 ## Comandos
 
 ```bash
-npm run dev           # Desarrollo
-npm run build         # Build producción
-npm run db:push       # Aplicar esquema
-npm run db:seed       # Datos demo
-npm run db:studio     # Prisma Studio
+npm run dev             # Desarrollo
+npm run build           # Build producción
+npm run db:push         # Aplicar esquema
+npm run db:seed         # Datos demo
+npm run db:seed-cotizador  # Catálogo del cotizador (326 vehículos + 10 piezas)
+npm run db:studio       # Prisma Studio
 ```
+
+### Catálogo del cotizador
+
+El catálogo base del cotizador se precarga desde `referencia/cotizador-catalog.json`
+(3 categorías, 326 vehículos/aplicaciones y 10 piezas). El seed es **idempotente**:
+usa upsert manual (buscar por `displayLabel` / `sistema+pieza` → actualizar o crear),
+por lo que puede correrse varias veces sin duplicar. La captura manual desde la UI
+(tabs "Catálogo de Vehículos" y "Piezas") queda intacta.
+
+```bash
+npx tsx prisma/seed-cotizador.ts   # o: npm run db:seed-cotizador
+```
+
+**Railway:** no es necesario agregarlo al start command (correría en cada arranque
+sin aportar nada tras la primera carga). Basta ejecutarlo una vez como paso puntual
+tras el deploy — por ejemplo desde la consola del servicio (`npm run db:seed-cotizador`),
+o de forma temporal en el build/release command. Para actualizar precios, vuelve a
+correr el seed tras editar el JSON.
 
 ## Estructura del Proyecto
 
