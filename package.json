@@ -14,7 +14,8 @@
     "db:seed-quoter": "tsx scripts/seed-quoter.ts",
     "db:seed-cotizador": "tsx prisma/seed-cotizador.ts",
     "db:studio": "prisma studio",
-    "db:reset": "prisma migrate reset --force"
+    "db:reset": "prisma migrate reset --force",
+    "users:provision": "tsx scripts/provision-users.ts"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"
