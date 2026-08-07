@@ -125,6 +125,27 @@ export const RISK_LEVEL_DOT: Record<string, string> = {
   critico: "bg-red-400",
 };
 
+export const OPPORTUNITY_LABELS: Record<string, string> = {
+  sin_oportunidad: "Sin oportunidad",
+  seguimiento: "Seguimiento",
+  cotizar: "Cotizar",
+  agendar: "Agendar",
+  vendido: "Vendido",
+  perdido: "Perdido",
+};
+
+export const OPPORTUNITY_COLORS: Record<string, string> = {
+  sin_oportunidad: "bg-brand-surface2 text-brand-text-dim border-brand-border",
+  seguimiento: "bg-blue-500/20 text-blue-400 border-blue-500/30",
+  cotizar: "bg-amber-500/20 text-amber-400 border-amber-500/30",
+  agendar: "bg-purple-500/20 text-purple-400 border-purple-500/30",
+  vendido: "bg-green-500/20 text-green-400 border-green-500/30",
+  perdido: "bg-red-500/20 text-red-400 border-red-500/30",
+};
+
+// Estados de oportunidad que representan pipeline activo (accionable por comercial)
+export const ACTIVE_OPPORTUNITY_STATUSES = ["seguimiento", "cotizar", "agendar"];
+
 export const SERVICE_TYPE_LABELS: Record<string, string> = {
   diagnostico: "Diagnóstico",
   dpf: "DPF",

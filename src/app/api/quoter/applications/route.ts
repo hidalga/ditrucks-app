@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession, createAuditLog } from "@/lib/auth";
 import { quoterApplicationSchema } from "@/lib/validations";
+import { ensureQuoterCatalogSeeded } from "@/lib/quoter-catalog";
 
 const QUOTER_ROLES = ["admin", "sales"];
 
@@ -10,6 +11,8 @@ export async function GET(req: NextRequest) {
   if (!user || !QUOTER_ROLES.includes(user.role)) {
     return NextResponse.json({ error: "Acceso denegado" }, { status: 403 });
   }
+
+  await ensureQuoterCatalogSeeded();
 
   const { searchParams } = new URL(req.url);
   const search = searchParams.get("search") || "";

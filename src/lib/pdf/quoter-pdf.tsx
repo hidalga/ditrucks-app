@@ -72,6 +72,10 @@ export function QuoterPdf({ applicationLabel, mode, vans, trucks, systems, gener
             <Text style={styles.metaLabel}>Sistemas seleccionados</Text>
             <Text style={styles.metaValue}>{systems.join(" + ") || "—"}</Text>
           </View>
+          <View style={styles.metaItem}>
+            <Text style={styles.metaLabel}>Proyección del correctivo</Text>
+            <Text style={styles.metaValue}>{result.horizonMonths} meses</Text>
+          </View>
         </View>
 
         <Text style={styles.sectionTitle}>Comparativo Financiero</Text>
@@ -106,7 +110,7 @@ export function QuoterPdf({ applicationLabel, mode, vans, trucks, systems, gener
               <Text style={styles.detailValue}>{fmt(result.partsSum)}</Text>
             </View>
             <View style={styles.detailRow}>
-              <Text style={styles.detailLabel}>Gasto de urea</Text>
+              <Text style={styles.detailLabel}>DEF/AdBlue ({result.horizonMonths} meses)</Text>
               <Text style={styles.detailValue}>{fmt(result.ureaCost)}</Text>
             </View>
             <View style={[styles.detailRow, { borderBottomWidth: 0 }]}>
@@ -149,10 +153,11 @@ export function QuoterPdf({ applicationLabel, mode, vans, trucks, systems, gener
         </View>
 
         <Text style={styles.note}>
-          El servicio preventivo reduce el riesgo de fallas, paros inesperados y costos acumulados por reparación. La
-          cotización correctiva considera gastos adicionales de piezas, urea e inoperatividad cuando aplican.
-          Inoperatividad estimada con base en horas de paro por unidad × tarifa por hora × número de unidades.
-          Precios en pesos mexicanos (MXN), sujetos a cambio sin previo aviso.
+          El servicio preventivo es un gasto único que elimina el consumo de DEF/AdBlue y el riesgo de reemplazo de
+          piezas del post-tratamiento. El escenario correctivo proyecta a {result.horizonMonths} meses el costo de
+          mantener el sistema original: servicio reactivo, piezas de reemplazo, DEF mes con mes e inoperatividad por
+          paro. Consumo de DEF: {result.ureaMonthlyLiters.toLocaleString("es-MX")} L/mes ({fmt(result.ureaMonthlyCost)}/mes).
+          Precios de piezas y consumibles ESTIMADOS de mercado (MXN), sujetos a cambio sin previo aviso.
         </Text>
 
         <PdfFooter pageLabel="Cotización" />

@@ -58,6 +58,7 @@ export async function POST(req: NextRequest) {
     trucks: input.trucks,
     selectedSystems: input.selectedSystems,
     parts: partLines,
+    horizonMonths: input.horizonMonths,
     ureaIncluded: input.ureaIncluded,
     ureaVanLitersPerMonth: input.ureaVanLitersPerMonth,
     ureaTruckLitersPerMonth: input.ureaTruckLitersPerMonth,
@@ -66,6 +67,29 @@ export async function POST(req: NextRequest) {
     downtimeHours: input.downtimeHours,
     downtimeRatePerHour: input.downtimeRatePerHour,
   });
+
+  // BI: registrar la cotización generada (evento de servidor — cubre interno y portal).
+  prisma.analyticsEvent.create({
+    data: {
+      event: "quoter_pdf_export",
+      userId: user.id,
+      userRole: user.role,
+      metadata: {
+        applicationId: application.id,
+        brand: application.brand,
+        category: application.category,
+        label: `${application.brand} — ${application.model}`.slice(0, 180),
+        mode: input.mode,
+        vans: input.vans,
+        trucks: input.trucks,
+        horizonMonths: input.horizonMonths,
+        totalPrev: result.totalPrev,
+        totalCorr: result.totalCorr,
+        savings: result.savings,
+        audience: CLIENT_ROLES.includes(user.role) ? "client" : "internal",
+      },
+    },
+  }).catch(() => {}); // fire-and-forget
 
   const generatedAt = new Date().toLocaleDateString("es-MX", { year: "numeric", month: "long", day: "numeric" });
 

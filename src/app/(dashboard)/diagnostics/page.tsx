@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Stethoscope } from "lucide-react";
 import { Card, Badge, PageHeader, Loading, EmptyState, ScoreGauge } from "@/components/ui";
-import { RISK_LEVEL_LABELS, RISK_LEVEL_COLORS, RISK_LEVEL_DOT } from "@/lib/constants";
+import { RISK_LEVEL_LABELS, RISK_LEVEL_COLORS, RISK_LEVEL_DOT, OPPORTUNITY_LABELS, OPPORTUNITY_COLORS } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 
 export default function DiagnosticsPage() {
@@ -44,9 +44,16 @@ export default function DiagnosticsPage() {
                       </div>
                     </div>
                   </div>
-                  <Badge className={RISK_LEVEL_COLORS[d.riskLevel]} dot={RISK_LEVEL_DOT[d.riskLevel]}>
-                    {RISK_LEVEL_LABELS[d.riskLevel]}
-                  </Badge>
+                  <div className="flex flex-col items-end gap-1.5 shrink-0">
+                    <Badge className={RISK_LEVEL_COLORS[d.riskLevel]} dot={RISK_LEVEL_DOT[d.riskLevel]}>
+                      {RISK_LEVEL_LABELS[d.riskLevel]}
+                    </Badge>
+                    {d.commercialOpportunityStatus && d.commercialOpportunityStatus !== "sin_oportunidad" && (
+                      <Badge className={OPPORTUNITY_COLORS[d.commercialOpportunityStatus]}>
+                        {OPPORTUNITY_LABELS[d.commercialOpportunityStatus]}
+                      </Badge>
+                    )}
+                  </div>
                 </div>
               </Card>
             </Link>

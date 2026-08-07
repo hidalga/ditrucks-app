@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Calculator, FileDown, ChevronDown, ChevronUp } from "lucide-react";
-import { calculateQuote, DEFAULT_DOWNTIME_HOURS, DEFAULT_DOWNTIME_RATE, DEFAULT_UREA_VAN_LITERS, DEFAULT_UREA_TRUCK_LITERS, DEFAULT_UREA_PRICE } from "@/services/quoter-engine";
+import { calculateQuote, DEFAULT_HORIZON_MONTHS, DEFAULT_DOWNTIME_HOURS, DEFAULT_DOWNTIME_RATE, DEFAULT_UREA_VAN_LITERS, DEFAULT_UREA_TRUCK_LITERS, DEFAULT_UREA_PRICE } from "@/services/quoter-engine";
 
 interface ClientVehicle {
   id: string;
@@ -19,6 +19,8 @@ interface ClientPart {
   label: string;
   vanPrice: number;
   truckPrice: number;
+  essential: boolean;
+  qtyPerUnit: number;
 }
 
 const pesos = new Intl.NumberFormat("es-MX", { style: "currency", currency: "MXN" });
@@ -102,15 +104,19 @@ function QuoteGroupCard({ group, parts }: { group: QuoteGroup; parts: ClientPart
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [ureaIncluded, setUreaIncluded] = useState(true);
   const [downtimeIncluded, setDowntimeIncluded] = useState(true);
+  const [horizonMonths, setHorizonMonths] = useState(DEFAULT_HORIZON_MONTHS);
   const [pdfLoading, setPdfLoading] = useState(false);
 
+  const fleetUnits = group.vans + group.trucks;
   const result = useMemo(() => calculateQuote({
     pricing: group.pricing,
     mode,
     vans: group.vans,
     trucks: group.trucks,
     selectedSystems: ["DPF", "EGR", "SCR", "DOC", "DITUNING"],
-    parts: parts.map((p) => ({ system: p.system, label: p.label, vanPrice: p.vanPrice, truckPrice: p.truckPrice, selected: false, units: 0 })),
+    // Incluye las piezas esenciales (una por unidad) para un correctivo realista.
+    parts: parts.map((p) => ({ system: p.system, label: p.label, vanPrice: p.vanPrice, truckPrice: p.truckPrice, selected: p.essential, units: p.essential ? fleetUnits * (p.qtyPerUnit || 1) : 0 })),
+    horizonMonths,
     ureaIncluded,
     ureaVanLitersPerMonth: DEFAULT_UREA_VAN_LITERS,
     ureaTruckLitersPerMonth: DEFAULT_UREA_TRUCK_LITERS,
@@ -118,7 +124,7 @@ function QuoteGroupCard({ group, parts }: { group: QuoteGroup; parts: ClientPart
     downtimeIncluded,
     downtimeHours: DEFAULT_DOWNTIME_HOURS,
     downtimeRatePerHour: DEFAULT_DOWNTIME_RATE,
-  }), [group, mode, ureaIncluded, downtimeIncluded, parts]);
+  }), [group, mode, ureaIncluded, downtimeIncluded, horizonMonths, fleetUnits, parts]);
 
   const exportPdf = async () => {
     setPdfLoading(true);
@@ -132,7 +138,8 @@ function QuoteGroupCard({ group, parts }: { group: QuoteGroup; parts: ClientPart
           vans: group.vans,
           trucks: group.trucks,
           selectedSystems: ["DPF", "EGR", "SCR", "DOC", "DITUNING"],
-          parts: [],
+          parts: parts.map((p) => ({ partId: p.id, selected: p.essential, units: p.essential ? fleetUnits * (p.qtyPerUnit || 1) : 0 })),
+          horizonMonths,
           ureaIncluded,
           downtimeIncluded,
         }),
@@ -167,7 +174,7 @@ function QuoteGroupCard({ group, parts }: { group: QuoteGroup; parts: ClientPart
           <p className="text-lg font-bold text-slate-800">{pesos.format(result.totalPrev)}</p>
         </div>
         <div className="bg-green-50 border border-green-100 rounded-lg p-3 text-center">
-          <p className="text-xs text-green-600">Ahorro</p>
+          <p className="text-xs text-green-600">Ahorro{result.totalCorr > 0 ? ` · ${Math.round((result.savings / result.totalCorr) * 100)}%` : ""}</p>
           <p className="text-lg font-bold text-green-700">{pesos.format(result.savings)}</p>
         </div>
       </div>
@@ -177,9 +184,15 @@ function QuoteGroupCard({ group, parts }: { group: QuoteGroup; parts: ClientPart
       </button>
 
       {showAdvanced && (
-        <div className="flex gap-4 mt-2 text-sm text-slate-600">
-          <label className="flex items-center gap-1.5"><input type="checkbox" checked={ureaIncluded} onChange={(e) => setUreaIncluded(e.target.checked)} className="accent-[#f6b31c]" /> Incluir urea</label>
+        <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-slate-600">
+          <label className="flex items-center gap-1.5"><input type="checkbox" checked={ureaIncluded} onChange={(e) => setUreaIncluded(e.target.checked)} className="accent-[#f6b31c]" /> Incluir DEF</label>
           <label className="flex items-center gap-1.5"><input type="checkbox" checked={downtimeIncluded} onChange={(e) => setDowntimeIncluded(e.target.checked)} className="accent-[#f6b31c]" /> Incluir inoperatividad</label>
+          <label className="flex items-center gap-1.5">
+            Proyección
+            <select value={horizonMonths} onChange={(e) => setHorizonMonths(Number(e.target.value))} className="border border-slate-300 rounded-lg px-2 py-1 text-sm">
+              {[12, 24, 36, 48].map((m) => <option key={m} value={m}>{m} meses</option>)}
+            </select>
+          </label>
         </div>
       )}
 

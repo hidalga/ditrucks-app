@@ -1,7 +1,60 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Prisma } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 const prisma = new PrismaClient();
+
+// ── Catálogo base del Cotizador (empaquetado con la app) ──
+interface CatalogVehicle {
+  category: string;
+  descriptor: string;
+  fields: string[];
+  prices: Record<string, { prev: number; corr: number }>;
+}
+interface CatalogPart { sys: string; label: string; van: number; truck: number; essential?: boolean; qtyPerUnit?: number; note?: string | null }
+
+async function seedQuoterCatalog() {
+  const file = join(process.cwd(), "src", "data", "quoter-catalog.json");
+  const catalog = JSON.parse(readFileSync(file, "utf8")) as {
+    vehicles: CatalogVehicle[];
+    parts: CatalogPart[];
+  };
+
+  const appCount = await prisma.quoterApplication.count();
+  if (appCount === 0) {
+    await prisma.quoterApplication.createMany({
+      data: catalog.vehicles.map((v) => ({
+        category: v.category,
+        brand: v.fields[0]?.trim() || "Sin marca",
+        model: v.fields.slice(1).map((f) => f.trim()).join(" | ") || (v.fields[0]?.trim() ?? "Sin marca"),
+        displayLabel: v.descriptor.trim(),
+        pricing: v.prices as unknown as Prisma.InputJsonValue,
+      })),
+    });
+    console.log(`  Cotizador: ${catalog.vehicles.length} aplicaciones creadas.`);
+  } else {
+    console.log(`  Cotizador: ${appCount} aplicaciones ya existían (sin cambios).`);
+  }
+
+  const partCount = await prisma.quoterPart.count();
+  if (partCount === 0) {
+    await prisma.quoterPart.createMany({
+      data: catalog.parts.map((p) => ({
+        system: p.sys,
+        label: p.label,
+        vanPrice: p.van,
+        truckPrice: p.truck,
+        essential: p.essential ?? true,
+        qtyPerUnit: p.qtyPerUnit ?? 1,
+        note: p.note ?? null,
+      })),
+    });
+    console.log(`  Cotizador: ${catalog.parts.length} piezas creadas.`);
+  } else {
+    console.log(`  Cotizador: ${partCount} piezas ya existían (sin cambios).`);
+  }
+}
 
 async function main() {
   console.log("🌱 Seeding database...");
@@ -485,6 +538,10 @@ async function main() {
       companyId: company1.id,
     },
   });
+
+  // ── Catálogo del Cotizador ──
+  console.log("🌱 Sembrando catálogo del cotizador...");
+  await seedQuoterCatalog();
 
   console.log("✅ Seed complete!");
   console.log("");

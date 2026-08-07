@@ -3,18 +3,37 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { Card, Badge, PageHeader, Loading, ScoreGauge } from "@/components/ui";
-import { RISK_LEVEL_LABELS, RISK_LEVEL_COLORS, RISK_LEVEL_DOT, USAGE_TYPE_LABELS } from "@/lib/constants";
+import { Card, Badge, PageHeader, Loading, ScoreGauge, Select } from "@/components/ui";
+import { RISK_LEVEL_LABELS, RISK_LEVEL_COLORS, RISK_LEVEL_DOT, USAGE_TYPE_LABELS, OPPORTUNITY_LABELS, OPPORTUNITY_COLORS } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
+import { useAuth } from "@/components/auth-provider";
 
 export default function DiagnosticDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const { user } = useAuth();
   const [diag, setDiag] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [savingOpp, setSavingOpp] = useState(false);
 
   useEffect(() => {
     fetch(`/api/diagnostics/${id}`).then(r => r.json()).then(setDiag).finally(() => setLoading(false));
   }, [id]);
+
+  const canEditOpportunity = user && ["admin", "sales"].includes(user.role);
+
+  const updateOpportunity = async (status: string) => {
+    setSavingOpp(true);
+    try {
+      const res = await fetch(`/api/diagnostics/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ commercialOpportunityStatus: status }),
+      });
+      if (res.ok) setDiag((d: unknown) => ({ ...(d as Record<string, unknown>), commercialOpportunityStatus: status }));
+    } finally {
+      setSavingOpp(false);
+    }
+  };
 
   if (loading) return <Loading />;
   if (!diag) return <p className="text-red-400">Diagnóstico no encontrado</p>;
@@ -37,10 +56,26 @@ export default function DiagnosticDetailPage() {
           {diag.scrScore != null && <ScoreGauge score={diag.scrScore} label="SCR" />}
           {diag.egrScore != null && <ScoreGauge score={diag.egrScore} label="EGR" />}
         </div>
-        <div className="text-center">
+        <div className="flex items-center justify-center gap-3 flex-wrap">
           <Badge className={`${RISK_LEVEL_COLORS[diag.riskLevel]} text-sm px-4 py-1`} dot={RISK_LEVEL_DOT[diag.riskLevel]}>
             Nivel de riesgo: {RISK_LEVEL_LABELS[diag.riskLevel]}
           </Badge>
+          {canEditOpportunity ? (
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-brand-text-dim">Oportunidad:</span>
+              <Select
+                value={diag.commercialOpportunityStatus || "sin_oportunidad"}
+                onChange={(e) => updateOpportunity(e.target.value)}
+                disabled={savingOpp}
+                options={Object.entries(OPPORTUNITY_LABELS).map(([value, label]) => ({ value, label }))}
+                className="!w-auto text-xs py-1"
+              />
+            </div>
+          ) : diag.commercialOpportunityStatus && diag.commercialOpportunityStatus !== "sin_oportunidad" ? (
+            <Badge className={OPPORTUNITY_COLORS[diag.commercialOpportunityStatus]}>
+              {OPPORTUNITY_LABELS[diag.commercialOpportunityStatus]}
+            </Badge>
+          ) : null}
         </div>
       </Card>
 

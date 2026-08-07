@@ -2,12 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession, createAuditLog } from "@/lib/auth";
 import { quoterPartSchema } from "@/lib/validations";
+import { ensureQuoterCatalogSeeded } from "@/lib/quoter-catalog";
 
 const QUOTER_ROLES = ["admin", "sales"];
 
 export async function GET() {
   const user = await getSession();
   if (!user) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+
+  await ensureQuoterCatalogSeeded();
 
   const parts = await prisma.quoterPart.findMany({
     where: { deleted: false },

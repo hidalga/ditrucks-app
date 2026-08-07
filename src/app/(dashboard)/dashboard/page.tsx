@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   ClipboardList, FileCheck, HardDrive, AlertTriangle,
-  CheckCircle, Clock, Wrench, BarChart3,
+  CheckCircle, Clock, Wrench, BarChart3, Timer, TrendingUp,
 } from "lucide-react";
 import { StatCard, Badge, Card, Loading, PageHeader } from "@/components/ui";
-import { ORDER_STATUS_LABELS, ORDER_STATUS_COLORS, RISK_LEVEL_COLORS, RISK_LEVEL_LABELS, RISK_LEVEL_DOT } from "@/lib/constants";
+import { ORDER_STATUS_LABELS, ORDER_STATUS_COLORS, RISK_LEVEL_COLORS, RISK_LEVEL_LABELS, RISK_LEVEL_DOT, OPPORTUNITY_LABELS, OPPORTUNITY_COLORS } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 
 interface DashboardData {
@@ -22,7 +22,20 @@ interface DashboardData {
     cerrada: number;
     riesgoAlto: number;
     riesgoCritico: number;
+    closedThisMonth: number;
+    avgCycleDays: number | null;
   };
+  pipeline: Record<string, number>;
+  stalledOrders: Array<{
+    id: string;
+    folio: string;
+    status: string;
+    daysStalled: number;
+    vehicle: { brand: string; model: string; plates?: string } | null;
+    company: { name: string } | null;
+    customer: { name: string } | null;
+    technician: { name: string } | null;
+  }>;
   recentOrders: Array<{
     id: string;
     folio: string;
@@ -110,7 +123,68 @@ export default function DashboardPage() {
           icon={<AlertTriangle size={18} />}
           accent="text-red-400"
         />
+        <StatCard
+          label="Cerradas (mes)"
+          value={stats.closedThisMonth}
+          icon={<TrendingUp size={18} />}
+          accent="text-green-400"
+        />
+        <StatCard
+          label="Ciclo promedio"
+          value={stats.avgCycleDays !== null ? `${stats.avgCycleDays} d` : "—"}
+          icon={<Timer size={18} />}
+          subtitle="Recepción → entrega (90 días)"
+        />
       </div>
+
+      {/* Stalled orders + commercial pipeline */}
+      {(data.stalledOrders.length > 0 || Object.values(data.pipeline).some((n) => n > 0)) && (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+          {data.stalledOrders.length > 0 && (
+            <Card className="overflow-hidden lg:col-span-2 border-orange-500/30">
+              <div className="px-4 py-3 border-b border-brand-border flex items-center gap-2">
+                <AlertTriangle size={15} className="text-orange-400" />
+                <h2 className="font-semibold text-sm">Órdenes sin movimiento (+3 días)</h2>
+              </div>
+              <div className="divide-y divide-brand-border/50">
+                {data.stalledOrders.map((o) => (
+                  <Link key={o.id} href={`/orders/${o.id}`} className="flex items-center justify-between gap-3 px-4 py-2.5 hover:bg-brand-surface2/50 transition-colors">
+                    <div className="min-w-0">
+                      <span className="text-brand-accent font-medium text-sm">{o.folio}</span>
+                      <span className="text-brand-text-muted text-sm ml-2">
+                        {o.vehicle ? `${o.vehicle.brand} ${o.vehicle.model}` : "—"}
+                        {o.company?.name || o.customer?.name ? ` · ${o.company?.name || o.customer?.name}` : ""}
+                      </span>
+                      {o.technician?.name && <span className="text-brand-text-dim text-xs ml-2">({o.technician.name})</span>}
+                    </div>
+                    <div className="flex items-center gap-2.5 shrink-0">
+                      <Badge className={ORDER_STATUS_COLORS[o.status]}>{ORDER_STATUS_LABELS[o.status]}</Badge>
+                      <span className="text-orange-400 text-xs font-semibold whitespace-nowrap">{o.daysStalled} d</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </Card>
+          )}
+
+          {Object.values(data.pipeline).some((n) => n > 0) && (
+            <Card className="p-4">
+              <h2 className="font-semibold text-sm mb-3">Pipeline Comercial</h2>
+              <div className="space-y-2">
+                {(["cotizar", "agendar", "seguimiento"] as const).map((k) => (
+                  <Link key={k} href="/diagnostics" className="flex items-center justify-between p-2 rounded-lg hover:bg-brand-surface2/50 transition-colors">
+                    <Badge className={OPPORTUNITY_COLORS[k]}>{OPPORTUNITY_LABELS[k]}</Badge>
+                    <span className="text-lg font-bold">{data.pipeline[k] || 0}</span>
+                  </Link>
+                ))}
+              </div>
+              <p className="text-[11px] text-brand-text-dim mt-3">
+                Diagnósticos con oportunidad activa. Da seguimiento desde el detalle de cada diagnóstico.
+              </p>
+            </Card>
+          )}
+        </div>
+      )}
 
       {/* Recent orders table */}
       <Card className="overflow-hidden">

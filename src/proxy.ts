@@ -36,9 +36,15 @@ export async function proxy(req: NextRequest) {
     }
 
     // Client-portal roles cannot access internal pages or APIs.
-    // Allowed outside the portal: auth endpoints and evidence files
-    // (the evidence route enforces customerVisible + same company).
-    if (isClientRole && !pathname.startsWith("/api/auth") && !pathname.startsWith("/api/evidence")) {
+    // Allowed outside the portal: auth endpoints, evidence files
+    // (the evidence route enforces customerVisible + same company) and la
+    // captura de analítica (fire-and-forget, sin datos sensibles).
+    if (
+      isClientRole &&
+      !pathname.startsWith("/api/auth") &&
+      !pathname.startsWith("/api/evidence") &&
+      !pathname.startsWith("/api/analytics/track")
+    ) {
       if (pathname.startsWith("/api/")) return NextResponse.json({ error: "Acceso denegado" }, { status: 403 });
       return NextResponse.redirect(new URL("/client/dashboard", req.url));
     }

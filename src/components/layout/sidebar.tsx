@@ -11,11 +11,9 @@ import {
   Users,
   Truck,
   Stethoscope,
-  HardDrive,
-  Camera,
-  FileText,
   UserCog,
   Calculator,
+  BarChart3,
   Menu,
   X,
   LogOut,
@@ -37,9 +35,7 @@ const navItems: NavItem[] = [
   { label: "Vehículos", href: "/vehicles", icon: <Truck size={18} /> },
   { label: "Diagnósticos", href: "/diagnostics", icon: <Stethoscope size={18} /> },
   { label: "Cotizador", href: "/quoter", icon: <Calculator size={18} />, roles: ["admin", "sales"] },
-  { label: "Archivos ECU", href: "/orders", icon: <HardDrive size={18} /> },
-  { label: "Evidencia", href: "/orders", icon: <Camera size={18} /> },
-  { label: "Reportes", href: "/orders", icon: <FileText size={18} /> },
+  { label: "Analítica", href: "/analytics", icon: <BarChart3 size={18} />, roles: ["admin", "sales"] },
   { label: "Usuarios", href: "/users", icon: <UserCog size={18} />, roles: ["admin"] },
 ];
 

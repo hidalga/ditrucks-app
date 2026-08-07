@@ -328,6 +328,10 @@ model QuoterPart {
   label      String
   vanPrice   Float    @map("van_price")
   truckPrice Float    @map("truck_price")
+  // Metadatos para agilizar y aproximar la cotización a la realidad:
+  essential  Boolean  @default(true)  // se preselecciona en el escenario correctivo
+  qtyPerUnit Int      @default(1) @map("qty_per_unit") // piezas por unidad afectada
+  note       String?  // aclaración del estimado (ej. "OEM puede ser mayor")
   deleted    Boolean  @default(false)
   createdAt  DateTime @default(now()) @map("created_at")
   updatedAt  DateTime @updatedAt @map("updated_at")
@@ -679,4 +683,22 @@ model WebhookOutboundConfig {
   updatedAt   DateTime @updatedAt @map("updated_at")
 
   @@map("webhook_outbound_config")
+}
+
+// ─── ANALÍTICA INTERNA (BI) ────────────────────────────────────────────
+// Eventos de uso relevantes (botones/acciones clave, interno y portal).
+// Fire-and-forget: la captura nunca debe bloquear la operación.
+model AnalyticsEvent {
+  id        String   @id @default(cuid())
+  event     String   // convención: area_accion_objeto (ej. quoter_pdf_export)
+  userId    String?  @map("user_id")
+  userRole  String?  @map("user_role")
+  companyId String?  @map("company_id")
+  path      String?
+  metadata  Json?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([event, createdAt])
+  @@index([createdAt])
+  @@map("analytics_events")
 }

@@ -8,14 +8,14 @@ import { Card, Badge, Button, PageHeader, Loading, StatCard } from "@/components
 import { UNIT_TYPE_LABELS, FUEL_TYPE_LABELS, ORDER_STATUS_LABELS, ORDER_STATUS_COLORS, RISK_LEVEL_LABELS, RISK_LEVEL_COLORS, RISK_LEVEL_DOT } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 import { useAuth } from "@/components/auth-provider";
-import { QuoterApplicationPicker, type QuoterApplicationOption } from "@/components/quoter-application-picker";
+import { QuoterVehicleSearch, type QuoterVehicleOption } from "@/components/quoter-vehicle-search";
 
 export default function VehicleDetailPage() {
   const { id } = useParams<{ id: string }>();
   const { user } = useAuth();
   const [vehicle, setVehicle] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [applications, setApplications] = useState<QuoterApplicationOption[]>([]);
+  const [applications, setApplications] = useState<QuoterVehicleOption[]>([]);
   const [pickerValue, setPickerValue] = useState("");
   const [savingApp, setSavingApp] = useState(false);
 
@@ -130,7 +130,7 @@ export default function VehicleDetailPage() {
               Actual: <span className="font-medium">{vehicle.quoterApplication.brand} — {vehicle.quoterApplication.model}</span>
             </div>
           )}
-          <QuoterApplicationPicker applications={applications} value={pickerValue} onChange={setPickerValue} />
+          <QuoterVehicleSearch applications={applications} value={pickerValue} onChange={setPickerValue} />
           <div className="mt-3">
             <Button size="sm" onClick={saveQuoterApplication} loading={savingApp}>Guardar vínculo</Button>
           </div>

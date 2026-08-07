@@ -2,7 +2,7 @@ import { z } from "zod";
 
 // ─── AUTH ──────────────────────────────────────────────
 export const loginSchema = z.object({
-  email: z.string().email("Correo inválido"),
+  email: z.string().trim().toLowerCase().email("Correo inválido"),
   password: z.string().min(6, "Mínimo 6 caracteres"),
 });
 
@@ -74,6 +74,9 @@ export const quoterPartSchema = z.object({
   label: z.string().min(1, "Nombre requerido"),
   vanPrice: z.coerce.number().min(0),
   truckPrice: z.coerce.number().min(0),
+  essential: z.boolean().default(true),
+  qtyPerUnit: z.coerce.number().int().min(1).default(1),
+  note: z.string().optional().nullable(),
 });
 
 export const quoterCalculationSchema = z.object({
@@ -87,10 +90,11 @@ export const quoterCalculationSchema = z.object({
     selected: z.boolean(),
     units: z.coerce.number().int().min(0),
   })).default([]),
+  horizonMonths: z.coerce.number().int().min(1).max(120).default(24),
   ureaIncluded: z.boolean().default(true),
-  ureaVanLitersPerMonth: z.coerce.number().min(0).default(70),
-  ureaTruckLitersPerMonth: z.coerce.number().min(0).default(137),
-  ureaPricePerLiter: z.coerce.number().min(0).default(17),
+  ureaVanLitersPerMonth: z.coerce.number().min(0).default(20),
+  ureaTruckLitersPerMonth: z.coerce.number().min(0).default(130),
+  ureaPricePerLiter: z.coerce.number().min(0).default(18),
   downtimeIncluded: z.boolean().default(true),
   downtimeHours: z.coerce.number().min(0).default(16),
   downtimeRatePerHour: z.coerce.number().min(0).default(1200),
@@ -157,7 +161,7 @@ export const ecuFileSchema = z.object({
 // ─── USER ─────────────────────────────────────────────
 export const userSchema = z.object({
   name: z.string().min(1, "Nombre requerido"),
-  email: z.string().email("Correo inválido"),
+  email: z.string().trim().toLowerCase().email("Correo inválido"),
   password: z.string().min(6, "Mínimo 6 caracteres").optional(),
   role: z.enum(["admin", "technician", "calibrator", "sales", "customer", "fleet_admin"]).default("technician"),
   active: z.boolean().default(true),

@@ -21,6 +21,8 @@ export interface QuoterInput {
   trucks: number;
   selectedSystems: string[]; // DPF | EGR | SCR | DOC | DITUNING — filters which parts apply
   parts: QuoterPartLine[];
+  /** Ventana de proyección para costos recurrentes (DEF). Default 24 meses. */
+  horizonMonths: number;
   ureaIncluded: boolean;
   ureaVanLitersPerMonth: number;
   ureaTruckLitersPerMonth: number;
@@ -33,38 +35,60 @@ export interface QuoterInput {
 export interface QuoterResult {
   totalUnits: number;
   activeType: "van" | "truck";
+  horizonMonths: number;
   prevUnitPrice: number;
   corrUnitPrice: number;
   totalPrev: number;
   totalCorr: number;
-  ureaLiters: number;
-  ureaCost: number;
+  ureaMonthlyLiters: number;
+  ureaMonthlyCost: number;
+  ureaCost: number; // acumulado a lo largo del horizonte
   partsSum: number;
   downtimeCost: number;
   savings: number;
+  savingsPct: number;
+  /** Comparativo sólo de precio de servicio Ditrucks (sin extras), por si se requiere. */
   onlyPricePrev: number;
   onlyPriceCorr: number;
   onlyPriceDiff: number;
 }
 
+export const DEFAULT_HORIZON_MONTHS = 24;
 export const DEFAULT_DOWNTIME_HOURS = 16;
 export const DEFAULT_DOWNTIME_RATE = 1200;
-export const DEFAULT_UREA_VAN_LITERS = 70;
-export const DEFAULT_UREA_TRUCK_LITERS = 137;
-export const DEFAULT_UREA_PRICE = 17;
+// Consumos DEF/urea aproximados al mercado MX (editables en la UI).
+export const DEFAULT_UREA_VAN_LITERS = 20;
+export const DEFAULT_UREA_TRUCK_LITERS = 130;
+export const DEFAULT_UREA_PRICE = 18;
 
-// Mirrors the calc() logic from the original standalone HTML quoter, 1:1.
+/**
+ * Modelo comercial Ditrucks — "Preventivo vs Correctivo".
+ *
+ * Ditrucks vende el mismo servicio (delete/reprogramación DITUNING) de dos formas:
+ *  · PREVENTIVO: se hace ANTES de la falla → precio unitario `prev` (menor). Es un
+ *    gasto único que además elimina para siempre el consumo de DEF y el riesgo de
+ *    reemplazo de piezas del post-tratamiento.
+ *  · CORRECTIVO: se hace cuando la unidad YA falló → precio unitario `corr` (mayor,
+ *    más mano de obra/limpieza) MÁS el costo acumulado que el cliente ya venía
+ *    pagando: piezas de reemplazo, DEF mes con mes (proyectado al horizonte) y la
+ *    inoperatividad del paro.
+ *
+ * `savings` = cuánto se ahorra el cliente eligiendo el preventivo hoy.
+ */
 export function calculateQuote(input: QuoterInput): QuoterResult {
   const totalUnits = input.vans + input.trucks;
-  // Mutual exclusion for parts pricing: vans-only fleet uses van prices, otherwise truck prices.
+  const horizonMonths = input.horizonMonths > 0 ? input.horizonMonths : DEFAULT_HORIZON_MONTHS;
+  // Exclusión mutua para precios de piezas: flota sólo de camionetas usa precio camioneta.
   const activeType: "van" | "truck" = input.vans > 0 && input.trucks === 0 ? "van" : "truck";
 
   const rec = input.pricing[String(input.mode)] || { prev: 0, corr: 0 };
   const prevUnitPrice = rec.prev || 0;
   const corrUnitPrice = rec.corr || 0;
 
-  const ureaLiters = input.vans * input.ureaVanLitersPerMonth + input.trucks * input.ureaTruckLitersPerMonth;
-  const ureaCost = input.ureaIncluded ? ureaLiters * input.ureaPricePerLiter : 0;
+  // DEF/urea: consumo mensual de la flota proyectado al horizonte.
+  const ureaMonthlyLiters = input.vans * input.ureaVanLitersPerMonth + input.trucks * input.ureaTruckLitersPerMonth;
+  const ureaMonthlyCost = ureaMonthlyLiters * input.ureaPricePerLiter;
+  const ureaCost = input.ureaIncluded ? ureaMonthlyCost * horizonMonths : 0;
 
   const selectedSet = new Set(input.selectedSystems);
   const partsSum = input.parts
@@ -75,19 +99,23 @@ export function calculateQuote(input: QuoterInput): QuoterResult {
 
   const totalPrev = prevUnitPrice * totalUnits;
   const totalCorr = corrUnitPrice * totalUnits + partsSum + ureaCost + downtimeCost;
+  const savings = Math.max(totalCorr - totalPrev, 0);
 
   return {
     totalUnits,
     activeType,
+    horizonMonths,
     prevUnitPrice,
     corrUnitPrice,
     totalPrev,
     totalCorr,
-    ureaLiters,
+    ureaMonthlyLiters,
+    ureaMonthlyCost,
     ureaCost,
     partsSum,
     downtimeCost,
-    savings: Math.max(totalCorr - totalPrev, 0),
+    savings,
+    savingsPct: totalCorr > 0 ? Math.round((savings / totalCorr) * 100) : 0,
     onlyPricePrev: prevUnitPrice * totalUnits,
     onlyPriceCorr: corrUnitPrice * totalUnits,
     onlyPriceDiff: Math.max((corrUnitPrice - prevUnitPrice) * totalUnits, 0),

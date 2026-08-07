@@ -32,6 +32,9 @@ interface CatalogPart {
   label: string;
   van: number;
   truck: number;
+  essential?: boolean;
+  qtyPerUnit?: number;
+  note?: string | null;
 }
 interface Catalog {
   categories: string[];
@@ -41,7 +44,9 @@ interface Catalog {
 }
 
 function loadCatalog(): Catalog {
-  const file = join(process.cwd(), "referencia", "cotizador-catalog.json");
+  // Fuente canónica empaquetada con la app (misma que usa el seed principal y la
+  // auto-provisión en runtime — ver src/lib/quoter-catalog.ts).
+  const file = join(process.cwd(), "src", "data", "quoter-catalog.json");
   return JSON.parse(readFileSync(file, "utf8")) as Catalog;
 }
 
@@ -100,6 +105,9 @@ async function seedParts(parts: CatalogPart[]) {
       label: part.label,
       vanPrice: part.van,
       truckPrice: part.truck,
+      essential: part.essential ?? true,
+      qtyPerUnit: part.qtyPerUnit ?? 1,
+      note: part.note ?? null,
       deleted: false,
     };
 
